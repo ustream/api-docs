@@ -1902,6 +1902,225 @@ title=API+Testing+Channel</code></pre>
 	</section>
 
 	<section>
+		<h2>Channel featured videos</h2>
+		<p>
+			Channel featured videos is a list of videos that can be shown on the channel page, under the featured videos tab.
+		</p>
+
+		<h3>List the channel featured videos</h3>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/featured-videos.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>page</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page number (1 by default)</td>
+			</tr>
+			<tr>
+				<td>pagesize</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page size (50 by default, max 50)</td>
+			</tr>
+			<tr>
+				<td>detail_level</td>
+				<td>string</td>
+				<td>OPTIONAL</td>
+				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be get without valid access token.</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>A key-value structures under a "videos" element.</p>
+		<p>⚠️ The "media_urls" part of the response below is being deprecated. For video download URLs please see the <a href="#downloading-videos_28">Downloading videos</a> section. ⚠️</p>
+		<p>Example:</p>
+		<pre><code class="json">"videos": [{
+	"id": "111",
+	"title": "Title of video",
+	"description": "Description of video",
+	"url": "http://www.ustream.tv/recorded/111",
+	"length": "12345.123456",
+	"created_at": 1399388736,
+	"file_size": "120000",
+	"views": 0,
+	"thumbnail": {
+		"default": "https://ustvstaticcdn1-a.akamaihd.net/111.jpg"
+	},
+	"media_urls": {
+		"flv": "http://tcdn.ustream.tv/video/111"
+	},
+	"links": {
+		"channel": {
+			"href": "https://api.ustream.tv/channels/1.json",
+			"id": "1"
+		}
+	}
+},
+...
+]</code></pre>
+
+		<p>Minimal response example:</p>
+		<pre><code class="json">"video": {
+	"id": "111",
+	"links": {
+		"channel": {
+			"href": "https://api.ustream.tv/channels/1.json",
+			"id": "1"
+		}
+	}
+}</code></pre>
+
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>length</td>
+				<td>float</td>
+				<td>Video length in second</td>
+			</tr>
+			<tr>
+				<td>created_at</td>
+				<td>int</td>
+				<td>Video create date in UNIX timestamp</td>
+			</tr>
+			<tr>
+				<td>file_size</td>
+				<td>int</td>
+				<td>Video file size in byte</td>
+			</tr>
+		</table>
+
+		<p>The paging information can be found under the "paging" element. Example:</p>
+		<pre><code class="json">"paging": {
+	"previous": ".../channels/CHANNEL_ID/featured-videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": ".../channels/CHANNEL_ID/featured-videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
+	"page_count": 8,
+	"item_count": 38
+}</code></pre>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>
+					<p>404 can be the response in the following cases:</p>
+					<ul>
+						<li>The channel does not exist.</li>
+						<li>The featured videos on the channel are not shown.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+
+		<h3>Update channel featured videos</h3>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">PUT</td>
+				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/featured-videos.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>video_ids</td>
+				<td>array</td>
+				<td>REQUIRED</td>
+				<td>The ids of the videos to be on the featured videos list.</td>
+			</tr>
+		</table>
+
+		<p>The body of the call must contain the playlist title and could contain the is_enabled flag. The Content-Type of the request should be <strong>application/x-www-form-urlencoded</strong>.</p>
+		<p>Example:</p>
+		<pre><code class="nohighlight">POST /channels/CHANNEL_ID/featured-videos.json HTTP/1.1
+Host: api.ustream.tv
+Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
+Content-Type: application/x-www-form-urlencoded
+
+video_ids[]=111&video_ids[]=222</code></pre>
+		<p class="note">The token in the above call is only an example.</p>
+
+		<h6>Positive response</h6>
+
+		<p>The response will contain the following collection limit headers:</p>
+		<table class="table responsive">
+			<tr>
+				<th>Header</th>
+				<th>Type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>X-Collection-Limit</td>
+				<td>int</td>
+				<td>The maximum number of videos that can be in the channel featured videos.</td>
+			</tr>
+			<tr>
+				<td>X-Collection-Remaining</td>
+				<td>int</td>
+				<td>How many more videos can be added to the channel featured videos.</td>
+			</tr>
+		</table>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed.</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>The authenticated user does not have access to the channel or one of the videos.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>The channel does not exist.</td>
+			</tr>
+			<tr>
+				<td>limit_reached</td>
+				<td>413 Request entity too large</td>
+				<td>The number of videos in the featured videos list have reached the limit. Check the returned collection limit headers.</td>
+			</tr>
+		</table>
+	</section>
+
+	<section>
 		<h2>Stream settings</h2>
 
 		<h3>Multi quality streaming</h3>
@@ -3696,6 +3915,959 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 				<td>The given video or chapter does not exist.</td>
 			</tr>
 		</table>
+	</section>
+
+	<section>
+		<h2>Playlists</h2>
+
+		<h3>Listing the playlists</h3>
+		<p>Get the playlists of the authenticated user.</p>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td><a>https://api.ustream.tv/playlists.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>page</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page number (1 by default)</td>
+			</tr>
+			<tr>
+				<td>pagesize</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page size (50 by default, max 50)</td>
+			</tr>
+			<tr>
+				<td>filter_empty_playlists</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>If the value is 1 then empty playlists (that contain no videos) will not be returned (0 by default)</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>A set of a key-value structures under a "playlists" element. Example:</p>
+		<pre><code class="json">"playlists": [
+	{
+		"id": "111",
+		"title": "Title of a playlist",
+		"total_duration": "176.256",
+		"created_at": 1484127917,
+		"updated_at": 1486569501,
+		"channel_id": 11223344
+	},
+	...
+]</code></pre>
+
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>total_duration</td>
+				<td>float</td>
+				<td>The sum of the duration of the videos on the playlist in seconds.</td>
+			</tr>
+		</table>
+
+		<p>The paging information can be found under the "paging" element. Example:</p>
+		<pre><code class="json">"paging": {
+	"previous": ".../playlists.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": ".../playlists.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
+	"page_count": 8,
+	"item_count": 38
+}</code></pre>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
+			</tr>
+		</table>
+
+		<h3>Create a playlist</h3>
+		<p>Create a new playlist for the authenticated user.</p>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">POST</td>
+				<td><a>https://api.ustream.tv/playlists.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td><strong>title</strong></td>
+				<td>string</td>
+				<td>REQUIRED</td>
+				<td>The title of the playlist.</td>
+			</tr>
+		</table>
+
+		<p>The body of the call must contain the playlist title. The Content-Type of the request should be <strong>application/x-www-form-urlencoded</strong>.</p>
+		<p>Example:</p>
+		<pre><code class="nohighlight">POST playlists.json HTTP/1.1
+Host: api.ustream.tv
+Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
+Content-Type: application/x-www-form-urlencoded
+
+title=API+Testing+Playlist</code></pre>
+		<p class="note">The token in the above call is only an example.</p>
+
+		<h6>Positive response</h6>
+
+		<p>The response will contain the following headers:</p>
+		<table class="table responsive">
+			<tr>
+				<th>Header</th>
+				<th>Type</th>
+				<th width="100%">Meaning</th>
+			</tr>
+			<tr>
+				<td>Location</td>
+				<td>string</td>
+				<td>The URL of the new playlist.</td>
+			</tr>
+		</table>
+
+		<pre><code class="json">{
+	"playlist": {
+		"id": "111",
+		"title": "API Testing Playlist",
+		"total_duration": "176.256",
+		"created_at": 1484127917,
+		"updated_at": 1486569501,
+		"channel_id": 11223344
+	}
+}</code></pre>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Unauthorized</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
+			</tr>
+			<tr>
+				<td>bad_request</td>
+				<td>400 Bad request</td>
+				<td>The playlist title is missing</td>
+			</tr>
+		</table>
+
+		<h3>Playlist details</h3>
+		<p>Get the details of a playlist</p>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>A key-value structure under a "playlist" element. Example:</p>
+		<pre><code class="json">"playlist": {
+	"id": "111",
+	"title": "Title of a playlist",
+	"total_duration": "176.256",
+	"created_at": 1484127917,
+	"updated_at": 1486569501,
+	"channel_id": 11223344
+}</code></pre>
+
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>total_duration</td>
+				<td>float</td>
+				<td>The sum of the duration of the videos on the playlist in seconds.</td>
+			</tr>
+		</table>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>If the playlist does not belong to a channel than the request must include a valid access token.</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>If the playlist does not belong to a channel than the authenticated user needs to have access to the playlist.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>
+					404 can be the response in the following cases:
+					<ul>
+						<li>The playlist does not exist.</li>
+						<li>In case of channel playlist, the channel does not exists or the playlists on the channel page are not enabled.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+
+		<h3>Modify a playlist</h3>
+		<p>Modify an existing playlist.</p>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">PUT</td>
+				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td><strong>title</strong></td>
+				<td>string</td>
+				<td>REQUIRED</td>
+				<td>The title of the playlist.</td>
+			</tr>
+		</table>
+
+		<p>The body of the call must contain the playlist title. The Content-Type of the request should be <strong>application/x-www-form-urlencoded</strong>.</p>
+		<p>Example:</p>
+		<pre><code class="nohighlight">PUT playlists/PLAYLIST_ID.json HTTP/1.1
+Host: api.ustream.tv
+Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
+Content-Type: application/x-www-form-urlencoded
+
+title=API+Testing+Playlist+edited</code></pre>
+		<p class="note">The token in the above call is only an example.</p>
+
+		<h6>Positive response</h6>
+
+		<table class="table responsive">
+			<tr>
+				<th>HTTP response code</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>200 OK</td>
+				<td>The playlist has been successfully updated.</td>
+			</tr>
+		</table>
+
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>bad_request</td>
+				<td>400 Bad request</td>
+				<td>The playlist title is missing</td>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>The authenticated user does not have access to the playlist.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>The playlist does not exist.</td>
+			</tr>
+		</table>
+
+		<h3>Delete a playlist</h3>
+		<p>Delete an existing playlist.</p>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">DELETE</td>
+				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<p>Example:</p>
+		<pre><code class="nohighlight">DELETE playlists/PLAYLIST_ID.json HTTP/1.1
+Host: api.ustream.tv
+Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
+Content-Type: application/x-www-form-urlencoded</code></pre>
+		<p class="note">The token in the above call is only an example.</p>
+
+		<h6>Positive response</h6>
+
+		<table class="table responsive">
+			<tr>
+				<th>HTTP response code</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>200 OK</td>
+				<td>The playlist has been successfully deleted.</td>
+			</tr>
+		</table>
+
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>The authenticated user does not have access to the playlist.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>The playlist does not exist.</td>
+			</tr>
+		</table>
+
+		<h3>Playlist videos</h3>
+		<h4>List playlist videos</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>page</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page number (1 by default)</td>
+			</tr>
+			<tr>
+				<td>pagesize</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page size (200 by default, max 200)</td>
+			</tr>
+			<tr>
+				<td>detail_level</td>
+				<td>string</td>
+				<td>OPTIONAL</td>
+				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be get without valid access token.</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>A key-value structures under a "videos" element.</p>
+		<p>⚠️ The "media_urls" part of the response below is being deprecated. For video download URLs please see the <a href="#downloading-videos_28">Downloading videos</a> section. ⚠️</p>
+		<p>Example:</p>
+		<pre><code class="json">"videos": [{
+	"id": "111",
+	"title": "Title of video",
+	"description": "Description of video",
+	"url": "http://www.ustream.tv/recorded/111",
+	"length": "12345.123456",
+	"created_at": 1399388736,
+	"file_size": "120000",
+	"views": 0,
+	"thumbnail": {
+		"default": "https://ustvstaticcdn1-a.akamaihd.net/111.jpg"
+	},
+	"media_urls": {
+		"flv": "http://tcdn.ustream.tv/video/111"
+	},
+	"links": {
+		"channel": {
+			"href": "https://api.ustream.tv/channels/1.json",
+			"id": "1"
+		}
+	}
+},
+...
+]</code></pre>
+
+		<p>Minimal response example:</p>
+		<pre><code class="json">"video": {
+	"id": "111",
+	"links": {
+		"channel": {
+			"href": "https://api.ustream.tv/channels/1.json",
+			"id": "1"
+		}
+	}
+}</code></pre>
+
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>length</td>
+				<td>float</td>
+				<td>Video length in second</td>
+			</tr>
+			<tr>
+				<td>created_at</td>
+				<td>int</td>
+				<td>Video create date in UNIX timestamp</td>
+			</tr>
+			<tr>
+				<td>file_size</td>
+				<td>int</td>
+				<td>Video file size in byte</td>
+			</tr>
+		</table>
+
+		<p>The paging information can be found under the "paging" element. Example:</p>
+		<pre><code class="json">"paging": {
+	"previous": ".../playlists/PLAYLIST_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": ".../playlists/PLAYLIST_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
+	"page_count": 8,
+	"item_count": 38
+}</code></pre>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>If the playlist does not belong to a channel than the request must include a valid access token.</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>If the playlist does not belong to a channel than the authenticated user needs to have access to the playlist.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>
+					<p>404 can be the response in the following cases:</p>
+					<ul>
+						<li>The playlist does not exist.</li>
+						<li>In case of a channel playlist the playlists on the channel page are not shown.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+
+		<h4>Playlist video</h4>
+		<p>Get playlist video details</p>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>A key-value structure under a "video" element.</p>
+		<p>Example:</p>
+		<pre><code class="json">{
+  "video": {
+    "id": "92858030",
+    "title": "SampleVideo 1280x720 30mb",
+    "number_of_thumbnails": "1",
+    "picture_revision": "2",
+    "channel_id": "22818603",
+    "video_views": 10,
+    "thumbnail": "http://static-cdn1.ustream.tv/i/video/picture/0/1/92/92858/92858030/1_22818603_92858030,192x108,b,1:2.jpg",
+    "created_at": 1479718322,
+    "order": "1"
+  }
+}</code></pre>
+
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>picture_revision</td>
+				<td>int</td>
+				<td>The revision of the thumbnail picture</td>
+			</tr>
+			<tr>
+				<td>created_at</td>
+				<td>int</td>
+				<td>Video create date in UNIX timestamp</td>
+			</tr>
+			<tr>
+				<td>order</td>
+				<td>int</td>
+				<td>The video's position in the playlist.</td>
+			</tr>
+		</table>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>If the playlist does not belong to a channel than the request must include a valid access token.</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>If the playlist does not belong to a channel than the authenticated user needs to have access to the playlist.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>
+					<p>404 can be the response in the following cases:</p>
+					<ul>
+						<li>The playlist does not exist.</li>
+						<li>In case of channel playlist, the channel does not exists or the playlists on the channel page are not enabled.</li>
+						<li>The given video is not in the playlist.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+
+		<h4>Add video to playlist</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">PUT</td>
+				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Positive response</h6>
+
+		<p>The response will contain the following collection limit headers:</p>
+		<table class="table responsive">
+			<tr>
+				<th>Header</th>
+				<th>Type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>X-Collection-Limit</td>
+				<td>int</td>
+				<td>The maximum number of videos that can be in a playlist.</td>
+			</tr>
+			<tr>
+				<td>X-Collection-Remaining</td>
+				<td>int</td>
+				<td>How many more videos can be added to the playlist.</td>
+			</tr>
+		</table>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed.</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>The authenticated user does not have access to the playlist or to the video.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>The playlist does not exist.</td>
+			</tr>
+			<tr>
+				<td>limit_reached</td>
+				<td>413 Request entity too large</td>
+				<td>The number of videos in the playlist have reached the limit. Check the returned collection limit headers.</td>
+			</tr>
+		</table>
+
+		<h4>Delete a video from the playlist</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">DELETE</td>
+				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Positive response</h6>
+
+		<p>The response will contain the following collection limit headers:</p>
+		<table class="table responsive">
+			<tr>
+				<th>Header</th>
+				<th>Type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>X-Collection-Limit</td>
+				<td>int</td>
+				<td>The maximum number of videos that can be in a playlist.</td>
+			</tr>
+			<tr>
+				<td>X-Collection-Remaining</td>
+				<td>int</td>
+				<td>How many more videos can be added to the playlist.</td>
+			</tr>
+		</table>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed.</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>The authenticated user does not have access to the playlist.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>The playlist does not exist.</td>
+			</tr>
+		</table>
+
+		<h4>Reposition video on the playlist</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">PUT</td>
+				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos/VIDEO_ID/position.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td><strong>position</strong></td>
+				<td>int</td>
+				<td>REQUIRED</td>
+				<td>The new position of the video in the playlist.</td>
+			</tr>
+		</table>
+
+		<p>The body of the call must contain the video position. The Content-Type of the request should be <strong>application/x-www-form-urlencoded</strong>.</p>
+		<p>Example:</p>
+		<pre><code class="nohighlight">PUT playlists/PLAYLIST_ID/videos/VIDEO_ID/position.json HTTP/1.1
+Host: api.ustream.tv
+Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
+Content-Type: application/x-www-form-urlencoded
+
+position=3</code></pre>
+		<p class="note">The token in the above call is only an example.</p>
+
+		<h6>Positive response</h6>
+
+		<table class="table responsive">
+			<tr>
+				<th>HTTP response code</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>200 OK</td>
+				<td>The video has been successfully been repositioned.</td>
+			</tr>
+		</table>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>bad_request</td>
+				<td>400 Bad request</td>
+				<td>The position parameter is either missing or out of range</td>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Authorization required</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>The authenticated user does not have access to the playlist or to the video</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>The playlist does not exist or the video is not on the playlist</td>
+			</tr>
+		</table>
+
+		<h3>Channel playlists</h3>
+
+		<p>
+			Channel playlists do not directly belong to a user but to a channel and can be shown on the channel page.
+		</p>
+
+		<h4>Get the list of the channel's playlists.</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/playlists.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>page</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page number (1 by default)</td>
+			</tr>
+			<tr>
+				<td>pagesize</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page size (50 by default, max 50)</td>
+			</tr>
+			<tr>
+				<td>filter_empty_playlists</td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>If the value is 1 then empty playlists (that contain no videos) will not be returned (0 by default)</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>A set of a key-value structures under a "playlists" element. Example:</p>
+		<pre><code class="json">"playlists": [
+	{
+		"id": "111",
+		"title": "Title of a playlist",
+		"total_duration": "176.256",
+		"created_at": 1484127917,
+		"updated_at": 1486569501,
+		"channel_id": 11223344
+	},
+	...
+]</code></pre>
+
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>total_duration</td>
+				<td>float</td>
+				<td>The sum of the duration of the videos on the playlist in seconds.</td>
+			</tr>
+		</table>
+
+		<p>The paging information can be found under the "paging" element. Example:</p>
+		<pre><code class="json">"paging": {
+	"previous": ".../channels/CHANNEL_ID/playlists.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": ".../channels/CHANNEL_ID/playlists.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
+	"page_count": 8,
+	"item_count": 38
+}</code></pre>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>The channel does not exists or the playlists are not shown on the channel page.</td>
+			</tr>
+		</table>
+
+		<h4>Create a channel playlist</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">POST</td>
+				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/playlists.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td><strong>title</strong></td>
+				<td>string</td>
+				<td>REQUIRED</td>
+				<td>The title of the playlist.</td>
+			</tr>
+			<tr>
+				<td>is_enabled</td>
+				<td>int</td>
+				<td>OPTIONAL</td>
+				<td>Weather the playlist is enabled or not. Values: 1 (enabled), 0 (disabled). (1 by default)</td>
+			</tr>
+		</table>
+
+		<p>The body of the call must contain the playlist title and could contain the is_enabled flag. The Content-Type of the request should be <strong>application/x-www-form-urlencoded</strong>.</p>
+		<p>Example:</p>
+		<pre><code class="nohighlight">POST playlists.json HTTP/1.1
+Host: api.ustream.tv
+Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
+Content-Type: application/x-www-form-urlencoded
+
+title=API+Testing+Playlist&is_enabled=1</code></pre>
+		<p class="note">The token in the above call is only an example.</p>
+
+		<h6>Positive response</h6>
+
+		<p>The response will contain the following headers:</p>
+		<table class="table responsive">
+			<tr>
+				<th>Header</th>
+				<th>Type</th>
+				<th width="100%">Meaning</th>
+			</tr>
+			<tr>
+				<td>Location</td>
+				<td>string</td>
+				<td>The URL of the new playlist.</td>
+			</tr>
+		</table>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>invalid_token</td>
+				<td>401 Unauthorized</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
+			</tr>
+			<tr>
+				<td>bad_request</td>
+				<td>400 Bad request</td>
+				<td>The playlist title is missing</td>
+			</tr>
+			<tr>
+				<td>permission_denied</td>
+				<td>403 Permission denied</td>
+				<td>The authenticated user does not have access to the channel.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>The channel could not be found.</td>
+			</tr>
+		</table>
+
 	</section>
 
 	<section>
