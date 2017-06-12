@@ -2764,6 +2764,198 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 				<td>The specified video_id does not exist</td>
 			</tr>
 		</table>
+
+		<h3>Video labels</h3>
+		<p>A video can have multiple labels. With these API calls you can add and remove labels to/from a video.</p>
+
+		<h4>Creating a new label</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">POST</td>
+				<td>
+					<a>https://api.ustream.tv/users/self/labels.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>label_name</td>
+				<td>string</td>
+				<td>REQUIRED</td>
+				<td>The name of the label.</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>A set of a key-value structures under a "label" element. Example:</p>
+		<pre><code class="json">"label": {
+    "labelId": 123,
+    "userId": 123,
+    "labelName": "labelname",
+    "labelColor": "color-5"
+  }</code></pre>
+
+		<h4>Listing labels</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td>
+					<a>https://api.ustream.tv/users/self/labels.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<p>None.</p>
+
+		<h6>Response</h6>
+		<p>A set of a key-value structures under a "labels" element. Example:</p>
+		<pre><code class="json">"labels": {
+    "18010": {
+      "labelId": 123,
+      "userId": 123,
+      "labelName": "labelname",
+      "labelColor": "color-5"
+    },
+	...
+  }</code></pre>
+
+		<h4>Modifying a label</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">PUT</td>
+				<td>
+					<a>https://api.ustream.tv/users/self/label/LABEL_ID.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>label_name</td>
+				<td>string</td>
+				<td>REQUIRED</td>
+				<td>The name of the label.</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 204 No content is returned.</p>
+
+		<h4>Deleting a label</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">DELETE</td>
+				<td>
+					<a>https://api.ustream.tv/users/self/label/LABEL_ID.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<p>None.</p>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 204 No content is returned.</p>
+
+		<h4>Adding labels to a video</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">PUT</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/labels.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>label_ids</td>
+				<td>array</td>
+				<td>REQUIRED</td>
+				<td>The label ids to add to the video.</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 204 No content is returned.</p>
+
+		<h4>Removing labels from a video</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">DELETE</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/labels.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>label_ids</td>
+				<td>array</td>
+				<td>REQUIRED</td>
+				<td>The label ids to remove from the video.</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 204 No content is returned.</p>
+
+		<h4>Getting the labels of a video</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/labels.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<p>None.</p>
+
+		<h6>Response</h6>
+		<p>A set of a key-value structures under a "labels" element. Example:</p>
+		<pre><code class="json">"labels": {
+    "18010": {
+      "labelId": 123,
+      "userId": 123,
+      "labelName": "labelname",
+      "labelColor": "color-5"
+    },
+	...
+  }</code></pre>
+
 	</section>
 
 	<section>
