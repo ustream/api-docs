@@ -649,6 +649,28 @@ title=API+Testing+Channel</code></pre>
 			</tr>
 		</table>
 
+		<h4>Getting the authentication</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/hash.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<p>This request has no parameters.</p>
+
+		<h6>Response</h6>
+		<p>A set of a key-value structures under a "hashlock" element. Example:</p>
+		<pre><code class="json">"hashlock": {
+      "type": "advanced",
+    "url": "https://align.ustream.tv/auth/123",
+    "message": null,
+    "button_caption": null,
+    "popup_width": "0",
+    "popup_height": "0"
+  }</code></pre>
+
 		<h4>Remove authentication</h4>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
