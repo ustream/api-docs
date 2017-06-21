@@ -2765,6 +2765,67 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			</tr>
 		</table>
 
+		<h3>Video thumbnail</h3>
+		<p>You can set a video thumbnail by uploading a picture or selecting a frame. The picture should be less than 10MB in size and smaller than 4000x4000px.</p>
+		<h4>Uploading a thumbail</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">POST</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/thumbnail.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>thumbnail</td>
+				<td>file</td>
+				<td>REQUIRED</td>
+				<td>The thumbnail image.</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 204 No content is returned.</p>
+
+		<h4>Selecting a frame</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">POST</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/thumbnail/frame.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>position</td>
+				<td>float</td>
+				<td>REQUIRED</td>
+				<td>The position of the selected frame in seconds.</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 204 No content is returned.</p>
+
+
 		<h3>Video labels</h3>
 		<p>A video can have multiple labels. With these API calls you can add and remove labels to/from a video.</p>
 
