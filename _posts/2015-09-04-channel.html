@@ -423,6 +423,11 @@ title=API+Testing+Channel</code></pre>
 				<td>string</td>
 				<td>Listed when the channel is online.</td>
 			</tr>
+			<tr>
+				<td>picture</td>
+				<td>map</td>
+				<td>List of channel picture in different sizes. The key is the size (eg: 96x96) the value is the picture URL.</td>
+			</tr>
 		</table>
 
 		<p>The paging information can be found inside the "paging" element. Example:</p>
@@ -1430,6 +1435,84 @@ title=API+Testing+Channel</code></pre>
 				<td>not_found</td>
 				<td>404 Not found</td>
 				<td>Channel not found</td>
+			</tr>
+		</table>
+
+		<h3>Channel picture</h3>
+
+		<h4>Set channel picture</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">PUT</td>
+				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/design/picture.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>picture</td>
+				<td>file</td>
+				<td>REQUIRED</td>
+				<td>The channel picture. The image must be square and less than 1MB</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 204 No Content is returned.</p>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The api user is not allowed to manage the given channel</td>
+			</tr>
+			<tr>
+				<td>bad_request</td>
+				<td>400 Bad request</td>
+				<td>Image format or size is wrong</td>
+			</tr>
+		</table>
+
+		<h4>Remove channel picture</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">DELETE</td>
+				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/design/picture.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+
+		</table>
+
+		<h6>Parameters</h6>
+		<p>This request has no parameters.</p>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 200 OK is returned.</p>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The api user is not allowed to manage the given channel</td>
 			</tr>
 		</table>
 	</section>
