@@ -39,7 +39,7 @@ categoryItemLabel: Read the documentation
 		</table>
 
 		<h6>Response</h6>
-		<p>A key-value structures under a "channel" element. Example:</p>
+		<p>A key-value structure under a "channel" element. Example:</p>
 		<pre><code class="json">"channel": {
 	"id": "1111",
 	"title": "Channel title",
@@ -1286,7 +1286,7 @@ title=API+Testing+Channel</code></pre>
 		<p>This request has no parameters.</p>
 
 		<h6>Response</h6>
-		<p>A key-value structures under a "background" element.</p>
+		<p>A key-value structure under a "background" element.</p>
 		<table class="table responsive">
 			<tr>
 				<th>key</th>
@@ -2156,7 +2156,7 @@ command=stop</code></pre>
 		</table>
 
 		<h6>Response</h6>
-		<p>A key-value structures under a "video" element.</p>
+		<p>A key-value structure under a "video" element.</p>
 		<p>⚠️ The "media_urls" part of the response below is being deprecated. For video download URLs please see the <a href="#downloading-videos_28">Downloading videos</a> section. ⚠️</p>
 		<p>Example:</p>
 		<pre><code class="json">"video": {
@@ -2769,7 +2769,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		</table>
 
 		<h6>Response</h6>
-		<p>An array of key-value structures under a "chapters" element.</p>
+		<p>An set of key-value structures under a "chapters" element.</p>
 		<p>Example:</p>
 		<pre><code class="json">"chapters": [
         {
@@ -2870,6 +2870,41 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			</tr>
 		</table>
 
+		<h4>Delete all chapters of a video</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">DELETE</td>
+				<td><a>https://api.ustream.tv/videos/VIDEO_ID/chapters.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 200 OK is returned.</p>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Authorization required</td>
+				<td>Only the video's owner with a valid token can delete chapters.</td>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The given video does not belong to the user.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not Found</td>
+				<td>The given video does not exist.</td>
+			</tr>
+		</table>
+
 		<h4>Get chapter info</h4>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
@@ -2879,7 +2914,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		</table>
 
 		<h6>Response</h6>
-		<p>A key-value structures under a "chapter" element.</p>
+		<p>A key-value structure under a "chapter" element.</p>
 		<p>Example:</p>
 		<pre><code class="json">"chapter": {
 	"id": 1,
