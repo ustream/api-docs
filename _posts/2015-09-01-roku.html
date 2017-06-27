@@ -13,7 +13,7 @@ categoryItemLabel: Read the documentation
 <article data-sidenav="sidenav">
                 <section>
                     <h2>Introduction</h2>
-                    <p>The Ustream Player SDK lets you play Ustream live and recorded videos in your native applications. Using the SDK gives you full control over the embedded Player, including a customizable native user interface, callbacks on status changes, and many more.</p>
+                    <p>The IBM Cloud Video Player SDK lets you play IBM Cloud Video live and recorded videos in your native applications. Using the SDK gives you full control over the embedded Player, including a customizable native user interface, callbacks on status changes, and many more.</p>
                     <p>This document describes the basic steps to make a Roku app using the Player SDK.</p>
                 </section>
                 
@@ -28,8 +28,8 @@ categoryItemLabel: Read the documentation
                     <h3>Account prerequisites</h3>
                     <p>Before going into details, please note that document assumes the following:</p>
                     <ul>
-                        <li>you have a registered user at <a href="http://ustream.tv">ustream.tv</a></li>
-                        <li>your Ustream user is entitled to use the Player SDK specifically (if you have questions, please <a href="https://www.ustream.tv/enterprise-video/contact">contact us</a>)</li>
+                        <li>you have a registered user at <a href="http://www.ustream.tv">IBM Cloud Video</a></li>
+                        <li>your IBM Cloud Video user is entitled to use the Player SDK specifically (if you have questions, please <a href="https://www.ustream.tv/enterprise-video/contact">contact us</a>)</li>
                     </ul>
     
                     
@@ -64,18 +64,18 @@ categoryItemLabel: Read the documentation
                 
                 
                 <section>
-                    <h2>Step 3: Register your app at Ustream</h2>
-                    <p>The SDK requires the use of a <em>Ustream API key</em>, which is validated whenever the SDK communicates with Ustream streaming servers. The sample application contains a sample API key which you can use for testing. The sample API key can only be used to play content on the test channel(s) also used in the sample app.</p>
+                    <h2>Step 3: Register your app at IBM Cloud Video</h2>
+                    <p>The SDK requires the use of a <em>IBM Cloud Video API key</em>, which is validated whenever the SDK communicates with IBM Cloud Video streaming servers. The sample application contains a sample API key which you can use for testing. The sample API key can only be used to play content on the test channel(s) also used in the sample app.</p>
                     <p>Before you can start using the Player SDK for playing content from your own channel(s), you will need to:</p>
                     <ul>
-                        <li>get a valid <strong>Ustream API key</strong> owned by the Ustream user that owns the content you would like to play</li>
-                        <li>register the <strong>application identifier(s)</strong> - of every app in which you will integrate the Player SDK in - at Ustream</li>
+                        <li>get a valid <strong>IBM Cloud Video API key</strong> owned by the IBM Cloud Video user that owns the content you would like to play</li>
+                        <li>register the <strong>application identifier(s)</strong> - of every app in which you will integrate the Player SDK in - at IBM Cloud Video</li>
                     </ul>
                     <p class="note">The application identifier is typically structured as <em>com.your_company.your_project</em>.</p>
 
-                    <p>Before you can create and use an instance of the player you have to configure the lib with your <strong>Ustream API key</strong>:</p>
+                    <p>Before you can create and use an instance of the player you have to configure the lib with your <strong>IBM Cloud Video API key</strong>:</p>
                     <ul>
-                        <li>Replace <strong>your_api_key</strong> to your actual <strong>Ustream API key</strong>.</li>
+                        <li>Replace <strong>your_api_key</strong> to your actual <strong>IBM Cloud Video API key</strong>.</li>
                         <li>Replace <strong>your_application_bundle</strong> to your actual application identifier.</li>
                     </ul>
                     <pre><code>Function Main()
@@ -88,12 +88,12 @@ end Function</code></pre>
                 <section>
                     <h2>Step 4: Play live or recorded content</h2>
                     <p>You can intiate playback of live or recorded content using the <code>playChannel</code> or <code>playRecorded</code> method.</p>
-                    <p>Starting playback of a Ustream channel:</p>
+                    <p>Starting playback of a IBM Cloud Video channel:</p>
                     <pre><code>Function Main()
     init(“<strong>your_api_key</strong>”,”<strong>your_application_bundle</strong>”)
     playChannel("<strong>channel_id</strong>")
 end Function</code></pre>
-                    <p>Starting playback of a Ustream recorded video:</p>
+                    <p>Starting playback of a IBM Cloud Video recorded video:</p>
                     <pre><code>Function Main()
     init(“<strong>your_api_key</strong>”,”<strong>your_application_bundle</strong>”)
     playRecorded("<strong>video_id</strong>")
@@ -107,7 +107,7 @@ end Function</code></pre>
                 
                 <section>
                     <h2>Step 5: Handle Player callbacks</h2>
-                    <p>Ustream content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.</p>
+                    <p>IBM Cloud Video content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.</p>
    
                     
                     
@@ -136,7 +136,7 @@ end Function</code></pre>
                             <tr><th width="20%">Callback</th><th width="40%">Reason</th><th width="40%">Value to return</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>requestFailed()</strong></td><td>Communication has failed between the SDK and Ustream servers.</td><td>error code as Int</td></tr>
+                            <tr><td><strong>requestFailed()</strong></td><td>Communication has failed between the SDK and IBM Cloud Video servers.</td><td>error code as Int</td></tr>
                             <tr><td><strong>channelOffline()</strong></td><td>The channel to be played is currently off-air, there is no live broadcast taking place.</td><td>error code as Int</td></tr>
                             <tr><td><strong>recordedVideoNonExist()</strong></td><td>The recorded video to be played can not be found. It may have been deleted.</td><td>error code as Int</td></tr>
                             <tr><td><strong>privateVideo()</strong></td><td>The recorded video to be played is not available because it has been made private by the owner.</td><td>error code as Int</td></tr>

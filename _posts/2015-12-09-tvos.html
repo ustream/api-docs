@@ -14,16 +14,16 @@ categoryItemLabel: Read the documentation
 
 	<section>
 		<h2>Introduction</h2>
-		<p>Ustream Player SDK for tvOS provides an API to play all kinds of Ustream content on Apple Tv.
+		<p>IBM Cloud Video Player SDK for tvOS provides an API to play all kinds of IBM Cloud Video content on Apple Tv.
 		Using this native SDK gives you full control over the Player, including a customizable native user interface, callbacks on status changes, and many more.
 		(Note: if you need none of the above, you may use the HTML-based <a href="https://github.com/ustream/embedapi/blob/master/README.md">Player API</a> instead)</p>
 		<p>This document describes the basic steps to make an app using the Player SDK for tvOS.</p>
 		<h3 id="introduction-supported">Supported tvOS versions</h3>
-		<p>Ustream Player SDK for tvOS requires Xcode 7.1, targeting tvOS 9.0 or above.</p>
+		<p>IBM Cloud Video Player SDK for tvOS requires Xcode 7.1, targeting tvOS 9.0 or above.</p>
 		<h3 id="introdcution-contents">Contents of the Package</h3>
 		<ul>
 			<li><b>TvOSPlayerSDK.framework</b> - the framework itself, containing a flat binary including architectures: x86_64 arm64</li>
-			<li><b>tvOSPlayerSDKSample</b> - a sample application using the Ustream Player SDK for tvOS</li>
+			<li><b>tvOSPlayerSDKSample</b> - a sample application using the IBM Cloud Video Player SDK for tvOS</li>
 		</ul>
 	</section>
 
@@ -43,7 +43,7 @@ categoryItemLabel: Read the documentation
 			<li>Add TvOSPlayerSDK.framework to to list of copied files</li>
 		</ul>
 		<h3 id="integration-step3">Step 3: Configuring the player with your API-key</h3>
-		<p>Before you can create and use an instance of the player you have to configure the lib with your Ustream API key:</p>
+		<p>Before you can create and use an instance of the player you have to configure the lib with your IBM Cloud Video API key:</p>
 		<pre>
 			<code class="java">
 [USUstreamPlayer configureWithApiKey:<place your API key here>];
@@ -64,7 +64,7 @@ self.ustreamPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIV
 			</code>
 		</pre>
 		<h3 id="integration-step5">Step 5: Start playing content</h3>
-		<p>At this point your player is correctly configured and ready to play Ustream-provided media, USUstreamPlayer is capable to play three different kinds of media:</p>
+		<p>At this point your player is correctly configured and ready to play IBM Cloud Video provided media, USUstreamPlayer is capable to play three different kinds of media:</p>
 		<ul>
 			<li>live streams using the <b>-[USUstreamPlayer playChannel:]</b> API call.</li>
 			<li>recorded videos using the <b>-[USUstreamPlayer playRecorded:]</b> API call.</li>
@@ -111,7 +111,7 @@ By setting it to <b>USPlayerControlStyleNone</b> you can instruct the player to 
 
 	<section>
 		<h2>Localization</h2>
-		<p>Ustream provides localizations for all strings used in the Ustream Player SDK for tvOS in the following languages:</p>
+		<p>IBM Cloud Video provides localizations for all strings used in the IBM Cloud Video Player SDK for tvOS in the following languages:</p>
 		<ul>
 			<li>English</li>
 			<li>Spanish</li>
@@ -123,7 +123,7 @@ By setting it to <b>USPlayerControlStyleNone</b> you can instruct the player to 
 
 	<section>
 		<h2>Appendices</h2>
-		<h3 id="appendix-1">Appendix 1 - Ustream Media Locks:</h3>
+		<h3 id="appendix-1">Appendix 1 - IBM Cloud Video Media Locks:</h3>
 		<table class="table">
 			<tr>
 				<th>Lock name</th>
@@ -138,22 +138,22 @@ By setting it to <b>USPlayerControlStyleNone</b> you can instruct the player to 
 			<tr>
 				<td>Age lock</td>
 				<td>live, recorded, highlight</td>
-				<td>This lock is not available for end users to control. It’s part of special deals conducted by Ustream sales and administered internally.</td>
+				<td>This lock is not available for end users to control. It’s part of special deals conducted by IBM Cloud Video sales and administered internally.</td>
 			</tr>
 			<tr>
 				<td>Birthdate lock</td>
 				<td>live, recorded, highlight</td>
-				<td>This lock is not available for end users to control. It’s part of special deals conducted by Ustream sales and administered internally.</td>
+				<td>This lock is not available for end users to control. It’s part of special deals conducted by IBM Cloud Video sales and administered internally.</td>
 			</tr>
 			<tr>
 				<td>Geo lock</td>
 				<td>live, recorded, highlight</td>
-				<td>This lock is not available for end users to control. It’s part of special deals conducted by Ustream sales and administered internally.</td>
+				<td>This lock is not available for end users to control. It’s part of special deals conducted by IBM Cloud Video sales and administered internally.</td>
 			</tr>
 			<tr>
 				<td>GeoLimit lock</td>
 				<td>live, recorded, highlight</td>
-				<td>This lock is not available for end users to control. It’s part of special deals conducted by Ustream sales and administered internally.</td>
+				<td>This lock is not available for end users to control. It’s part of special deals conducted by IBM Cloud Video sales and administered internally.</td>
 			</tr>
 			<tr>
 				<td>Hash lock</td>
@@ -164,7 +164,7 @@ http://www.ustream.tv/manage-show/webinar/cid</td>
 			<tr>
 				<td>IP lock</td>
 				<td>live, recorded, highlight</td>
-				<td>This lock is not available for end users to control. It’s part of special deals conducted by Ustream sales and administered internally.</td>
+				<td>This lock is not available for end users to control. It’s part of special deals conducted by IBM Cloud Video sales and administered internally.</td>
 			</tr>
 			<tr>
 				<td>Referrer lock</td>
@@ -173,7 +173,7 @@ http://www.ustream.tv/manage-show/webinar/cid</td>
 http://www.ustream.tv/manage-show/embed/cid</td>
 			</tr>
 		</table>
-		<h3 id="appendix-2">Appendix 2 - Ustream Player SDK for tvOS Localization Keys:</h3>
+		<h3 id="appendix-2">Appendix 2 - IBM Cloud Video Player SDK for tvOS Localization Keys:</h3>
 		<table class="table">
 			<tr>
 				<th>Key</th>

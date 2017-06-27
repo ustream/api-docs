@@ -13,7 +13,7 @@ categoryItemLabel: Read the documentation
 			<article data-sidenav="sidenav">
                 <section>
                     <h2>Introduction</h2>
-                    <p>The Ustream Player SDK lets you play Ustream live and recorded videos in your native applications. Using the native SDK gives you full control over the Player, including a customizable native user interface, callbacks on status changes, and many more. (Note: if you need none of the above, you may use the HTML-based <a href="https://github.com/ustream/embedapi/blob/master/README.md">Player API</a> instead)</p>
+                    <p>The IBM Cloud Video Player SDK lets you play IBM Cloud Video live and recorded videos in your native applications. Using the native SDK gives you full control over the Player, including a customizable native user interface, callbacks on status changes, and many more. (Note: if you need none of the above, you may use the HTML-based <a href="https://github.com/ustream/embedapi/blob/master/README.md">Player API</a> instead)</p>
                     <p>This document describes the basic steps to make a mobile app using the Player SDK for iOS.</p>
                 </section>
                 
@@ -29,8 +29,8 @@ categoryItemLabel: Read the documentation
                     <h3>Account prerequisites</h3>
                     <p>Before going into details, please note that document assumes the following:</p>
                     <ul>
-                        <li>you have a registered user at <a href="http://ustream.tv">ustream.tv</a></li>
-                        <li>your Ustream user is entitled to use the Player SDK specifically (if you have questions, please <a href="https://www.ustream.tv/enterprise-video/contact">contact us</a>)</li>
+                        <li>you have a registered user at <a href="http://www.ustream.tv">IBM Cloud Video</a></li>
+                        <li>your IBM Cloud Video user is entitled to use the Player SDK specifically (if you have questions, please <a href="https://www.ustream.tv/enterprise-video/contact">contact us</a>)</li>
                     </ul>
                     
                     
@@ -128,16 +128,16 @@ categoryItemLabel: Read the documentation
                 
                 
                 <section>
-                    <h2>Step 4: Register your app at Ustream</h2>
-                    <p>The SDK requires the use of a <em>Ustream API key</em>, which is validated whenever the SDK communicates with Ustream streaming servers. The sample application contains a sample API key which you can use for testing. The sample API key can only be used to play content on the test channel(s) also used in the sample app.</p>
+                    <h2>Step 4: Register your app at IBM Cloud Video</h2>
+                    <p>The SDK requires the use of a <em>IBM Cloud Video API key</em>, which is validated whenever the SDK communicates with IBM Cloud Video streaming servers. The sample application contains a sample API key which you can use for testing. The sample API key can only be used to play content on the test channel(s) also used in the sample app.</p>
                     <p>Before you can start using the Player SDK for playing content from your own channel(s), you will need to:</p>
                     <ul>
-                        <li>get a valid <strong>Ustream API key</strong> owned by the Ustream user that owns the content you would like to play</li>
-                        <li>register the <strong>application identifier(s)</strong> - of every app in which you will integrate the Player SDK in - at Ustream</li>
+                        <li>get a valid <strong>IBM Cloud Video API key</strong> owned by the IBM Cloud Video user that owns the content you would like to play</li>
+                        <li>register the <strong>application identifier(s)</strong> - of every app in which you will integrate the Player SDK in - at IBM Cloud Video</li>
                     </ul>
                     <p class="note">The application identifier is typically structured as <code>com.your_company.your_project</code>.</p>
 
-                    <p>Before you can create and use an instance of the player you have to configure the lib with your <strong>Ustream API key</strong>:</p>
+                    <p>Before you can create and use an instance of the player you have to configure the lib with your <strong>IBM Cloud Video API key</strong>:</p>
                     <pre><code class="objectivec">[USUstreamPlayer configureWithApiKey:<strong>place your API key here</strong>];</code></pre>
                 </section>
                 
@@ -179,12 +179,12 @@ self.ustreamPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIV
                 
                 <section>
                     <h2>Step 7: Handle Player callbacks</h2>
-                    <p>Ustream content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.</p>
+                    <p>IBM Cloud Video content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.</p>
  
                     
                     
                     <h3>Generic callbacks</h3>
-                    <p><code>USUstreamPlayer</code> reports its state changes using the <code>USPlayerDelegate</code> protocol. It may also require user interaction in case the servers indicate the Player about content restrictions (so-called "locks") set up by the Ustream user. In order to catch these callbacks you have to set a handler conforming to protocol <code>USPlayerDelegate</code> as a delegate of your player instance.</p>
+                    <p><code>USUstreamPlayer</code> reports its state changes using the <code>USPlayerDelegate</code> protocol. It may also require user interaction in case the servers indicate the Player about content restrictions (so-called "locks") set up by the IBM Cloud Video user. In order to catch these callbacks you have to set a handler conforming to protocol <code>USPlayerDelegate</code> as a delegate of your player instance.</p>
    
                     <p>For example:</p>
                     <pre><code class="objectivec">self.ustreamPlayer.delegate = self;</code></pre>
@@ -235,7 +235,7 @@ self.ustreamPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIV
                     
                     
                     <h3>Localization</h3>
-                    <p>Ustream provides localizations for all strings used in the Player SDK in the following languages:</p>
+                    <p>IBM Cloud Video provides localizations for all strings used in the Player SDK in the following languages:</p>
                     <ul>
                         <li>English</li>
                         <li>Spanish</li>

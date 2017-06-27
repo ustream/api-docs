@@ -1,11 +1,11 @@
 # Name of your blog (this will show up at the top of your page and in the RSS feed)
-name: Ustream Developers
+name: IBM Cloud Video Developers
 
 # Short description (goes below the title; it will also be used in the RSS feed)
-description: Customize and control the viewing experience for your audience or create your own streaming applications with the Ustream open video platform and Application Programming Interfaces (APIs) and Software Development Kits (SDKs).
+description: Customize and control the viewing experience for your audience or create your own streaming applications with the IBM Cloud Video open video platform and Application Programming Interfaces (APIs) and Software Development Kits (SDKs).
 
 # Your name, as you want it to appear underneath each post and in the footer
-author: Ustream
+author: IBM Cloud Video
 
 # Your email if you want it to be linked on the contact page
 author_email: admin@ustream.tv
