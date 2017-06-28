@@ -40,50 +40,54 @@ categoryItemLabel: Read the documentation
 
 		<h6>Response</h6>
 		<p>Key-value pairs under a "channel" key. Example:</p>
-		<pre><code class="json">"channel": {
-	"id": "1111",
-	"title": "Channel title",
-	"description": "Description of channel",
-	"tags": [
-		"tag1",
-		"tag2"
-	],
-	"url": "channel-title",
-	"status": "offair",
-	"last_broadcast_at": 1400000000,
-	"tinyurl": "http://ustre.am/asdasd1",
-	"stats": {
-		"viewer_total": 10000000,
-		"viewer": 1000
-	},
-	"thumbnail": {
-		"live": "https://ustvstaticcdn1-a.akamaihd.net/images/defaults/channel_192x108:1.png"
-	},
-	"owner": {
-		"id": "1234",
-		"username": "api-user",
-		"picture": "https://ustvstaticcdn1-a.akamaihd.net/images/defaults/user_48x48:1.png"
-	},
-	"locks": []
+		<pre><code class="json">{
+	"channel": {
+		"id": "1111",
+		"title": "Channel title",
+		"description": "Description of channel",
+		"tags": [
+			"tag1",
+			"tag2"
+		],
+		"url": "channel-title",
+		"status": "offair",
+		"last_broadcast_at": 1400000000,
+		"tinyurl": "http://ustre.am/asdasd1",
+		"stats": {
+			"viewer_total": 10000000,
+			"viewer": 1000
+		},
+		"thumbnail": {
+			"live": "https://ustvstaticcdn1-a.akamaihd.net/images/defaults/channel_192x108:1.png"
+		},
+		"owner": {
+			"id": "1234",
+			"username": "api-user",
+			"picture": "https://ustvstaticcdn1-a.akamaihd.net/images/defaults/user_48x48:1.png"
+		},
+		"locks": []
+	}
 }</code></pre>
 
 		<p>Minimal response example:</p>
-		<pre><code class="json">"channel": {
-	"id": "1111",
-	"title": "Channel title",
-	"owner": {
-		"id": "1234",
-		"username": "api-user",
-		"picture": "https://ustvstaticcdn1-a.akamaihd.net/images/defaults/user_48x48:1.png"
-	},
-	"picture": {
-		"90x90": "https://ustvstaticcdn1-a.akamaihd.net/images/defaults/channel_90x90:1.png",
-		"66x66": ...
-	},
-	"locks": {
-		"hash": {
-			"type": "advanced",
-			"auth_method": "custom"
+		<pre><code class="json">{
+	"channel": {
+		"id": "1111",
+		"title": "Channel title",
+		"owner": {
+			"id": "1234",
+			"username": "api-user",
+			"picture": "https://ustvstaticcdn1-a.akamaihd.net/images/defaults/user_48x48:1.png"
+		},
+		"picture": {
+			"90x90": "https://ustvstaticcdn1-a.akamaihd.net/images/defaults/channel_90x90:1.png",
+			"66x66": ...
+		},
+		"locks": {
+			"hash": {
+				"type": "advanced",
+				"auth_method": "custom"
+			}
 		}
 	}
 }</code></pre>
@@ -426,17 +430,18 @@ title=API+Testing+Channel</code></pre>
 		</table>
 
 		<p>The paging information can be found inside the "paging" element. Example:</p>
-		<pre><code class="json">
-"paging": {
-  "previous": {
-	"href": "https://api.ustream.tv/users/self/channels.json?pagesize=PAGESIZE&p=PREVIOUS_PAGE"
-  },
-  "actual": {
-	"href": "https://api.ustream.tv/users/self/channels.json?pagesize=PAGESIZE&p=PAGE"
-  },
-  "next": {
-	"href": "https://api.ustream.tv/users/self/channels.json?pagesize=PAGESIZE&p=NEXT_PAGE"
-  }
+		<pre><code class="json">{
+	"paging": {
+		"previous": {
+			"href": "https://api.ustream.tv/users/self/channels.json?pagesize=PAGESIZE&p=PREVIOUS_PAGE"
+		},
+		"actual": {
+			"href": "https://api.ustream.tv/users/self/channels.json?pagesize=PAGESIZE&p=PAGE"
+		},
+		"next": {
+			"href": "https://api.ustream.tv/users/self/channels.json?pagesize=PAGESIZE&p=NEXT_PAGE"
+		}
+	}
 }</code></pre>
 	</section>
 
@@ -2061,30 +2066,32 @@ command=stop</code></pre>
 		<p>A list of key-value pairs under a "videos" key.</p>
 		<p>⚠️ The "media_urls" part of the response below is being deprecated. For video download URLs please see the <a href="#downloading-videos_28">Downloading videos</a> section. ⚠️</p>
 		<p>Example:</p>
-		<pre><code class="json">"videos": [
-	{
-		"id": "111",
-		"title": "Title of video",
-		"description": "Description of video",
-		"url": "http://www.ustream.tv/recorded/111",
-		"length": "12345.123456",
-		"created_at": 1399388736,
-		"file_size": "120000",
-		"views": 0,
-		"thumbnail": {
-			"default": "https://ustvstaticcdn1-a.akamaihd.net/111.jpg"
-		},
-		"media_urls": {
-			"flv": "http://tcdn.ustream.tv/video/111"
-		},
-		"links": {
-			"channel": {
-				"href": "https://api.ustream.tv/channels/1.json"
+		<pre><code class="json">{
+	"videos": [
+		{
+			"id": "111",
+			"title": "Title of video",
+			"description": "Description of video",
+			"url": "http://www.ustream.tv/recorded/111",
+			"length": "12345.123456",
+			"created_at": 1399388736,
+			"file_size": "120000",
+			"views": 0,
+			"thumbnail": {
+				"default": "https://ustvstaticcdn1-a.akamaihd.net/111.jpg"
+			},
+			"media_urls": {
+				"flv": "http://tcdn.ustream.tv/video/111"
+			},
+			"links": {
+				"channel": {
+					"href": "https://api.ustream.tv/channels/1.json"
+				}
 			}
-		}
-	},
-	...
-]</code></pre>
+		},
+		...
+	]
+}</code></pre>
 
 		<p>Explanation of some values:</p>
 		<table class="table responsive">
@@ -2111,9 +2118,11 @@ command=stop</code></pre>
 		</table>
 
 		<p>The paging information can be found under the "paging" element. Example:</p>	
-		<pre><code class="json">"paging": {
-	"previous": ".../CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": ".../channels/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+		<pre><code class="json">{
+	"paging": {
+		"previous": ".../CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+		"next": ".../channels/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	}
 }</code></pre>
 
 		<h6>Error codes</h6>
@@ -2178,36 +2187,40 @@ command=stop</code></pre>
 		<p>Key-value pairs under a "video" key.</p>
 		<p>⚠️ The "media_urls" part of the response below is being deprecated. For video download URLs please see the <a href="#downloading-videos_28">Downloading videos</a> section. ⚠️</p>
 		<p>Example:</p>
-		<pre><code class="json">"video": {
-	"id": "111",
-	"title": "Title of video",
-	"description": "Description of video",
-	"url": "http://www.ustream.tv/recorded/111",
-	"length": "12345.123456",
-	"created_at": 1399388736,
-	"file_size": "120000",
-	"views": 0,
-	"thumbnail": {
-		"default": "https://ustvstaticcdn1-a.akamaihd.net/111.jpg"
-	},
-	"media_urls": {
-		"flv": "http://tcdn.ustream.tv/video/111"
-	},
-	"links": {
-		"channel": {
-			"href": "https://api.ustream.tv/channels/1.json",
-			"id": "1"
+		<pre><code class="json">{
+	"video": {
+		"id": "111",
+		"title": "Title of video",
+		"description": "Description of video",
+		"url": "http://www.ustream.tv/recorded/111",
+		"length": "12345.123456",
+		"created_at": 1399388736,
+		"file_size": "120000",
+		"views": 0,
+		"thumbnail": {
+			"default": "https://ustvstaticcdn1-a.akamaihd.net/111.jpg"
+		},
+		"media_urls": {
+			"flv": "http://tcdn.ustream.tv/video/111"
+		},
+		"links": {
+			"channel": {
+				"href": "https://api.ustream.tv/channels/1.json",
+				"id": "1"
+			}
 		}
 	}
 }</code></pre>
 
 		<p>Minimal response example:</p>
-		<pre><code class="json">"video": {
-	"id": "111",
-	"links": {
-		"channel": {
-			"href": "https://api.ustream.tv/channels/1.json",
-			"id": "1"
+		<pre><code class="json">{
+	"video": {
+		"id": "111",
+		"links": {
+			"channel": {
+				"href": "https://api.ustream.tv/channels/1.json",
+				"id": "1"
+			}
 		}
 	}
 }</code></pre>
@@ -2802,12 +2815,14 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<h6>Response</h6>
 		<p>A list of key-value pairs under a "label" key. Example:</p>
-		<pre><code class="json">"label": {
-     "18010": {
-       "label_id": 18010,
-       "label_name": "labelname",
-       "label_color": "color-5"
-    }
+		<pre><code class="json">{
+	"label": {
+		"18010": {
+			"label_id": 18010,
+			"label_name": "labelname",
+			"label_color": "color-5"
+		}
+	}
   }</code></pre>
 
 		<h4>Listing labels</h4>
@@ -2825,14 +2840,16 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<h6>Response</h6>
 		<p>A list of key-value pairs under a "labels" key. Example:</p>
-		<pre><code class="json">"labels": {
-    "18010": {
-      "label_id": 18010,
-      "label_name": "labelname",
-      "label_color": "color-5"
-    },
-	...
-  }</code></pre>
+		<pre><code class="json">{
+	"labels": {
+		"18010": {
+		"label_id": 18010,
+		"label_name": "labelname",
+		"label_color": "color-5"
+		},
+		...
+	}
+}</code></pre>
 
 		<h4>Modifying a label</h4>
 		<table class="table fill-bg-light1 table-chromeless">
@@ -2952,14 +2969,16 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<h6>Response</h6>
 		<p>A list of key-value pairs under a "labels" key. Example:</p>
-		<pre><code class="json">"labels": {
-    "18010": {
-      "label_id": 18010,
-      "label_name": "labelname",
-      "label_color": "color-5"
-    },
-	...
-  }</code></pre>
+		<pre><code class="json">{
+	"labels": {
+		"18010": {
+		"label_id": 18010,
+		"label_name": "labelname",
+		"label_color": "color-5"
+		},
+		...
+	}
+}</code></pre>
 
 		<h3>Video trim</h3>
 		<p>You can set video playback start and end point in seconds. Trimming does not affect the original video file.</p>
@@ -3204,18 +3223,20 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<h6>Response</h6>
 		<p>A list of key-value pairs under a "chapters" key.</p>
 		<p>Example:</p>
-		<pre><code class="json">"chapters": [
-        {
+		<pre><code class="json">{
+	"chapters": [
+    	{
             "id": "1",
             "title": "First chapter",
             "position": 10
-        },
-        {
+    	},
+    	{
             "id": "2",
             "title": "Second chapter",
             "position": 60
-        }
-]</code></pre>
+    	}
+	]
+}</code></pre>
 
 		<h6>Error codes</h6>
 		<table class="table responsive">
@@ -3349,10 +3370,12 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<h6>Response</h6>
 		<p>Key-value pairs under a "chapter" key.</p>
 		<p>Example:</p>
-		<pre><code class="json">"chapter": {
-	"id": "1",
-	"title": "First chapter",
-	"position": 10
+		<pre><code class="json">{
+	"chapter": {
+		"id": "1",
+		"title": "First chapter",
+		"position": 10
+	}
 }</code></pre>
 
 		<h6>Error codes</h6>
@@ -3517,16 +3540,18 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<h6>Response</h6>
 		<p>A list of key-value pairs under an "events" key. Example:</p>
-		<pre><code class="json">"events": [
-	{
-		"id": "111",
-		"title": "Title of the event",
-		"description": "Description of the event",
-		"start": 1399388736,
-		"duration": 900,
-	},
-	...
-]</code></pre>
+		<pre><code class="json">{
+	"events": [
+		{
+			"id": "111",
+			"title": "Title of the event",
+			"description": "Description of the event",
+			"start": 1399388736,
+			"duration": 900,
+		},
+		...
+	]
+}</code></pre>
 
 		<p>Explanation of some values:</p>
 		<table class="table responsive">
@@ -3548,9 +3573,11 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		</table>
 
 		<p>The paging information can be found under the "paging" element. Example:</p>
-		<pre><code class="json">"paging": {
-	"previous": ".../CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": ".../channels/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+		<pre><code class="json">{
+	"paging": {
+		"previous": ".../CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+		"next": ".../channels/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	}
 }</code></pre>
 
 		<h6>Error codes</h6>
