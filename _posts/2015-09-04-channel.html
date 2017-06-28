@@ -39,7 +39,7 @@ categoryItemLabel: Read the documentation
 		</table>
 
 		<h6>Response</h6>
-		<p>A key-value structure under a "channel" element. Example:</p>
+		<p>Key-value pairs under a "channel" key. Example:</p>
 		<pre><code class="json">"channel": {
 	"id": "1111",
 	"title": "Channel title",
@@ -376,7 +376,7 @@ title=API+Testing+Channel</code></pre>
 		</table>
 
 		<h6>Response</h6>
-		<p>A set of a key-value structures under a "channels" element. All of these elements are containing these informations:</p>
+		<p>A list of key-value pairs under a "channels" key. All of these elements are containing these informations:</p>
 		<table class="table responsive">
 			<tr>
 				<th>key</th>
@@ -1292,7 +1292,7 @@ title=API+Testing+Channel</code></pre>
 		<p>This request has no parameters.</p>
 
 		<h6>Response</h6>
-		<p>A key-value structure under a "background" element.</p>
+		<p>Key-value pairs under a "background" key.</p>
 		<table class="table responsive">
 			<tr>
 				<th>key</th>
@@ -2058,7 +2058,7 @@ command=stop</code></pre>
 		</table>
 
 		<h6>Response</h6>
-		<p>A set of a key-value structures under a "videos" element.</p>
+		<p>A list of key-value pairs under a "videos" key.</p>
 		<p>⚠️ The "media_urls" part of the response below is being deprecated. For video download URLs please see the <a href="#downloading-videos_28">Downloading videos</a> section. ⚠️</p>
 		<p>Example:</p>
 		<pre><code class="json">"videos": [
@@ -2175,7 +2175,7 @@ command=stop</code></pre>
 		</table>
 
 		<h6>Response</h6>
-		<p>A key-value structure under a "video" element.</p>
+		<p>Key-value pairs under a "video" key.</p>
 		<p>⚠️ The "media_urls" part of the response below is being deprecated. For video download URLs please see the <a href="#downloading-videos_28">Downloading videos</a> section. ⚠️</p>
 		<p>Example:</p>
 		<pre><code class="json">"video": {
@@ -2333,7 +2333,7 @@ command=stop</code></pre>
 		<p>The query parameter <strong>VIDEO_FORMAT</strong> could be <dfn>mp4</dfn> or <dfn>flv</dfn>.
 
 		<h6>Response</h6>
-		<p>A key-value structure with details of the status of the downloadable item. Example:</p>
+		<p>Key-value pairs under a "downloadable" key with details of the status of the downloadable item. Example:</p>
 		<pre><code class="json">{
     "downloadable": {
         "download_url":"https://download.domain/example_download_path?download_parameters",
@@ -2475,7 +2475,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		</table>
 
 		<h6>Response</h6>
-		<p>A key-value structure with details of the ftp access. Example:</p>
+		<p>Key-value pairs with details of the ftp access. Example:</p>
 <pre><code class="json">{
 	"protocol":"ftp",
 	"host":"red44.ustream.tv",
@@ -2587,7 +2587,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<h6>Response</h6>
 
-		<p>A key-value structure with details of the status. Example:</p>
+		<p>Key-value pair with details of the status. Example:</p>
 
 <pre><code class="json">{
 	"status":"transferred"
@@ -2801,7 +2801,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		</table>
 
 		<h6>Response</h6>
-		<p>A set of a key-value structures under a "label" element. Example:</p>
+		<p>A list of key-value pairs under a "label" key. Example:</p>
 		<pre><code class="json">"label": {
      "18010": {
        "label_id": 18010,
@@ -2824,7 +2824,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<p>None.</p>
 
 		<h6>Response</h6>
-		<p>A set of a key-value structures under a "labels" element. Example:</p>
+		<p>A list of key-value pairs under a "labels" key. Example:</p>
 		<pre><code class="json">"labels": {
     "18010": {
       "label_id": 18010,
@@ -2951,7 +2951,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<p>None.</p>
 
 		<h6>Response</h6>
-		<p>A set of a key-value structures under a "labels" element. Example:</p>
+		<p>A list of key-value pairs under a "labels" key. Example:</p>
 		<pre><code class="json">"labels": {
     "18010": {
       "label_id": 18010,
@@ -3202,16 +3202,16 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		</table>
 
 		<h6>Response</h6>
-		<p>An set of key-value structures under a "chapters" element.</p>
+		<p>A list of key-value pairs under a "chapters" key.</p>
 		<p>Example:</p>
 		<pre><code class="json">"chapters": [
         {
-            "id": 1,
+            "id": "1",
             "title": "First chapter",
             "position": 10
         },
         {
-            "id": 2,
+            "id": "2",
             "title": "Second chapter",
             "position": 60
         }
@@ -3347,10 +3347,10 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		</table>
 
 		<h6>Response</h6>
-		<p>A key-value structure under a "chapter" element.</p>
+		<p>Key-value pairs under a "chapter" key.</p>
 		<p>Example:</p>
 		<pre><code class="json">"chapter": {
-	"id": 1,
+	"id": "1",
 	"title": "First chapter",
 	"position": 10
 }</code></pre>
@@ -3516,7 +3516,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		</table>
 
 		<h6>Response</h6>
-		<p>A set of a key-value structures under an "events" element. Example:</p>
+		<p>A list of key-value pairs under an "events" key. Example:</p>
 		<pre><code class="json">"events": [
 	{
 		"id": "111",
