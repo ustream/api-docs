@@ -488,7 +488,7 @@ title=API+Testing+Channel</code></pre>
 			</tr>
 			<tr>
 				<td>created_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>Date of creating</td>
 			</tr>
 			<tr>
@@ -501,70 +501,31 @@ title=API+Testing+Channel</code></pre>
 				<td>timestamp</td>
 				<td>Until that time the user can login</td>
 			</tr>
-			<tr>
-				<td>channel_permission</td>
-				<td>array</td>
-				<td>
-					<table class="table">
-						<tr>
-							<th>key</th>
-							<th>type</th>
-							<th width="100%">Description</th>
-						</tr>
-						<tr>
-							<td>channel_id</td>
-							<td>integer</td>
-							<td>Until that time the user can login</td>
-						</tr>
-						<tr>
-							<td>channel_pics</td>
-							<td>string</td>
-							<td>Link to the channel picture</td>
-						</tr>
-						<tr>
-							<td>channel_title</td>
-							<td>string</td>
-							<td>Title of the channel</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
 		</table>
 
 		<h6>Positive response example</h6>
 		<pre><code class="json">{
   "device_users": [
     {
-      "device_name": "Channel User 1",
+      "device_name": "Sample Device 1",
       "user_name": "xnwj3mseuka",
-      "created_at": "2017-06-14 05:30:08",
+      "created_at": "1497441340",
       "valid_from": "1497443340",
-      "valid_to": null,
-      "channel_permission": {
-        "channel_id": "22955787",
-        "channel_pics": "https://git-static.dev.ustream.tv.lh/images/defaults/channel_96x96:4.png",
-        "channel_title": "Channel show"
-      }
+      "valid_to": null
     },
     {
-      "device_name": "Channel User 2",
+      "device_name": "Sample Device 2",
       "user_name": "ymvbk9bu7f8",
-      "created_at": "2017-06-13 01:14:54",
+      "created_at": "1497341340",
       "valid_from": "1497341880",
-      "valid_to": "1497341880",
-      "channel_permission": {
-        "channel_id": "23249964",
-        "channel_pics": "https://git-static.dev.ustream.tv.lh/images/defaults/channel_96x96:4.png",
-        "channel_title": "Channel show"
-      }
+      "valid_to": "1497341880"
     },
     {
-      "device_name": "Channel User 3",
+      "device_name": "Sample Device 3",
       "user_name": "rdhj8sd8kar",
-      "created_at": "2017-06-08 04:42:39",
-      "valid_from": "2017-06-08 06:58:02",
-      "valid_to": null,
-      "channel_permission": null
+      "created_at": "1491341880",
+      "valid_from": "1492341880",
+      "valid_to": null
     }
   ],
   "paging": []
@@ -630,12 +591,6 @@ title=API+Testing+Channel</code></pre>
 				<td>OPTIONAL</td>
 				<td>Until that time the user can login</td>
 			</tr>
-			<tr>
-				<td><strong>channel_permission</strong></td>
-				<td>integer</td>
-				<td>OPTIONAL</td>
-				<td>The channel id for lock user to specific channel</td>
-			</tr>
 		</table>
 
 
@@ -678,23 +633,17 @@ title=API+Testing+Channel</code></pre>
 				<td>timestamp</td>
 				<td>Until that time the user can login</td>
 			</tr>
-			<tr>
-				<td>channel_permission</td>
-				<td>integer</td>
-				<td>Channel id</td>
-			</tr>
 		</table>
 
 		<h6>Positive response example</h6>
 
 		<pre><code class="json">{
   "success": true,
-  "device_name": "TesztApiDevice9",
+  "device_name": "Sample Device 4",
   "user_name": "jgun36pdc79",
   "password": "jgcxathqhyqcdxp",
   "valid_from": "1497571200",
-  "valid_to": "1500249600",
-  "channel_permission": null
+  "valid_to": "1500249600"
 }</code></pre>
 
 		<h6>Error codes</h6>
@@ -742,6 +691,11 @@ title=API+Testing+Channel</code></pre>
 				<td>input_validation_error</td>
 				<td>400 Bad request</td>
 				<td>If deleting fails</td>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Unauthorizedt</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
 			</tr>
 		</table>
 	</section>
