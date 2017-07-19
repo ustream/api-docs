@@ -441,7 +441,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a href="https://api.ustream.tv/users/self/deviceusers.json">https://api.ustream.tv/users/self/deviceusers.FORMAT</a> (format can be json or xml)</td>
+				<td><a href="https://api.ustream.tv/users/self/device-passwords.json">https://api.ustream.tv/users/self/device-passwords.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -468,8 +468,8 @@ title=API+Testing+Channel</code></pre>
 		</table>
 
 		<h6>Response</h6>
-
-		<p>All of these elements are containing these informations:</p>
+		<p>On success a response with HTTP status 200 OK is returned.</p>
+		<p>Explanation of some values:</p>
 		<table class="table responsive">
 			<tr>
 				<th>key</th>
@@ -489,43 +489,36 @@ title=API+Testing+Channel</code></pre>
 			<tr>
 				<td>created_at</td>
 				<td>timestamp</td>
-				<td>Date of creating</td>
+				<td>Creation date</td>
 			</tr>
 			<tr>
 				<td>valid_from</td>
 				<td>timestamp</td>
-				<td>From that time the user can login</td>
+				<td>The time after which the device password can be used for logging in.</td>
 			</tr>
 			<tr>
-				<td>valid_to</td>
+				<td>valid_until</td>
 				<td>timestamp</td>
-				<td>Until that time the user can login</td>
+				<td>The time until the device password can be used for logging in.</td>
 			</tr>
 		</table>
 
-		<h6>Positive response example</h6>
+		<h6>Response example</h6>
 		<pre><code class="json">{
   "device_users": [
     {
       "device_name": "Sample Device 1",
       "user_name": "xnwj3mseuka",
-      "created_at": "1497441340",
-      "valid_from": "1497443340",
-      "valid_to": null
+      "created_at": 1497441340,
+      "valid_from": 1497443340,
+      "valid_until": null
     },
     {
       "device_name": "Sample Device 2",
       "user_name": "ymvbk9bu7f8",
-      "created_at": "1497341340",
-      "valid_from": "1497341880",
-      "valid_to": "1497341880"
-    },
-    {
-      "device_name": "Sample Device 3",
-      "user_name": "rdhj8sd8kar",
-      "created_at": "1491341880",
-      "valid_from": "1492341880",
-      "valid_to": null
+      "created_at": 1497341340",
+      "valid_from": 1497341880,
+      "valid_until": 1497381880
     }
   ],
   "paging": []
@@ -534,13 +527,12 @@ title=API+Testing+Channel</code></pre>
 		<p>The paging information can be found under the "paging" element. Example:</p>
 
 		<pre><code class="json">"paging": {
-	"previous": ".../users/self/deviceusers.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": ".../users/self/deviceusers.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	"previous": ".../users/self/device-passwords.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": ".../users/self/device-passwords.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 }</code>
 </pre>
 
 		<h6>Error codes</h6>
-
 		<table class="table responsive">
 			<tr>
 				<th>error value</th>
@@ -549,7 +541,7 @@ title=API+Testing+Channel</code></pre>
 			</tr>
 			<tr>
 				<td>unauthorized</td>
-				<td>401 Unauthorizedt</td>
+				<td>401 Unauthorized</td>
 				<td>The provided Access Token is missing, revoked, expired or malformed</td>
 			</tr>
 		</table>
@@ -558,14 +550,12 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a href="https://api.ustream.tv/users/self/deviceusers.json">https://api.ustream.tv/users/self/deviceusers.FORMAT</a> (format can be json or xml)</td>
+				<td><a href="https://api.ustream.tv/users/self/device-passwords.json">https://api.ustream.tv/users/self/device-passwords.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
 		<h6>Parameters</h6>
-
-		<p>The body of the call should contain the device name and valid from timestamp.</p>
-
+		<p>The body of the request must contain the device name and a "valid_from" timestamp.</p>
 		<table class="table responsive">
 			<tr>
 				<th>parameter</th>
@@ -580,23 +570,22 @@ title=API+Testing+Channel</code></pre>
 				<td>Name of the device</td>
 			</tr>
 			<tr>
-				<td><strong>valid_from</strong></td>
+				<td>valid_from</td>
 				<td>timestamp</td>
 				<td>REQUIRED</td>
-				<td>From that time the user can login</td>
+				<td>The time after which the device password can be used for logging in.</td>
 			</tr>
 			<tr>
-				<td><strong>valid_to</strong></td>
+				<td>valid_until</td>
 				<td>timestamp</td>
 				<td>OPTIONAL</td>
-				<td>Until that time the user can login</td>
+				<td>The time until the device password can be used for logging in.</td>
 			</tr>
 		</table>
 
-
 		<h6>Response</h6>
-
-		<p>All of these elements are containing these informations:</p>
+		<p>On success a response with HTTP status 200 OK is returned.</p>
+		<p>Explanation of some values:</p>
 		<table class="table responsive">
 			<tr>
 				<th>key</th>
@@ -626,24 +615,23 @@ title=API+Testing+Channel</code></pre>
 			<tr>
 				<td>valid_from</td>
 				<td>timestamp</td>
-				<td>From that time the user can login</td>
+				<td>The time after which the device password can be used for logging in.</td>
 			</tr>
 			<tr>
-				<td>valid_to</td>
+				<td>valid_until</td>
 				<td>timestamp</td>
-				<td>Until that time the user can login</td>
+				<td>The time until the device password can be used for logging in.</td>
 			</tr>
 		</table>
 
-		<h6>Positive response example</h6>
-
+		<h6>Response example</h6>
 		<pre><code class="json">{
   "success": true,
   "device_name": "Sample Device 4",
   "user_name": "jgun36pdc79",
   "password": "jgcxathqhyqcdxp",
-  "valid_from": "1497571200",
-  "valid_to": "1500249600"
+  "valid_from": 1497571200,
+  "valid_until": 1500249600
 }</code></pre>
 
 		<h6>Error codes</h6>
@@ -670,7 +658,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/users/self/deviceuser/DEVICE_NAME.FORMAT</a>format can be json or xml)</td>
+				<td><a>https://api.ustream.tv/users/self/device-passwords/DEVICE_NAME.FORMAT</a>format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -688,13 +676,8 @@ title=API+Testing+Channel</code></pre>
 				<th width="100%">Error conditions</th>
 			</tr>
 			<tr>
-				<td>input_validation_error</td>
-				<td>400 Bad request</td>
-				<td>If deleting fails</td>
-			</tr>
-			<tr>
 				<td>unauthorized</td>
-				<td>401 Unauthorizedt</td>
+				<td>401 Unauthorized</td>
 				<td>The provided Access Token is missing, revoked, expired or malformed</td>
 			</tr>
 		</table>
