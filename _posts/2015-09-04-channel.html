@@ -216,7 +216,7 @@ Content-Type: application/x-www-form-urlencoded
 title=API+Testing+Channel</code></pre>
 		<p class="note">The token in the above call is only an example.</p>
 
-		<h6>Positive response</h6>
+		<h6>Response</h6>
 		<pre><code class="json">{
 	"channel": {
 		"id":"13091307",
@@ -440,7 +440,7 @@ title=API+Testing+Channel</code></pre>
 		<h3>Get device passwords</h3>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
-				<td class="verb">POST</td>
+				<td class="verb">GET</td>
 				<td><a href="https://api.ustream.tv/users/self/device-passwords.json">https://api.ustream.tv/users/self/device-passwords.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
@@ -516,7 +516,7 @@ title=API+Testing+Channel</code></pre>
     {
       "device_name": "Sample Device 2",
       "user_name": "ymvbk9bu7f8",
-      "created_at": 1497341340",
+      "created_at": 1497341340,
       "valid_from": 1497341880,
       "valid_until": 1497381880
     }
@@ -524,11 +524,11 @@ title=API+Testing+Channel</code></pre>
   "paging": []
 }</code></pre>
 
-		<p>The paging information can be found under the "paging" element. Example:</p>
+		<p>Paging information can be found under the "paging" element. Example:</p>
 
 		<pre><code class="json">"paging": {
-	"previous": ".../users/self/device-passwords.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": ".../users/self/device-passwords.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	"previous": " https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": " https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 }</code>
 </pre>
 
@@ -593,11 +593,6 @@ title=API+Testing+Channel</code></pre>
 				<th width="100%">Description</th>
 			</tr>
 			<tr>
-				<td>success</td>
-				<td>boolean</td>
-				<td>Method success</td>
-			</tr>
-			<tr>
 				<td>device_name</td>
 				<td>string</td>
 				<td>Name of the device password</td>
@@ -626,7 +621,6 @@ title=API+Testing+Channel</code></pre>
 
 		<h6>Response example</h6>
 		<pre><code class="json">{
-  "success": true,
   "device_name": "Sample Device 4",
   "user_name": "jgun36pdc79",
   "password": "jgcxathqhyqcdxp",
@@ -642,14 +636,14 @@ title=API+Testing+Channel</code></pre>
 				<th width="100%">Error conditions</th>
 			</tr>
 			<tr>
-				<td>unauthorized</td>
-				<td>401 Unauthorizedt</td>
-				<td>The provided Access Token is missing, revoked, expired or malformed</td>
-			</tr>
-			<tr>
 				<td>input_validation_error</td>
 				<td>400 Bad request</td>
 				<td>If some parameter are missing, or bad request</td>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Unauthorized</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
 			</tr>
 		</table>
 
@@ -2355,8 +2349,8 @@ command=stop</code></pre>
 
 		<p>The paging information can be found under the "paging" element. Example:</p>	
 		<pre><code class="json">"paging": {
-	"previous": ".../CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": ".../channels/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	"previous": " https://api.ustream.tv/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": " https://api.ustream.tv/channels/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 }</code></pre>
 
 		<h6>Error codes</h6>
@@ -3083,8 +3077,8 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<p>The paging information can be found under the "paging" element. Example:</p>
 		<pre><code class="json">"paging": {
-	"previous": ".../CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": ".../channels/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	"previous": " https://api.ustream.tv/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": " https://api.ustream.tv/channels/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 }</code></pre>
 
 		<h6>Error codes</h6>
