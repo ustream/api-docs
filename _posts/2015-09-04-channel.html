@@ -34,7 +34,7 @@ categoryItemLabel: Read the documentation
 				<td>detail_level</td>
 				<td>string</td>
 				<td>OPTIONAL</td>
-				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, title, picture, owner and locks data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be retrived without a valid access token.</td>
+				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, title, picture, owner and locks data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be retrieved without a valid access token.</td>
 			</tr>
 		</table>
 
@@ -677,7 +677,7 @@ title=API+Testing+Channel</code></pre>
 		<p>This request has no parameters.</p>
 
 		<h6>Response</h6>
-		<p>A list of key-value pairs under a "hashlock" key. Example:</p>
+		<p>Key-value pairs under a "hashlock" key. Example:</p>
 		<pre><code class="json">{
 "hashlock": {
 		"type": "advanced",
@@ -1941,7 +1941,7 @@ title=API+Testing+Channel</code></pre>
 				<td>detail_level</td>
 				<td>string</td>
 				<td>OPTIONAL</td>
-				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be retrived without a valid access token.</td>
+				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be retrieved without a valid access token.</td>
 			</tr>
 		</table>
 
@@ -2510,7 +2510,7 @@ command=stop</code></pre>
 				<td>detail_level</td>
 				<td>string</td>
 				<td>OPTIONAL</td>
-				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be retrived without a valid access token.</td>
+				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be retrieved without a valid access token.</td>
 			</tr>
 		</table>
 
@@ -4148,7 +4148,7 @@ title=API+Testing+Playlist</code></pre>
 			<tr>
 				<td>permission_denied</td>
 				<td>403 Permission denied</td>
-				<td>If the playlist does not belong to a channel than the authenticated user needs access to the playlist.</td>
+				<td>If the playlist does not belong to a channel then the authenticated user needs access to the playlist.</td>
 			</tr>
 			<tr>
 				<td>not_found</td>
@@ -4157,7 +4157,7 @@ title=API+Testing+Playlist</code></pre>
 					This error code is returned in the following cases:
 					<ul>
 						<li>The playlist does not exist.</li>
-						<li>In case of channel playlist, the channel does not exists or the playlists on the channel page are not enabled.</li>
+						<li>In case of a channel playlist and if either the channel does not exist or playlists on the channel page are not enabled.</li>
 					</ul>
 				</td>
 			</tr>
@@ -4328,7 +4328,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 				<td>detail_level</td>
 				<td>string</td>
 				<td>OPTIONAL</td>
-				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be retrived without a valid access token.</td>
+				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="channel.html#security">security</a> section), only minimal data can be retrieved without a valid access token.</td>
 			</tr>
 		</table>
 
@@ -4421,7 +4421,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 			<tr>
 				<td>permission_denied</td>
 				<td>403 Permission denied</td>
-				<td>If the playlist does not belong to a channel than the authenticated user needs access to the playlist.</td>
+				<td>If the playlist does not belong to a channel then the authenticated user needs access to the playlist.</td>
 			</tr>
 			<tr>
 				<td>not_found</td>
@@ -4501,7 +4501,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 			<tr>
 				<td>permission_denied</td>
 				<td>403 Permission denied</td>
-				<td>If the playlist does not belong to a channel than the authenticated user needs access to the playlist.</td>
+				<td>If the playlist does not belong to a channel then the authenticated user needs access to the playlist.</td>
 			</tr>
 			<tr>
 				<td>not_found</td>
