@@ -505,7 +505,7 @@ title=API+Testing+Channel</code></pre>
 
 		<h6>Response example</h6>
 		<pre><code class="json">{
-  "device_users": [
+  "device_passwords": [
     {
       "device_name": "Sample Device 1",
       "user_name": "xnwj3mseuka",
@@ -527,8 +527,8 @@ title=API+Testing+Channel</code></pre>
 		<p>Paging information can be found under the "paging" element. Example:</p>
 
 		<pre><code class="json">"paging": {
-	"previous": " https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": " https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	"previous": "https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": "https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 }</code>
 </pre>
 
@@ -652,7 +652,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/users/self/device-passwords/DEVICE_NAME.FORMAT</a>format can be json or xml)</td>
+				<td><a>https://api.ustream.tv/users/self/device-passwords/USER_NAME.FORMAT</a>format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2349,8 +2349,8 @@ command=stop</code></pre>
 
 		<p>The paging information can be found under the "paging" element. Example:</p>	
 		<pre><code class="json">"paging": {
-	"previous": " https://api.ustream.tv/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": " https://api.ustream.tv/channels/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	"previous": "https://api.ustream.tv/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": "https://api.ustream.tv/channels/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 }</code></pre>
 
 		<h6>Error codes</h6>
@@ -3077,8 +3077,8 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<p>The paging information can be found under the "paging" element. Example:</p>
 		<pre><code class="json">"paging": {
-	"previous": " https://api.ustream.tv/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": " https://api.ustream.tv/channels/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	"previous": "https://api.ustream.tv/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": "https://api.ustream.tv/channels/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 }</code></pre>
 
 		<h6>Error codes</h6>
