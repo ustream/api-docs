@@ -8,12 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="robots" content="index, follow">
-	<script>
-		var loc=window.location.href;
-		if (loc.indexOf('http://developers.ustream.tv') !== 0 && loc.indexOf('http://localhost') !== 0) {
-		window.location.href = 'http://developers.ustream.tv{{ page.url }}';
-		}
-	</script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 	<script src="{{site.baseurl}}/js/highlight.pack.js"></script>
 	<script src="{{site.baseurl}}/js/ustream-embedapi.min.js"></script>
@@ -22,8 +16,9 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://static-cdn2.ustream.tv/v5/css/reset.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="{{site.baseurl}}/css/snorky_46.0.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="{{site.baseurl}}/css/helvetica-for-ibm.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="{{site.baseurl}}/css/apidocs.css" type="text/css" media="screen">
-	<link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico" />
+	<link rel="shortcut icon" href="{{site.baseurl}}/faviconibm.ico" />
 </head>
 <body {% if page.id %}id="{{ page.id }}"{% endif %}>
 	<!-- Google Tag Manager -->

@@ -23,7 +23,9 @@ layout: default
 					{% assign sorted_articles = site.categories[page.category] | sort:'weight' %}
 					{% for post in sorted_articles %}
 					{% if post.categoryItemIsShown == 1 %}
+						{% if post.url != page.url %}
 						<li><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></li>
+						{% endif %}
 					{% endif %}
         			{% endfor %}
 					</ul>

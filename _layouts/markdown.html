@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<header class="hero small">
+	<div class="row">
+		<ul class="breadcrumb">
+			{% assign c = site.data.categories[page.category] %} 
+			<li><a href="{{site.baseurl}}/{{page.category}}/">{{ c.name }}</a></li>
+		</ul>
+		<h1>{{ page.title }}</h1>
+	</div>
+</header>
+<main>
+	<div class="row center gutter-20">
+		<div class="row">
+			<div class="column column-8">
+				<article data-sidenav="sidenav">
+					<section>
+						{{ content }}
+					</section>
+				</article>
+			</div>
+			<div class="column column-4 sidebar">
+				<div class="stickyContent">
+					<h3>Related articles</h3>
+					<ul class="related">
+					{% assign sorted_articles = site.categories[page.category] | sort:'weight' %}
+					{% for post in sorted_articles %}
+					{% if post.categoryItemIsShown == 1 %}
+						{% if post.url != page.url %}
+						<li><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></li>
+						{% endif %}
+					{% endif %}
+        			{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+	
+

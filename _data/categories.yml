@@ -1,5 +1,5 @@
-broadcasting-api:
-   name: Broadcasting API
+channel-api:
+   name: Channel API
 player-api:
    name: Player API
 player-sdk:
