@@ -220,7 +220,7 @@ Content-Type: application/x-www-form-urlencoded
 title=API+Testing+Channel</code></pre>
 		<p class="note">The token in the above call is only an example.</p>
 
-		<h6>Successful response</h6>
+		<h6>Response</h6>
 		<pre><code class="json">{
 	"channel": {
 		"id":"13091307",
@@ -448,6 +448,248 @@ title=API+Testing+Channel</code></pre>
 		}
 	}
 }</code></pre>
+	</section>
+
+	<section>
+		<h2>Device Passwords</h2>
+
+		<h3>Get device passwords</h3>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td><a href="https://api.ustream.tv/users/self/device-passwords.json">https://api.ustream.tv/users/self/device-passwords.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td><strong>page</strong></td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page number (1 by default)</td>
+			</tr>
+			<tr>
+				<td><strong>pagesize</strong></td>
+				<td>integer</td>
+				<td>OPTIONAL</td>
+				<td>Requested page size (50 by default)</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 200 OK is returned.</p>
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>device_name</td>
+				<td>string</td>
+				<td>Name of the device password</td>
+			</tr>
+			<tr>
+				<td>user_name</td>
+				<td>string</td>
+				<td>Username of the device password</td>
+			</tr>
+			<tr>
+				<td>created_at</td>
+				<td>timestamp</td>
+				<td>Creation date</td>
+			</tr>
+			<tr>
+				<td>valid_from</td>
+				<td>timestamp</td>
+				<td>The time after which the device password can be used for logging in.</td>
+			</tr>
+			<tr>
+				<td>valid_until</td>
+				<td>timestamp</td>
+				<td>The time until the device password can be used for logging in.</td>
+			</tr>
+		</table>
+
+		<h6>Response example</h6>
+		<pre><code class="json">{
+  "device_passwords": [
+    {
+      "device_name": "Sample Device 1",
+      "user_name": "xnwj3mseuka",
+      "created_at": 1497441340,
+      "valid_from": 1497443340,
+      "valid_until": null
+    },
+    {
+      "device_name": "Sample Device 2",
+      "user_name": "ymvbk9bu7f8",
+      "created_at": 1497341340,
+      "valid_from": 1497341880,
+      "valid_until": 1497381880
+    }
+  ],
+  "paging": []
+}</code></pre>
+
+		<p>Paging information can be found under the "paging" element. Example:</p>
+
+		<pre><code class="json">"paging": {
+	"previous": "https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": "https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+}</code>
+</pre>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Unauthorized</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
+			</tr>
+		</table>
+
+		<h3>Create device password</h3>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">POST</td>
+				<td><a href="https://api.ustream.tv/users/self/device-passwords.json">https://api.ustream.tv/users/self/device-passwords.FORMAT</a> (format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<p>The body of the request must contain the device name and a "valid_from" timestamp.</p>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td><strong>device_name</strong></td>
+				<td>string</td>
+				<td>REQUIRED</td>
+				<td>Name of the device</td>
+			</tr>
+			<tr>
+				<td>valid_from</td>
+				<td>timestamp</td>
+				<td>REQUIRED</td>
+				<td>The time after which the device password can be used for logging in.</td>
+			</tr>
+			<tr>
+				<td>valid_until</td>
+				<td>timestamp</td>
+				<td>OPTIONAL</td>
+				<td>The time until the device password can be used for logging in.</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 200 OK is returned.</p>
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>device_name</td>
+				<td>string</td>
+				<td>Name of the device password</td>
+			</tr>
+			<tr>
+				<td>user_name</td>
+				<td>string</td>
+				<td>Username of the device password</td>
+			</tr>
+			<tr>
+				<td>password</td>
+				<td>string</td>
+				<td>Generated password</td>
+			</tr>
+			<tr>
+				<td>valid_from</td>
+				<td>timestamp</td>
+				<td>The time after which the device password can be used for logging in.</td>
+			</tr>
+			<tr>
+				<td>valid_until</td>
+				<td>timestamp</td>
+				<td>The time until the device password can be used for logging in.</td>
+			</tr>
+		</table>
+
+		<h6>Response example</h6>
+		<pre><code class="json">{
+  "device_name": "Sample Device 4",
+  "user_name": "jgun36pdc79",
+  "password": "jgcxathqhyqcdxp",
+  "valid_from": 1497571200,
+  "valid_until": 1500249600
+}</code></pre>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>input_validation_error</td>
+				<td>400 Bad request</td>
+				<td>In case of any required parameter is missing.</td>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Unauthorized</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
+			</tr>
+		</table>
+
+		<h3>Delete device password</h3>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">DELETE</td>
+				<td><a>https://api.ustream.tv/users/self/device-passwords/USER_NAME.FORMAT</a>format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<p>This request has no parameters.</p>
+
+		<h6>Response</h6>
+		<p>On success a response with HTTP status 200 OK is returned.</p>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Unauthorized</td>
+				<td>The provided Access Token is missing, revoked, expired or malformed</td>
+			</tr>
+		</table>
 	</section>
 
 	<section>
@@ -3155,7 +3397,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 					(format can be json or xml)</td>
 			</tr>
 		</table>
-
+  
 		<h6>Parameters</h6>
 		<table class="table responsive">
 			<tr>
@@ -5188,4 +5430,5 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 
 		<p>Your receiver should verify the signature provided in the request <strong>X-Hook-Signature</strong> header, using <strong>HMAC-SHA1</strong> algorithm with the the previously exchanged secret and the full request body as-is.</p>
 	</section>
+
 </article>
