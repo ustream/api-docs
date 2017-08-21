@@ -3614,6 +3614,345 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 	}
 }</code></pre>
 
+		<h3>Video caption</h3>
+
+		<h4>List all captions</h4>
+		<p>List all captions to a given videoId</p>
+
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/captions.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<p>None.</p>
+
+		<h6>Response</h6>
+		<p>A list of key-value pairs under a "captions" key. Example:</p>
+		<pre><code class="json">{
+    "captions": [
+        {
+            "is_default": true,
+            "is_public": false,
+            "language": "en-00",
+            "status": "eu dolor exercitation est do",
+            "video_id": "10001"
+        },
+        {
+            "is_default": false,
+            "is_public": false,
+            "language": "en-UK",
+            "status": "dolor irure velit aliquip",
+            "video_id": "10001"
+        }
+    ]
+}</code></pre>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Authorization required</td>
+				<td>The video is protected, only the owner with a valid token can access it.</td>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The given video does not belong to the user.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not Found</td>
+				<td>The given video does not exist.</td>
+			</tr>
+		</table>
+
+		<h4>Show caption details</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>Key-value pairs. Example:</p>
+		<pre><code class="json">{
+    "is_default": true,
+    "is_public": false,
+    "language": "en-00",
+    "status": "active",
+    "video_id": "10001"
+}</code></pre>
+
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>status</td>
+				<td>string</td>
+				<td>Possible values are: processing and active</td>
+			</tr>
+		</table>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Authorization required</td>
+				<td>The video is protected, only the owner with a valid token can access it.</td>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The given video does not belong to the user.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not Found</td>
+				<td>The given video or caption does not exist.</td>
+			</tr>
+		</table>
+
+		<h4>Modify caption details</h4>
+		<p>Modify caption details for a given language</p>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">PUT</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<table class="table responsive">
+			<tr>
+				<th>parameter</th>
+				<th>type</th>
+				<th>importance</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td><strong>is_public</strong></td>
+				<td>boolean</td>
+				<td></td>
+				<td>The player show or not this caption</td>
+			</tr>
+			<tr>
+				<td><strong>is_default</strong></td>
+				<td>boolean</td>
+				<td></td>
+				<td>The player automatically show this caption</td>
+			</tr>
+		</table>
+
+		<p>Example:</p>
+		<pre><code class="nohighlight">PUT videos/VIDEO_ID/captions/en-00.json HTTP/1.1
+Host: api.ustream.tv
+Authorization: Bearer xxxxxxxxxxxxxx
+Content-Type: application/x-www-form-urlencoded
+
+is_public=1&is_default=0</code></pre>
+		<p class="note">The token in the above call is only an example.</p>
+
+		<h6>Response</h6>
+		<p>Key-value pairs. Example:</p>
+		<pre><code class="json">{
+    "is_default": true,
+    "is_public": false,
+    "language": "en-00",
+    "status": "active",
+    "video_id": "10001"
+}</code></pre>
+
+		<p>Explanation of some values:</p>
+		<table class="table responsive">
+			<tr>
+				<th>key</th>
+				<th>type</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>status</td>
+				<td>string</td>
+				<td>Possible values are: processing and active</td>
+			</tr>
+		</table>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Authorization required</td>
+				<td>The video is protected, only the owner with a valid token can access it.</td>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The given video does not belong to the user.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not Found</td>
+				<td>The given video or caption does not exist.</td>
+			</tr>
+		</table>
+
+		<h4>Download vtt file</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE/vtt.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Response</h6>
+		<p>WEBVTT file content. Example:</p>
+		<pre><code class="json">WEBVTT
+
+00:09.000 --> 00:11.000
+We are in New York City
+</code></pre>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Authorization required</td>
+				<td>The video is protected, only the owner with a valid token can access it.</td>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The given video does not belong to the user.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not Found</td>
+				<td>The given video or caption does not exist.</td>
+			</tr>
+		</table>
+
+		<h4>Upload caption</h4>
+		<p>Create a new caption for the given video</p>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">PUT</td>
+				<td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE/vtt.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<p>Example:</p>
+		<pre><code class="nohighlight">PUT videos/VIDEO_ID/captions/en-00.json HTTP/1.1
+Host: api.ustream.tv
+Authorization: Bearer xxxxxxxxxxxxxx
+Content-Type: text/vtt
+
+WEBVTT
+
+00:09.000 --> 00:11.000
+We are in New York City
+</code></pre>
+		<p class="note">The token in the above call is only an example.</p>
+
+		<h6>Response</h6>
+
+		<h6>Error codes</h6>
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Error conditions</th>
+			</tr>
+			<tr>
+				<td>unauthorized</td>
+				<td>401 Authorization required</td>
+				<td>The video is protected, only the owner with a valid token can access it.</td>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The given video does not belong to the user.</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not Found</td>
+				<td>The given video or caption does not exist.</td>
+			</tr>
+			<tr>
+				<td>not_valid_vtt</td>
+				<td>400 Bad Request</td>
+				<td>Caption has some error.</td>
+			</tr>
+		</table>
+
+		<h4>Listing possible languages</h4>
+		<table class="table fill-bg-light1 table-chromeless">
+			<tr>
+				<td class="verb">GET</td>
+				<td>
+					<a>https://api.ustream.tv/caption-languages.FORMAT</a>
+					(format can be json or xml)</td>
+			</tr>
+		</table>
+
+		<h6>Parameters</h6>
+		<p>None.</p>
+
+		<h6>Response</h6>
+		<p>A list of key-value pairs under a "languages" key. Example:</p>
+		<pre><code class="json">{
+    "languages": [
+        {
+            "code": "en-00",
+            "name": "English"
+        },
+        {
+            "code": "en-US",
+            "name": "English (US)"
+        },
+        {
+            "code": "en-UK",
+            "name": "English (UK)"
+        }
+    ]
+}</code></pre>
+
 		<h3>Video trim</h3>
 		<p>You can set video playback start and end point in seconds. Trimming does not affect the original video file.</p>
 
