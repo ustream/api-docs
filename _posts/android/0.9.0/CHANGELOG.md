@@ -1,4 +1,9 @@
 # Changelog
+## [0.9.5] - 2017-08-25
+### Changed
+- Updated media player
+- Faster track switching in general (fewer rebuffers when changing subtitle tracks for example)
+- Reduced playback gap on Surface change
 
 ## [0.9.3] - 2017-07-24
 ### Changed
@@ -87,6 +92,7 @@ saved anymore.
 after initialization.
 - Bugfixes and stability improvements
 
+[0.9.5]: ../0.9.0/
 [0.9.3]: ../0.9.0/
 [0.9.2]: ../0.9.0/
 [0.9.0]: ../0.9.0/
