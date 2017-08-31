@@ -218,7 +218,7 @@ Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
 title=API+Testing+Channel</code></pre>
-		<p class="note">The token in the above call is only an example.</p>
+		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Response</h6>
 		<pre><code class="json">{
@@ -2316,7 +2316,7 @@ Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
 video_ids[]=111&video_ids[]=222</code></pre>
-		<p class="note">The token in the above call is only an example.</p>
+		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Successful response</h6>
 
@@ -3616,8 +3616,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<h3>Video caption</h3>
 
-		<h4>List all captions</h4>
-		<p>List all captions to a given videoId</p>
+		<h4>List all captions of a video.</h4>
 
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
@@ -3639,14 +3638,14 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
             "is_default": true,
             "is_public": false,
             "language": "en-00",
-            "status": "eu dolor exercitation est do",
+            "status": "active",
             "video_id": "10001"
         },
         {
             "is_default": false,
             "is_public": false,
             "language": "en-UK",
-            "status": "dolor irure velit aliquip",
+            "status": "processing",
             "video_id": "10001"
         }
     ]
@@ -3687,13 +3686,15 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		</table>
 
 		<h6>Response</h6>
-		<p>Key-value pairs. Example:</p>
+		<p>Key-value pairs under a "caption" key. Example:</p>
 		<pre><code class="json">{
-    "is_default": true,
-    "is_public": false,
-    "language": "en-00",
-    "status": "active",
-    "video_id": "10001"
+	"caption": {
+		"is_default": true,
+		"is_public": false,
+		"language": "en-00",
+		"status": "active",
+		"video_id": "10001"
+	}
 }</code></pre>
 
 		<p>Explanation of some values:</p>
@@ -3706,7 +3707,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td>status</td>
 				<td>string</td>
-				<td>Possible values are: processing and active</td>
+				<td>Possible values: processing and active</td>
 			</tr>
 		</table>
 
@@ -3757,13 +3758,13 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 				<td><strong>is_public</strong></td>
 				<td>boolean</td>
 				<td></td>
-				<td>The player show or not this caption</td>
+				<td>Whether the video player should show this caption.</td>
 			</tr>
 			<tr>
 				<td><strong>is_default</strong></td>
 				<td>boolean</td>
 				<td></td>
-				<td>The player automatically show this caption</td>
+				<td>Whether the video player should automatically show this caption. A video can only have one default caption.</td>
 			</tr>
 		</table>
 
@@ -3774,16 +3775,18 @@ Authorization: Bearer xxxxxxxxxxxxxx
 Content-Type: application/x-www-form-urlencoded
 
 is_public=1&is_default=0</code></pre>
-		<p class="note">The token in the above call is only an example.</p>
+		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Response</h6>
-		<p>Key-value pairs. Example:</p>
+		<p>On success a response with response HTTP status 200 is returned. Example:</p>
 		<pre><code class="json">{
-    "is_default": true,
-    "is_public": false,
-    "language": "en-00",
-    "status": "active",
-    "video_id": "10001"
+	"caption": {
+		"is_default": true,
+		"is_public": false,
+		"language": "en-00",
+		"status": "active",
+		"video_id": "10001"
+	}
 }</code></pre>
 
 		<p>Explanation of some values:</p>
@@ -3796,7 +3799,7 @@ is_public=1&is_default=0</code></pre>
 			<tr>
 				<td>status</td>
 				<td>string</td>
-				<td>Possible values are: processing and active</td>
+				<td>Possible values: processing and active</td>
 			</tr>
 		</table>
 
@@ -3835,7 +3838,7 @@ is_public=1&is_default=0</code></pre>
 		</table>
 
 		<h6>Response</h6>
-		<p>WEBVTT file content. Example:</p>
+		<p>The file content in WebVTT format. Example:</p>
 		<pre><code class="json">WEBVTT
 
 00:09.000 --> 00:11.000
@@ -3866,7 +3869,7 @@ We are in New York City
 			</tr>
 		</table>
 
-		<h4>Upload caption</h4>
+		<h4>Upload a caption</h4>
 		<p>Create a new caption for the given video</p>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
@@ -3878,7 +3881,7 @@ We are in New York City
 		</table>
 
 		<p>Example:</p>
-		<pre><code class="nohighlight">PUT videos/VIDEO_ID/captions/en-00.json HTTP/1.1
+		<pre><code class="nohighlight">PUT videos/VIDEO_ID/captions/en-00/vtt.json HTTP/1.1
 Host: api.ustream.tv
 Authorization: Bearer xxxxxxxxxxxxxx
 Content-Type: text/vtt
@@ -3888,7 +3891,7 @@ WEBVTT
 00:09.000 --> 00:11.000
 We are in New York City
 </code></pre>
-		<p class="note">The token in the above call is only an example.</p>
+		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Response</h6>
 
@@ -3917,11 +3920,11 @@ We are in New York City
 			<tr>
 				<td>not_valid_vtt</td>
 				<td>400 Bad Request</td>
-				<td>Caption has some error.</td>
+				<td>The caption has errors.</td>
 			</tr>
 		</table>
 
-		<h4>Listing possible languages</h4>
+		<h4>List possible languages</h4>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
@@ -4630,7 +4633,7 @@ Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
 title=API+Testing+Playlist</code></pre>
-		<p class="note">The token in the above call is only an example.</p>
+		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Successful response</h6>
 
@@ -4777,7 +4780,7 @@ Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
 title=API+Testing+Playlist+edited</code></pre>
-		<p class="note">The token in the above call is only an example.</p>
+		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Successful response</h6>
 
@@ -4836,7 +4839,7 @@ title=API+Testing+Playlist+edited</code></pre>
 Host: api.ustream.tv
 Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded</code></pre>
-		<p class="note">The token in the above call is only an example.</p>
+		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Successful response</h6>
 
@@ -5241,7 +5244,7 @@ Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
 position=3</code></pre>
-		<p class="note">The token in the above call is only an example.</p>
+		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Successful response</h6>
 
@@ -5416,7 +5419,7 @@ Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
 title=API+Testing+Playlist&is_enabled=1</code></pre>
-		<p class="note">The token in the above call is only an example.</p>
+		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Successful response</h6>
 
