@@ -3636,14 +3636,14 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
     "captions": [
         {
             "is_default": true,
-            "is_public": false,
+            "is_visible": false,
             "language": "en-00",
             "status": "active",
             "video_id": "10001"
         },
         {
             "is_default": false,
-            "is_public": false,
+            "is_visible": false,
             "language": "en-UK",
             "status": "processing",
             "video_id": "10001"
@@ -3690,7 +3690,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<pre><code class="json">{
 	"caption": {
 		"is_default": true,
-		"is_public": false,
+		"is_visible": false,
 		"language": "en-00",
 		"status": "active",
 		"video_id": "10001"
@@ -3755,7 +3755,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 				<th width="100%">Description</th>
 			</tr>
 			<tr>
-				<td><strong>is_public</strong></td>
+				<td><strong>is_visible</strong></td>
 				<td>boolean</td>
 				<td></td>
 				<td>Whether the video player should show this caption.</td>
@@ -3774,7 +3774,7 @@ Host: api.ustream.tv
 Authorization: Bearer xxxxxxxxxxxxxx
 Content-Type: application/x-www-form-urlencoded
 
-is_public=1&is_default=0</code></pre>
+is_visible=1&is_default=0</code></pre>
 		<p class="note">The token in the request above is only an example.</p>
 
 		<h6>Response</h6>
@@ -3782,7 +3782,7 @@ is_public=1&is_default=0</code></pre>
 		<pre><code class="json">{
 	"caption": {
 		"is_default": true,
-		"is_public": false,
+		"is_visible": false,
 		"language": "en-00",
 		"status": "active",
 		"video_id": "10001"
@@ -3832,8 +3832,8 @@ is_public=1&is_default=0</code></pre>
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE/vtt.FORMAT</a>
-					(format can be json or xml)</td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE/vtt</a>
+				</td>
 			</tr>
 		</table>
 
@@ -3875,13 +3875,13 @@ We are in New York City
 			<tr>
 				<td class="verb">PUT</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE/vtt.FORMAT</a>
-					(format can be json or xml)</td>
+					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE/vtt</a>
+				</td>
 			</tr>
 		</table>
 
 		<p>Example:</p>
-		<pre><code class="nohighlight">PUT videos/VIDEO_ID/captions/en-00/vtt.json HTTP/1.1
+		<pre><code class="nohighlight">PUT videos/VIDEO_ID/captions/en-00/vtt HTTP/1.1
 Host: api.ustream.tv
 Authorization: Bearer xxxxxxxxxxxxxx
 Content-Type: text/vtt
