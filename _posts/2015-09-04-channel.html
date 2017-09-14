@@ -111,7 +111,7 @@ categoryItemLabel: Read the documentation
 			</tr>
 			<tr>
 				<td>last_broadcast_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>Last broadcast time (Unix timestamp)</td>
 			</tr>
 			<tr>
@@ -504,17 +504,17 @@ title=API+Testing+Channel</code></pre>
 			</tr>
 			<tr>
 				<td>created_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time when the device password was created (Unix timestamp)</td>
 			</tr>
 			<tr>
 				<td>valid_from</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time after which the device password can be used for logging in (Unix timestamp).</td>
 			</tr>
 			<tr>
 				<td>valid_until</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time until the device password can be used for logging in (Unix timestamp).</td>
 			</tr>
 		</table>
@@ -587,13 +587,13 @@ title=API+Testing+Channel</code></pre>
 			</tr>
 			<tr>
 				<td>valid_from</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>REQUIRED</td>
 				<td>The date and time after which the device password can be used for logging in (Unix timestamp).</td>
 			</tr>
 			<tr>
 				<td>valid_until</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>OPTIONAL</td>
 				<td>The date and time until the device password can be used for logging in (Unix timestamp).</td>
 			</tr>
@@ -625,12 +625,12 @@ title=API+Testing+Channel</code></pre>
 			</tr>
 			<tr>
 				<td>valid_from</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time after which the device password can be used for logging in (Unix timestamp).</td>
 			</tr>
 			<tr>
 				<td>valid_until</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time until the device password can be used for logging in (Unix timestamp).</td>
 			</tr>
 		</table>
@@ -2246,7 +2246,7 @@ title=API+Testing+Channel</code></pre>
 			</tr>
 			<tr>
 				<td>created_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>
 					The date and time when the video was created (Unix timestamp). By default, it has the same value as
 					the "added_at" field, but it can be edited by channel admins to better reflect the real content creation
@@ -2255,7 +2255,7 @@ title=API+Testing+Channel</code></pre>
 			</tr>
 			<tr>
 				<td>added_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time when the video was added (uploaded or recorded) to IBM Cloud Video (Unix timestamp).</td>
 			</tr>
 			<tr>
@@ -2691,7 +2691,7 @@ command=stop</code></pre>
 			</tr>
 			<tr>
 				<td>created_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>
 					The date and time when the video was created (Unix timestamp). By default, it has the same value as
 					the "added_at" field, but it can be edited by channel admins to better reflect the real content creation
@@ -2700,7 +2700,7 @@ command=stop</code></pre>
 			</tr>
 			<tr>
 				<td>added_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time when the video was added (uploaded or recorded) to IBM Cloud Video (Unix timestamp).</td>
 			</tr>
 			<tr>
@@ -2833,7 +2833,7 @@ command=stop</code></pre>
 			</tr>
 			<tr>
 				<td>created_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>
 					The date and time when the video was created (Unix timestamp). By default, it has the same value as
 					the "added_at" field, but it can be edited by channel admins to better reflect the real content creation
@@ -2842,7 +2842,7 @@ command=stop</code></pre>
 			</tr>
 			<tr>
 				<td>added_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time when the video was added (uploaded or recorded) to IBM Cloud Video (Unix timestamp).</td>
 			</tr>
 			<tr>
@@ -2963,7 +2963,7 @@ command=stop</code></pre>
 		It could be null if the downloadable version is not available.</p>
 
 		<p>The <strong>expires_at</strong> property contains a Unix timestamp of the moment
-		when the downloadable version will be expired. For downloadable videos never expire this
+		when the downloadable version will expire. For never expiring downloadable videos this
 		property will be null.</p>
 
 		<p><strong>status</strong> represents the state of the downloadable video, it could be:
@@ -3302,7 +3302,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			</tr>
 			<tr>
 				<td>expires_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>If rule field is at_given_time, expires_at contains the Unix timestamp of the expiration. If the rule is never, expires_at field is not provided.</td>
 			</tr>
 		</table>
@@ -4308,7 +4308,7 @@ We are in New York City
 				<td><strong>position</strong></td>
 				<td>int</td>
 				<td>REQUIRED</td>
-				<td>Chapter position</td>
+				<td>Chapter position in seconds</td>
 			</tr>
 		</table>
 
@@ -4461,7 +4461,7 @@ We are in New York City
 				<td><strong>position</strong></td>
 				<td>int</td>
 				<td>REQUIRED</td>
-				<td>Chapter position</td>
+				<td>Chapter position in seconds</td>
 			</tr>
 		</table>
 
@@ -5003,8 +5003,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 			</tr>
 			<tr>
 				<td>created_at</td>
-				<td>datetime</td>
-				<td>
+				<td>timestamp</td>
 				<td>
 					The date and time when the video was created (Unix timestamp). By default, it has the same value as
 					the “added_at” field, but it can be edited by channel admins to better reflect the real content creation
@@ -5013,7 +5012,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 			</tr>
 			<tr>
 				<td>added_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time when the video was added (uploaded or recorded) to IBM Cloud Video (Unix timestamp).</td>
 			</tr>
 			<tr>
@@ -5102,7 +5101,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 			</tr>
 			<tr>
 				<td>created_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>
 					The date and time when the video was created (Unix timestamp). By default, it has the same value as
 					the "added_at" field, but it can be edited by channel admins to better reflect the real content creation
@@ -5111,7 +5110,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 			</tr>
 			<tr>
 				<td>added_at</td>
-				<td>datetime</td>
+				<td>timestamp</td>
 				<td>The date and time when the video was added (uploaded or recorded) to IBM Cloud Video (Unix timestamp).</td>
 			</tr>
 			<tr>
@@ -5577,7 +5576,7 @@ title=API+Testing+Playlist&is_enabled=1</code></pre>
 			</tr>
 			<tr>
 				<td>start</td>
-				<td>int</td>
+				<td>timestamp</td>
 				<td>The date and time when the event starts (Unix timestamp)</td>
 			</tr>
 			<tr>
