@@ -655,41 +655,5 @@ Age: 0
 Via: 1.1 varnish
 {"channel":{"id":"13091307","title":"Whatever Test 1234","url":"whatever-test-1234","tiny_url":"http://ustre.am/SVE7"}}
 </code></pre>
-                
-            
-            
-                <h3>Acquiring the streamkey for an external broadcasting application</h3>
-                <p>If you wish to use an non-IBM Cloud Video provided broadcaster application or appliance (like Flash Live Media Encoder, Wirecast, Tricaster, etc., you will need a streamkey to authenticate with IBM Cloud Video and proving that broadcasting to that particular channel is allowed. Also you should get the ingest point where your device or application should connect.</p>
-                <p>You can access the streamkey (it is usually the parameter "stream" in the configuration of these devices) the following way. The endpoint requires you to provide the OAuth2 authorization key to complete. The endpoint is at <a class="url">https://api.ustream.tv/channels/CHANNEL_ID/authorizations/broadcasting.json</a></p>
-                
-                <h6>Example call</h6>
-                <pre><code class="nohighlight">GET /channels/123456/authorizations/broadcasting.json
-Host: api.ustream.tv
-Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
-Content-Type: application/x-www-form-urlencoded</code></pre>
-                
-                <h6>Example response</h6>
-                <pre><code class="nohighlight">HTTP/1.1 200 OK
-Cache-Control: no-store
-{"streaming_key": "kqDlIyGb0H47g8SRSyKjyxAqPmiwTbw3"}
-</code></pre>
-                
-            
-            
-                <h3>Acquiring the channelkey for an external broadcasting application</h3>
-                <p>If you wish to use Flash media live encoder , you will need the channelkey to authenticate with IBM Cloud Video and proving that broadcasting to that particular channel is allowed. Also you should get the ingest point where your device or application should connect.</p>
-                <p>You can access the channelkey (it is usually the parameter "stream" in the configuration of these devices) the following way. The endpoint requires you to provide the OAuth2 authorization key to complete. The endpoint is at <a class="url">https://api.ustream.tv/channels/CHANNEL_ID/authorizations/broadcasting/channel_key.json</a></p>
-
-                <h6>Example call</h6>
-                <pre><code class="nohighlight">GET /channels/123456/authorizations/broadcasting/channel_key.json
-Host: api.ustream.tv
-Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
-Content-Type: application/x-www-form-urlencoded
-</code></pre>
-                <h6>Example response</h6>
-                <pre><code class="nohighlight">HTTP/1.1 200 OK
-Cache-Control: no-store
-{"channel_key": "kqDlIyGb0H47g8SRSyKjyxAqPmiwTbw3"}</code>
-</pre>
             </section>
         </article>
