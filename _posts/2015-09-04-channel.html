@@ -2671,7 +2671,24 @@ command=stop</code></pre>
 				"channel": {
 					"href": "https://api.ustream.tv/channels/1.json"
 				}
-			}
+			},
+			"caption_matches": [
+				{
+					"start_sec": 31.01,
+					"end_sec": 35.7,
+					"caption": "of are actually tying your shoes incorrectly yeah yeah"
+				},
+				{
+					"start_sec": 46.81,
+					"end_sec": 48.85,
+					"caption": "for me very expensive pair of shoes"
+				},
+				{
+					"start_sec": 49.09,
+					"end_sec": 51.88,
+					"caption": "but those shoes came with round nylon laces"
+				}
+			]
 		},
 		...
 	]
@@ -2707,6 +2724,15 @@ command=stop</code></pre>
 				<td>file_size</td>
 				<td>string</td>
 				<td>Video file size in bytes</td>
+			</tr>
+			<tr>
+				<td>caption_matches</td>
+				<td>array of matched captions</td>
+				<td>
+					This field is only available if q parameter is used and there is a match in the video’s caption in the result set.
+					The result set contains the relevant part of the caption and their start_sec and end_sec timestamps that match
+					with the search query. (Max 100 matched captions)
+				</td>
 			</tr>
 		</table>
 
