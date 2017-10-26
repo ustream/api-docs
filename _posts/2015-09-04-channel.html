@@ -2729,9 +2729,9 @@ command=stop</code></pre>
 				<td>caption_matches</td>
 				<td>array of matched captions</td>
 				<td>
-					This field is only available if q parameter is used and there is a match in the video’s caption in the result set.
-					The result set contains the relevant part of the caption and their start_sec and end_sec timestamps that match
-					with the search query. (Max 100 matched captions)
+					This field is only present if the q parameter is used.
+					The result set contains captions matching the search query along with their start and end time
+					("start_sec" and "end_sec" fields respectively). Only maximum of 100 matching captions are returned.
 				</td>
 			</tr>
 		</table>
