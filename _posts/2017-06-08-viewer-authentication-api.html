@@ -36,7 +36,7 @@ categoryItemLabel: Read the documentation
             <li><strong>Channel</strong>, which you can create on the <a href="https://www.ustream.tv/dashboard/manage-show" target="_blank">Your channels page</a> of your IBM Cloud Video dashboard</li>
             <li><strong>Client id</strong>, which you can obtain on the <a href="https://www.ustream.tv/dashboard/integrations/api-access" target="_blank">API/SDK access page</a> of your IBM Cloud Video dashboard</li>
             <li><strong>Token</strong>, which you obtain through the IBM Cloud Video <a href="http://developers.ustream.tv/channel-api/getting-started.html#oauth2-authorization-server-endpoints_6" target="_blank">authorization endpoint</a></li>
-            <li><strong>Secret key</strong>, a string that will be used to create the hash in the authentication response your service passes to the IBM Cloud Video player.</li>
+            <li><strong>Secret key</strong>, a string that will be used to create the hash in the authentication response your service passes to the IBM Cloud Video player. This secret key need to be provided by you.</li>
         </ul>
 
     </section>
@@ -326,7 +326,7 @@ echo isset($_GET['jsoncallback'])
             </tr>
             <tr>
                 <td><strong>popup_height</strong></td>
-                <td>string</td>
+                <td>int</td>
                 <td>REQUIRED</td>
                 <td>Height of the popup window with the authenticaion flow</td>
             </tr>
@@ -436,16 +436,12 @@ echo isset($_GET['jsoncallback'])
 
         <p>You can specify an expiration date for the hash. When the viewer returns to the page after the expiration date, she has to authenticate again.</p>
 
-        <p>The expiration date has to be
+        <p>Expiration date has to be</p>
         <ul>
             <li>Part of the hash by concatenating it to the rest of the parameters</li>
             <li>Included in the response object as “hashExpire”.</li>
-        </ul>
-
-        <p>Expiration date has to be</p>
-        <ul>
             <li>Specified in UNIX timestamp format</li>
-            <li>Include in the response JSON object</li>
+            <li>Included in the response JSON object</li>
         </ul>
 
         <p>An example array:</p>
