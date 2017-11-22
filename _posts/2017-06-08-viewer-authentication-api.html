@@ -17,25 +17,12 @@ categoryItemLabel: Read the documentation
 
         <p>Viewer Authentication API lets you implement custom authentication for authenticating viewers of live and recorded videos served by IBM Cloud Video.</p>
 
-    </section>
-
-    <section>
-
-        <h2>Viewer authentication flows</h2>
-
-        The Viewer Authentication API provides two flows for authenticating viewers:
-
-        <ul>
-            <li><strong>Basic:</strong> Authentication happens inside the IBM Cloud Video player. The player will require the viewer to enter a username and a password.</li>
-            <li><strong>Advanced:</strong> Lets you implement a fully custom authentication.</li>
-        </ul>
-
         <p>You need the following before you start implementing viewer authentication:</p>
 
         <ul>
             <li><strong>Channel</strong>, which you can create on the <a href="https://www.ustream.tv/dashboard/manage-show" target="_blank">Your channels page</a> of your IBM Cloud Video dashboard</li>
             <li><strong>Client id</strong>, which you can obtain on the <a href="https://www.ustream.tv/dashboard/integrations/api-access" target="_blank">API/SDK access page</a> of your IBM Cloud Video dashboard</li>
-            <li><strong>Token</strong>, which you obtain through the IBM Cloud Video <a href="http://developers.ustream.tv/channel-api/getting-started.html#oauth2-authorization-server-endpoints_6" target="_blank">authorization endpoint</a></li>
+            <li><strong>Token</strong>, which you can obtain through the IBM Cloud Video <a href="http://developers.ustream.tv/channel-api/getting-started.html#oauth2-authorization-server-endpoints_6" target="_blank">authorization endpoint</a></li>
             <li><strong>Secret key</strong>, a string that will be used to create the hash in the authentication response your service passes to the IBM Cloud Video player. This secret key needs to be provided by you.</li>
         </ul>
 
@@ -43,240 +30,28 @@ categoryItemLabel: Read the documentation
 
     <section>
 
-        <h2>Basic viewer authentication flow</h2>
-        <p>To implement the basic viewer authentication flow you need to create an application that includes the following:</p>
+        <h2>Viewer authentication flow</h2>
+        <p>To implement the viewer authentication flow you need to create an application that includes the following:</p>
         <ul>
-          <li>Authentication service endpoint that can be called by the IBM Cloud Video player to validate authentication requests</li>
+            <li>Screens your viewers need to go through to authenticate</li>
+            <li>Backend code that validates these authentication requests</li>
+            <li>Process to pass the authentication response to the IBM Cloud Video player</li>
         </ul>
 
-        <img class="no-border" src="/images/hashlock-simple.png">
+        <img class="no-border" src="/images/advanced-auth.png" srcset="/images/advanced-auth.png 1x, /images/advanced-auth-2x.png 2x">
 
         <ol>
-            <li>Viewer credentials entered in the IBM Cloud Video player are passed to your service endpoint in an authentication request.</li>
-            <li>Your service endpoint validates the request and passes an authentication response to the player.</li>
-            <li>If the authentication was successful, the player passes the authentication response to IBM Cloud Video infrastructure in a validation request.</li>
-            <li>The IBM Cloud Video infrastructure validates the authentication response received from your service and passes a validation response to the player. If this response is positive, the viewer can start watching the video.</li>
-        </ol>
-
-        <p>This flow requires less work on your end but your possibilities are limited. You can only authenticate your viewers with a username and a password.</p>
-
-        <h3>Creating an authentication service endpoint</h3>
-
-        <p>The authentication service endpoint validates the authentication requests.</p>
-
-        <p>The IBM Cloud Video player calls the URL of the endpoint to pass the authentication request to your service. It is called in the background by passing the username and password in GET parameters. The parameters are called "user" and "pw".</p>
-
-        <p>For example, if the URL of your endpoint is http://mydomain.com/authentication.php, the call will be:</p>
-
-        <pre><code>http://mydomain.com/authenticaiton.php?user=debbiehamilton&pw=lYOWp8tn</code></pre>
-
-        <p>When called, the endpoint should validate the authentication request and pass an authentication response back to the player. The authentication response must be a JSON encoded value.</p>
-
-        <ul>
-            <li>If the authentication fails: <strong>false</strong></li>
-            <li>If the authentication is successful: an <strong>array</strong> which contains the following:
-                <ul>
-                    <li>list of parameters that have been hashed</li>
-                    <li>the MD5 hash of the string that has been created by concatenating the parameters and the shared secret key with pipe "|" characters</li>
-                </ul>
-            </li>
-        </ul>
-
-        <p>An example array:</p>
-
-        <pre><code class="json">
-[
-   {
-      "userName": "testuser"
-   },
-   {
-      "someString": "someValue"
-   },
-   {
-      "hash": "56a8835175d33c368955dac6bdaf00de"
-   }
-]
-        </code></pre>
-
-        <div class="panel">The order of the parameters should match their order in the array when generating the hash.</div>
-
-        <h4>Example service endpoint script in PHP</h4>
-
-        <pre><code class="php">
-&lt;?php
-
-// This is a simple script to showcase an authentication service endpoint.
-
-// We assume that you have a config file loaded from somewhere.
-
-// This is your shared secret key.
-$SHARED_SECRET_KEY = "testMyHash";
-
-// The script has to validate if provided user credentials are correct.
-// For simplicity in this example we only check if user name is “testuser”.
-// You should implement a more advanced validation,
-// eg. checking the user name and the password against a database.
-if (isset($_GET["user"]) && $_GET["user"] == "testuser") {
-	// On success the response has to be an array of parameters
-	// and a hash.
-
-	// We create the array of paramters.
-	// The parameters can be anything.
-	$userData = [
-		"username" => $_GET["user"],
-		"someString" => "someValue"
-	];
-
-	// We create the hash by hashing the array contents
-	// and the secret key concatenated together with a pipe character.
-	$hash = md5(implode('|', $userData) . '|' . $SHARED_SECRET_KEY);
-
-	// We put the array of parameters and the hash into the response.
-	$response = array_chunk(
-		array_merge($userData, ["hash" => $hash]),
-		1,
-		true
-	);
-} else {
-	// On failure the response has to be false.
-	$response = false;
-}
-
-// We encode the output into JSON format.
-$json = json_encode($response);
-
-// We create the JSONP callback.
-echo isset($_GET['jsoncallback'])
-	? "{$_GET['jsoncallback']}($json)"
-	: $json;
-        </code></pre>
-
-        <h3>Setting up basic viewer authentication</h3>
-
-        <table class="table fill-bg-light1 table-chromeless">
-            <tr>
-                <td class="verb">PUT</td>
-                <td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/hash/basic.FORMAT</a> (format can be json or xml)</td>
-            </tr>
-        </table>
-
-        <h6>Parameters</h6>
-
-        <table class="table responsive">
-            <tr>
-                <th>parameter</th>
-                <th>type</th>
-                <th>importance</th>
-                <th width="100%">Description</th>
-            </tr>
-            <tr>
-                <td><strong>url</strong></td>
-                <td>string</td>
-                <td>REQUIRED</td>
-                <td>URL of authentication service endpoint</td>
-            </tr>
-            <tr>
-                <td><strong>secret</strong></td>
-                <td>string</td>
-                <td>REQUIRED</td>
-                <td>Secret key</td>
-            </tr>
-        </table>
-
-        <h6>Response</h6>
-
-        <p>HTTP response codes returned when the action is successful:</p>
-
-        <table class="table responsive">
-            <tr>
-                <th>HTTP response code</th>
-                <th width="100%">Error conditions</th>
-            </tr>
-            <tr>
-                <td>201 Created</td>
-                <td>Basic viewer authentication has been set up on the channel with the new hash.</td>
-            </tr>
-            <tr>
-                <td>204 No Content</td>
-                <td>Basic viewer authentication has been set up on the channel by updating the existing hash with the new one.</td>
-            </tr>
-        </table>
-
-        <p>Specific error codes returned when the action failed:</p>
-
-        <table class="table responsive">
-            <tr>
-                <th>error value</th>
-                <th>HTTP response code</th>
-                <th width="100%">Error conditions</th>
-            </tr>
-            <tr>
-                <td>invalid_request</td>
-                <td>400 Bad Request</td>
-                <td>One or more required parameters are missing or the user has no access to the video.</td>
-            </tr>
-            <tr>
-                <td>invalid_type</td>
-                <td>400 Bad Request</td>
-                <td>The specified type is invalid or unsupported.</td>
-            </tr>
-        </table>
-
-    </section>
-
-    <section>
-
-        <h2>Advanced viewer authentication flow</h2>
-        <p>To implement the advanced viewer authentication flow you need to create an application that includes the following:</p>
-        <ul>
-          <li>Screens your viewers need to go through to authenticate</li>
-          <li>Backend code that validates these authentication requests</li>
-          <li>Process to pass the authentication response to the IBM Cloud Video player</li>
-        </ul>
-
-        <img class="no-border" src="/images/hashlock-advanced.png">
-
-        <ol>
-            <li>When the viewer clicks the log in button in the IBM Cloud Video player the entry point of your custom authentication flow is displayed in a popup window.</li>
+            <li>When the viewer clicks the log in button in the IBM Cloud Video player the entry point of your custom authentication flow is displayed in an iframe in the player.</li>
             <li>When the authentication is completed your service passes an authentication response to the player.</li>
             <li>If the authentication was successful, the player passes the authentication response to IBM Cloud Video infrastructure in a validation request.</li>
             <li>The IBM Cloud Video infrastructure validates the authentication response received from your service and passes a validation response to the player. If the response is positive, the viewer can start watching the video.</li>
         </ol>
 
-        <p>This flow requires more work on your end but you get full control over the user experience of the authentication flow.</p>
+    </section>
 
-        <h3>Implementing the authentication response</h3>
+    <section>
 
-        <p>When the authentication was successful your service has to pass an authentication response to the player. The authentication response must be a JSON encoded <strong>array</strong> which contains the following:</p>
-
-        <ul>
-            <li>list of parameters that have been hashed</li>
-            <li>the MD5 hash of the string that has been created by concatenating the parameters and the shared secret key with pipe "|" characters</li>
-        </ul>
-
-        <p>An example array:</p>
-
-        <pre><code class="json">
-[
-    {
-        "userName": "testuser",
-    },
-    {
-        "someString": "someValue"
-    },
-    {
-        "hash": "56a8835175d33c368955dac6bdaf00de"
-    }
-]
-        </code></pre>
-
-        <div class="panel">The order of the parameters should match their order in the array when generating the hash.</div>
-
-        <p>To pass the response to the player your service has to redirect the page to the IBM Cloud Video return URL with passing the URL encoded hash as a get parameter.</p>
-
-        <pre><code>http://www.ustream.tv/embed/hashlock/pass?hash=HASH</code></pre>
-
-        <h3>Setting up advanced viewer authentication</h3>
+        <h2>Setting up viewer authentication</h2>
 
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
@@ -306,30 +81,6 @@ echo isset($_GET['jsoncallback'])
                 <td>REQUIRED</td>
                 <td>Secret key</td>
             </tr>
-            <tr>
-                <td><strong>message</strong></td>
-                <td>string</td>
-                <td>REQUIRED</td>
-                <td>Short text above the button on the screen displayed in the player</td>
-            </tr>
-            <tr>
-                <td><strong>button_caption</strong></td>
-                <td>string</td>
-                <td>REQUIRED</td>
-                <td>Text of the the button on the screen displayed in the player</td>
-            </tr>
-            <tr>
-                <td><strong>popup_width</strong></td>
-                <td>int</td>
-                <td>REQUIRED</td>
-                <td>Width of the popup window with the authenticaion flow</td>
-            </tr>
-            <tr>
-                <td><strong>popup_height</strong></td>
-                <td>int</td>
-                <td>REQUIRED</td>
-                <td>Height of the popup window with the authenticaion flow</td>
-            </tr>
         </table>
 
         <h6>Response</h6>
@@ -343,11 +94,11 @@ echo isset($_GET['jsoncallback'])
             </tr>
             <tr>
                 <td>201 Created</td>
-                <td>Advanced viewer authentication has been set up on the channel with the new hash.</td>
+                <td>Viewer authentication has been set up on the channel with the new hash.</td>
             </tr>
             <tr>
                 <td>204 No Content</td>
-                <td>Advanced viewer authentication has been set up on the channel by updating the existing hash with the new one.</td>
+                <td>Viewer authentication has been set up on the channel by updating the existing hash with the new one.</td>
             </tr>
         </table>
 
@@ -370,6 +121,56 @@ echo isset($_GET['jsoncallback'])
                 <td>The specified type is invalid or unsupported.</td>
             </tr>
         </table>
+
+    </section>
+
+    <section>
+
+        <h2>Implementing the authentication response</h2>
+
+        <p>If the authentication was successful your service has to pass an authentication response to the player. The authentication response must be a JSON encoded array which contains the following:</p>
+
+        <ul>
+            <li>list of parameters that have been hashed</li>
+            <li>the MD5 hash of the string that has been created by concatenating the parameters and the shared secret key with pipe "|" characters</li>
+        </ul>
+
+        <p>Example script in PHP for creating the authentication response when the authentication was successful</p>
+
+        <pre><code class="php">
+// We create the array of paramters.
+// The parameters can be anything.
+$parameters = [
+    "username" => $_GET["user"],
+    "someString" => "someValue"
+];
+
+// We create the hash by hashing
+// the parameters array contents and
+// the secret key
+// concatenated together with a pipe character.
+$hash = md5(implode('|', $userData) . '|' . $SHARED_SECRET_KEY);
+
+// We put the array of parameters and the hash into the response.
+$response = array_chunk(
+    array_merge($userData, ["hash" => $hash]),
+    1,
+    true
+);
+
+// We encode the response into JSON format.
+$json = json_encode($response);
+        </code></pre>
+
+        <div class="panel">The order of the parameters should match their order in the array when creating the hash.</div>
+
+        <p>To pass the response to the player your service has to redirect the page to the IBM Cloud Video return URL with passing the response in JSON format as a get parameter.</p>
+
+        <pre><code>http://www.ustream.tv/embed/hashlock/pass?hash=RESPONSE_IN_JSON_FORMAT</code></pre>
+
+        <p>If the authentication failed your service has to pass a "false" string as the authentication response to the player.</p>
+
+        <pre><code>http://www.ustream.tv/embed/hashlock/pass?hash="false"</code></pre>
 
     </section>
 
@@ -438,29 +239,27 @@ echo isset($_GET['jsoncallback'])
 
         <p>Expiration date has to be</p>
         <ul>
+            <li>Specified in UNIX timestamp format</li>
             <li>Part of the hash by concatenating it to the rest of the parameters</li>
             <li>Included in the response object as “hashExpire”.</li>
-            <li>Specified in UNIX timestamp format</li>
-            <li>Included in the response JSON object</li>
+            <li>JSON encoded as part of the response</li>
         </ul>
 
-        <p>An example array:</p>
+        <p>Example script in PHP for specifying hash expiration date</p>
 
-        <pre><code class="json">
-[
-    {
-        "userName": "testuser",
-    },
-    {
-        "someString": "someValue"
-    },
-    {
-        "hash": "56a8835175d33c368955dac6bdaf00de"
-    },
-    {
-        "hashExpire": 1333521590
-    }
-]
+        <pre><code class="php">
+// We specify an expiration date as a UNIX timestamp
+// which is valid for one hour.
+$expiration = time()+3600;
+
+// We concatenate it to the rest of the paramteres when creating the hash.
+$hash = md5(implode('|', $userData).'|'.$expiration.'|'.$SHARED_SECRET_KEY);
+
+// We inculde it in the response.
+$response = array_merge($userData, "hashExpire" => $expiration, "hash" => $hash);
+
+// We encode the output into JSON format.
+$json = json_encode($response);
         </code></pre>
 
         <p>When validating the authentication response the IBM Cloud Video infrastructure checks</p>
@@ -470,17 +269,6 @@ echo isset($_GET['jsoncallback'])
         </ul>
 
         <p>This way we can make sure that the expiration date comes from you and it has not been tampered on the client side.</p>
-
-        <h4>Example script in PHP for specifying hash expiration date</h4>
-
-        <pre><code class="php">
-// Expiration date must be specified as UNIX timestamp.
-// We create a hash which is valid for one hour.
-$expiration = time()+3600;
-
-// We concatenate it to the params, and generate the hash.
-$hash = md5(implode('|', $userData).'|'.$expiration.'|'.$SHARED_SECRET_KEY);
-        </code></pre>
 
     </section>
 
