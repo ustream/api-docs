@@ -821,7 +821,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table responsive">
 			<tr>
 				<th>HTTP response code</th>
-				<th width="100%">Error conditions</th>
+				<th width="100%">Description</th>
 			</tr>
 			<tr>
 				<td>201 Created</td>
@@ -839,17 +839,27 @@ title=API+Testing+Channel</code></pre>
 			<tr>
 				<th>error value</th>
 				<th>HTTP response code</th>
-				<th width="100%">Error conditions</th>
+				<th width="100%">Description</th>
 			</tr>
 			<tr>
 				<td>invalid_request</td>
 				<td>400 Bad Request</td>
-				<td>One or more required parameters are missing or the user has no access to the video.</td>
+				<td>One or more required parameters are missing (secret, url).</td>
 			</tr>
 			<tr>
 				<td>invalid_type</td>
 				<td>400 Bad Request</td>
-				<td>The specified type is invalid or unsupported.</td>
+				<td>The URL is invalid.</td>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The api user is not allowed to manage the given channel</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>Channel not found</td>
 			</tr>
 		</table>
 
@@ -868,7 +878,7 @@ title=API+Testing+Channel</code></pre>
 
 		<h6>Response</h6>
 
-		<p>Key-value pairs under a "hashlock" key.</p>
+		<p>On success, key-value pairs are returned under a "hashlock" key.</p>
 
 		<p>Example:</p>
 
@@ -884,6 +894,31 @@ title=API+Testing+Channel</code></pre>
     }
 }
         </code></pre>
+
+		<p>Specific error codes returned when the action failed:</p>
+
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>invalid_type</td>
+				<td>400 Bad Request</td>
+				<td>The URL is invalid.</td>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The api user is not allowed to manage the given channel</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>Channel not found</td>
+			</tr>
+		</table>
 
 		<h4>Remove viewer authentication</h4>
 
@@ -901,6 +936,31 @@ title=API+Testing+Channel</code></pre>
 		<h6>Response</h6>
 
 		<p>On success the 200 OK HTTP response code is returned.</p>
+
+		<p>Specific error codes returned when the action failed:</p>
+
+		<table class="table responsive">
+			<tr>
+				<th>error value</th>
+				<th>HTTP response code</th>
+				<th width="100%">Description</th>
+			</tr>
+			<tr>
+				<td>invalid_type</td>
+				<td>400 Bad Request</td>
+				<td>The URL is invalid.</td>
+			</tr>
+			<tr>
+				<td>lack_of_ownership</td>
+				<td>403 Forbidden</td>
+				<td>The api user is not allowed to manage the given channel</td>
+			</tr>
+			<tr>
+				<td>not_found</td>
+				<td>404 Not found</td>
+				<td>Channel not found</td>
+			</tr>
+		</table>
 
 		<h3>Embed restriction</h3>
 		<p>By default all IBM Cloud Video channels can be embedded anywhere across the internet. By restricting the embed URLs, you can control the viewing experience and limit distribution to your own preferred partners.</p>

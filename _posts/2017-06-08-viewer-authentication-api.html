@@ -90,7 +90,7 @@ categoryItemLabel: Read the documentation
         <table class="table responsive">
             <tr>
                 <th>HTTP response code</th>
-                <th width="100%">Error conditions</th>
+                <th width="100%">Description</th>
             </tr>
             <tr>
                 <td>201 Created</td>
@@ -108,17 +108,27 @@ categoryItemLabel: Read the documentation
             <tr>
                 <th>error value</th>
                 <th>HTTP response code</th>
-                <th width="100%">Error conditions</th>
+                <th width="100%">Description</th>
             </tr>
             <tr>
                 <td>invalid_request</td>
                 <td>400 Bad Request</td>
-                <td>One or more required parameters are missing or the user has no access to the video.</td>
+                <td>One or more required parameters are missing (secret, url).</td>
             </tr>
             <tr>
                 <td>invalid_type</td>
                 <td>400 Bad Request</td>
-                <td>The specified type is invalid or unsupported.</td>
+                <td>The URL is invalid.</td>
+            </tr>
+            <tr>
+                <td>lack_of_ownership</td>
+                <td>403 Forbidden</td>
+                <td>The api user is not allowed to manage the given channel</td>
+            </tr>
+            <tr>
+                <td>not_found</td>
+                <td>404 Not found</td>
+                <td>Channel not found</td>
             </tr>
         </table>
 
@@ -170,7 +180,7 @@ $json = json_encode($response);
 
         <p>If the authentication failed your service has to pass a "false" string as the authentication response to the player.</p>
 
-        <pre><code>http://www.ustream.tv/embed/hashlock/pass?hash="false"</code></pre>
+        <pre><code>http://www.ustream.tv/embed/hashlock/pass?hash=false</code></pre>
 
     </section>
 
@@ -193,7 +203,7 @@ $json = json_encode($response);
 
         <h6>Response</h6>
 
-        <p>Key-value pairs under a "hashlock" key.</p>
+        <p>On success, key-value pairs are returned under a "hashlock" key.</p>
 
         <p>Example:</p>
 
@@ -209,6 +219,31 @@ $json = json_encode($response);
     }
 }
         </code></pre>
+
+        <p>Specific error codes returned when the action failed:</p>
+
+        <table class="table responsive">
+            <tr>
+                <th>error value</th>
+                <th>HTTP response code</th>
+                <th width="100%">Description</th>
+            </tr>
+            <tr>
+                <td>invalid_type</td>
+                <td>400 Bad Request</td>
+                <td>The URL is invalid.</td>
+            </tr>
+            <tr>
+                <td>lack_of_ownership</td>
+                <td>403 Forbidden</td>
+                <td>The api user is not allowed to manage the given channel</td>
+            </tr>
+            <tr>
+                <td>not_found</td>
+                <td>404 Not found</td>
+                <td>Channel not found</td>
+            </tr>
+        </table>
 
         <h3>Removing viewer authentication</h3>
 
@@ -226,6 +261,31 @@ $json = json_encode($response);
         <h6>Response</h6>
 
         <p>On success the 200 OK HTTP response code is returned.</p>
+
+        <p>Specific error codes returned when the action failed:</p>
+
+        <table class="table responsive">
+            <tr>
+                <th>error value</th>
+                <th>HTTP response code</th>
+                <th width="100%">Description</th>
+            </tr>
+            <tr>
+                <td>invalid_type</td>
+                <td>400 Bad Request</td>
+                <td>The URL is invalid.</td>
+            </tr>
+            <tr>
+                <td>lack_of_ownership</td>
+                <td>403 Forbidden</td>
+                <td>The api user is not allowed to manage the given channel</td>
+            </tr>
+            <tr>
+                <td>not_found</td>
+                <td>404 Not found</td>
+                <td>Channel not found</td>
+            </tr>
+        </table>
 
     </section>
 
@@ -256,7 +316,7 @@ $expiration = time()+3600;
 $hash = md5(implode('|', $userData).'|'.$expiration.'|'.$SHARED_SECRET_KEY);
 
 // We inculde it in the response.
-$response = array_merge($userData, "hashExpire" => $expiration, "hash" => $hash);
+$response = array_merge($userData, ["hashExpire" => $expiration, "hash" => $hash]);
 
 // We encode the output into JSON format.
 $json = json_encode($response);
