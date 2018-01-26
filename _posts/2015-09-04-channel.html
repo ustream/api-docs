@@ -3872,7 +3872,9 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<pre><code>curl \
 	-X POST 'https://api.ustream.tv/videos/123456/thumbnail.json' \
 	-H 'Authorization: Bearer abcdef123456' \
-	-F 'thumbnail=@thumbnail.jpg'</code></pre>
+	-F 'thumbnail=@thumbnail.jpg;type=image/jpeg'</code></pre>
+
+		<p>You can use the <code>-v</code> or the <code>--trace thumbnail.jpg</code> options to debug your request.</p>
 
 		<h6>Response</h6>
 		<p>On success a response with HTTP status 204 No content is returned.</p>
