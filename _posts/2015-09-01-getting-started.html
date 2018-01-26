@@ -53,20 +53,14 @@ categoryItemLabel: Read the documentation
                 
                 
                 <h3>Token scopes, expiration</h3>
-                <p>By default, access tokens have a limited lifetime (they expire in a day) and can access only a limited amount of resources. In the authorization process the client can request extra permissions (scopes) from the user to overcome these limitations. These requests are shown to the user on the authorization endpoint. IBM Cloud Video currently supports the following scopes:</p>
+                <p>By default, access tokens have a limited lifetime (they expire in a day) and can access only a limited amount of resources. In the authorization process the client can request extra permissions (scopes) from the user to overcome these limitations. These requests are shown to the user on the authorization endpoint. IBM Cloud Video currently supports the following scope:</p>
                 <ul>
-                    <li><strong>Offline scope:</strong> If this scope is enabled, the access token never expires.</li>
-                    <li><strong>Broadcaster scope:</strong> If this Scope is enabled, the access token can be used for broadcasting with the IBM Cloud Video Broadcasting Library. This scope are enabled only for MAC tokens.</li>
+                    <li><strong>Broadcaster scope:</strong> If this scope is enabled, the access token can be used for broadcasting with the IBM Cloud Video Broadcasting Library. This scope can only be used with MAC tokens.</li>
                 </ul>
             </section>
-            
-            
-            
-            
+
             <section>
                 <h2>OAuth2 authorization server endpoints</h2>
-                
-                
                 
                 <h3>Authorization endpoint</h3>
                 <table class="table responsive">
@@ -122,7 +116,7 @@ categoryItemLabel: Read the documentation
                         <td><strong>scope</strong></td>
                         <td>string</td>
                         <td>OPTIONAL</td>
-                        <td>"offline" for Offline Scope, "broadcaster" for Broadcaster Scope, or space separated urlencoded list of these strings</td>
+                        <td>Currently, only use the "broadcaster" scope is supported. If the parameter is empty, no scope will be set.</td>
                     </tr>
                 </table>
                 
@@ -190,7 +184,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>expires_in</strong></td>
-                        <td>Token's current lifetime, in seconds</td>
+                        <td>The current lifetime of the token in seconds</td>
                     </tr>
                     <tr>
                         <td><strong>token_type</strong></td>
@@ -214,7 +208,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>expires_in</strong></td>
-                        <td>Token's current lifetime, in seconds. Not set if Offline Scope is enabled.</td>
+                        <td>The current lifetime of the token in seconds.</td>
                     </tr>
                     <tr>
                         <td><strong>mac_key</strong></td>
@@ -322,7 +316,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>expires_in</strong></td>
-                        <td>Token's current lifetime, in seconds. Will not be set if Offline Scope is enabled.</td>
+                        <td>The current lifetime of the token in seconds.</td>
                     </tr>
                     <tr>
                         <td><strong>token_type</strong></td>
@@ -386,7 +380,7 @@ categoryItemLabel: Read the documentation
                         <td><strong>scope</strong></td>
                         <td>string</td>
                         <td>OPTIONAL</td>
-                        <td>"offline" for Offline Scope, "broadcaster" for Broadcaster Scope, or space separated urlencoded list of these strings</td>
+                        <td>Currently, only use the "broadcaster" scope is supported. If the parameter is empty, no scope will be set.</td>
                     </tr>
                 </table>
                 
@@ -405,7 +399,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>expires_in</strong></td>
-                        <td>Token's current lifetime, in seconds. Will not be set if Offline Scope is enabled.</td>
+                        <td>The current lifetime of the token in seconds.</td>
                     </tr>
                     <tr>
                         <td><strong>token_type</strong></td>
@@ -463,7 +457,7 @@ categoryItemLabel: Read the documentation
                         <td><strong>scope</strong></td>
                         <td>string</td>
                         <td>OPTIONAL</td>
-                        <td>"offline" for Offline Scope, "broadcaster" for Broadcaster Scope, or space separated urlencoded list of these strings</td>
+                        <td>Currently, only use the "broadcaster" scope is supported. If the parameter is empty, no scope will be set.</td>
                     </tr>
                 </table>
         
@@ -482,7 +476,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>expires_in</strong></td>
-                        <td>Token's current lifetime, in seconds. Will not be set if Offline Scope is enabled.</td>
+                        <td>The current lifetime of the token in seconds.</td>
                     </tr>
                     <tr>
                         <td><strong>token_type</strong></td>
@@ -556,7 +550,7 @@ categoryItemLabel: Read the documentation
 &amp;client_id=AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDD
 &amp;redirect_uri=http://example.com/get_access_token
 &amp;device_name=My%20Device
-&amp;scope=offline+broadcaster
+&amp;scope=broadcaster
 &amp;display=touch
 &amp;state=XYZ</pre></li>
                     <li>
@@ -590,7 +584,7 @@ categoryItemLabel: Read the documentation
 &amp;client_id=AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDD
 &amp;redirect_uri=http://example.com/token
 &amp;device_name=My%20Device
-&amp;scope=offline+broadcaster
+&amp;scope=broadcaster
 &amp;display=touch
 &amp;state=XYZ
 </pre></li>
