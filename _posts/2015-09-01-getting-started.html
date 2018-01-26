@@ -639,7 +639,12 @@ https://www.ustream.tv/oauth2/authorize
             
             
                 <h3>Creating a channel (POST)</h3>
-                <pre><code>$curl -i -X POST -H "Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950" -d "title=Whatever+Test+1234" https://api.ustream.tv/users/self/channels.json</code></pre>
+                <pre><code>curl \
+    -i \
+    -X POST \
+    -H "Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950" \
+    -d "title=Whatever+Test+1234" \
+    https://api.ustream.tv/users/self/channels.json</code></pre>
                 <pre><code class="nohighlight">HTTP/1.1 201 CREATED
 Server: nginx/1.2.6
 Date: Tue, 15 Jan 2013 13:08:06 GMT
