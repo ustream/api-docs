@@ -75,6 +75,7 @@ categoryItemLabel: Read the documentation
 
         <h2>Setting up viewer authentication</h2>
 
+        <h3>Channel level</h3>
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
                 <td class="verb">PUT</td>
@@ -154,6 +155,65 @@ categoryItemLabel: Read the documentation
             </tr>
         </table>
 
+        <h3>Video level</h3>
+        <p>In the default case the videos inherit the authentication settings from channels but if it is necessary you can override these settings for a specific video.</p>
+        <h4>Set up viewer authentication for a video</h4>
+        <table class="table fill-bg-light1 table-chromeless">
+            <tr>
+                <td class="verb">PUT</td>
+                <td><a>https://api.ustream.tv/videos/VIDEO_ID/locks/hash.json</a></td>
+            </tr>
+        </table>
+
+        <h6>Parameters</h6>
+        <table class="table responsive">
+            <tr>
+                <th>parameter</th>
+                <th>type</th>
+                <th>importance</th>
+                <th width="100%">Description</th>
+            </tr>
+            <tr>
+                <td><strong>url</strong></td>
+                <td>string</td>
+                <td>REQUIRED (if disabled = false)</td>
+                <td>URL of the authentication flow entry point</td>
+            </tr>
+            <tr>
+                <td><strong>secret</strong></td>
+                <td>string</td>
+                <td>REQUIRED (if disabled = false)</td>
+                <td>Secret key</td>
+            </tr>
+            <tr>
+                <td><strong>disabled</strong></td>
+                <td>boolean</td>
+                <td>REQUIRED</td>
+                <td>Authentication disabled for this video</td>
+            </tr>
+        </table>
+
+        <p>
+            If the channel has authentication settings you can turn it off for a video with <code>disabled</code> parameter set to <code>true</code>.<br>
+            In other case if the <code>disabled</code> set to <code>false</code> you can set different authentication settings as the settings of the channel.
+            In this case who authenticated for the channel will not authenticated for the video automatically.
+        </p>
+
+        <h6>Response</h6>
+
+        <p>HTTP response code returned when the action is successful:</p>
+
+        <table class="table responsive">
+            <tr>
+                <th>HTTP response code</th>
+                <th width="100%">Description</th>
+            </tr>
+            <tr>
+                <td>204 No content</td>
+                <td>Viewer authentication has been set up on the video</td>
+            </tr>
+        </table>
+
     </section>
 
     <section>
@@ -210,7 +270,8 @@ $json = json_encode($response);
 
         <h2>Managing viewer authentication settings</h2>
 
-        <h3>Getting viewer authentication settings</h3>
+        <h3>Channel</h3>
+        <h4>Getting channel viewer authentication settings</h4>
 
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
@@ -262,7 +323,7 @@ $json = json_encode($response);
             </tr>
         </table>
 
-        <h3>Removing viewer authentication</h3>
+        <h4>Removing channel viewer authentication</h4>
 
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
@@ -299,6 +360,104 @@ $json = json_encode($response);
             </tr>
         </table>
 
+        <h3>Video</h3>
+        <h4>Getting video viewer authentication settings</h4>
+        <table class="table fill-bg-light1 table-chromeless">
+            <tr>
+                <td class="verb">GET</td>
+                <td><a>https://api.ustream.tv/videos/VIDEO_ID/locks/hash.json</a></td>
+            </tr>
+        </table>
+
+        <h6>Parameters</h6>
+
+        <p>This request has no parameters.</p>
+
+        <h6>Response</h6>
+
+        <p>On success, key-value pairs are returned under a "hashlock" key.</p>
+
+        <h6>Examples:</h6>
+
+        <p>Authentication settings overwritten for the video:</p>
+        <pre><code class="json">
+{
+    "hashlock": {
+        "url": "https://auth.yourdomain.com/video-authentication",
+        "secret": "TOP_SECRET_KEY",
+        "disable": false,
+    }
+}
+        </code></pre>
+
+        <p>Authentication disable for the video:</p>
+        <pre><code class="json">
+{
+    "hashlock": {
+        "url": null,
+        "secret": null,
+        "disable": true,
+    }
+}
+        </code></pre>
+
+        <p>Specific error codes returned when the action failed:</p>
+
+        <table class="table responsive">
+            <tr>
+                <th>error value</th>
+                <th>HTTP response code</th>
+                <th width="100%">Description</th>
+            </tr>
+            <tr>
+                <td>lack_of_ownership</td>
+                <td>403 Forbidden</td>
+                <td>The api user is not allowed to manage the given channel</td>
+            </tr>
+            <tr>
+                <td>not_found</td>
+                <td>404 Not found</td>
+                <td>Video or specific authentication settings not found</td>
+            </tr>
+        </table>
+
+
+        <h4>Removing specific video viewer authentication settings</h4>
+        <p>If you remove specific settings then video will inherit the authentication settings from the channel.</p>
+        <table class="table fill-bg-light1 table-chromeless">
+            <tr>
+                <td class="verb">DELETE</td>
+                <td><a>https://api.ustream.tv/videos/VIDEO_ID/locks/hash.json</a></td>
+            </tr>
+        </table>
+
+        <h6>Parameters</h6>
+
+        <p>This request has no parameters.</p>
+
+        <h6>Response</h6>
+
+        <p>On success the 204 No Content HTTP response code is returned.</p>
+
+        <p>Specific error codes returned when the action failed:</p>
+
+        <table class="table responsive">
+            <tr>
+                <th>error value</th>
+                <th>HTTP response code</th>
+                <th width="100%">Description</th>
+            </tr>
+            <tr>
+                <td>lack_of_ownership</td>
+                <td>403 Forbidden</td>
+                <td>The api user is not allowed to manage the given channel</td>
+            </tr>
+            <tr>
+                <td>not_found</td>
+                <td>404 Not found</td>
+                <td>Video or specific authentication settings not found</td>
+            </tr>
+        </table>
     </section>
 
     <section>
