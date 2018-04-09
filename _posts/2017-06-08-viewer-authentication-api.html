@@ -10,7 +10,23 @@ categoryItemDescription: Viewer Authentication API lets you implement custom aut
 categoryItemLabel: Read the documentation
 ---
 <article data-sidenav="sidenav">
-
+    <script>
+      (function () {
+        var lightboxCssTag = document.createElement('link');
+        lightboxCssTag.href = '/css/lightbox.css';
+        lightboxCssTag.type = 'text/css';
+        lightboxCssTag.rel = 'stylesheet';
+        var lightboxScriptTag = document.createElement('script');
+        lightboxScriptTag.src = 'https://cdn.jsdelivr.net/npm/jsonlylightbox@0.5.5/js/lightbox.min.js';
+        lightboxScriptTag.defer = true;
+        lightboxScriptTag.addEventListener('load', function () {
+          var lightbox = new Lightbox();
+          lightbox.load();
+        });
+        document.head.appendChild(lightboxCssTag);
+        document.head.appendChild(lightboxScriptTag);
+      })();
+    </script>
     <section>
 
         <h2>Introduction</h2>
@@ -38,7 +54,13 @@ categoryItemLabel: Read the documentation
             <li>Process to pass the authentication response to the IBM Cloud Video player</li>
         </ul>
 
-        <img class="no-border" src="/images/advanced-auth.png" srcset="/images/advanced-auth.png 1x, /images/advanced-auth-2x.png 2x">
+        <a class="jslghtbx-thmb" href="/images/advanced-auth-2x.png" target="_blank" data-jslghtbx="/images/advanced-auth-2x.png">
+            <img class="no-border" src="/images/advanced-auth.png" srcset="/images/advanced-auth.png 1x, /images/advanced-auth-2x.png 2x" alt="Viewer authentication API flowchart">
+        </a>
+
+        <a class="jslghtbx-thmb" href="/images/hashlock-example-2x.png" target="_blank" data-jslghtbx="/images/hashlock-example-2x.png">
+            <img class="no-border" src="/images/hashlock-example.png" srcset="/images/hashlock-example.png 1x, /images/hashlock-example-2x.png 2x" alt="Viewer authentication API example flow">
+        </a>
 
         <ol>
             <li>When the viewer clicks the log in button in the IBM Cloud Video player the entry point of your custom authentication flow is displayed in an iframe in the player.</li>
