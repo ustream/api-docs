@@ -149,8 +149,11 @@
 
 .jslghtbx-close::before {
 	content: '\e60e';
-	visibility: visible;
 	float: right;
+}
+
+.jslghtbx.jslghtbx-active .jslghtbx-close::before {
+	visibility: visible;
 }
 
 @media screen and (max-width: 1060px) {
