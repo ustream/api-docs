@@ -970,6 +970,15 @@ article table.responsive {
 	margin-bottom: 0;
 	min-width: 56rem;
 }
+article .form__control-group {
+	margin-bottom: 3rem;
+}
+article textarea {
+	margin-bottom: 5px;
+}
+article .response .definition-list.pros-cons {
+	margin-bottom: 10px;
+}
 @media screen and (max-width: 767px) {
 	.column-4.sidebar {
 		display:none;
