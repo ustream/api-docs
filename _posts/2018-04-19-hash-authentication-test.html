@@ -6,24 +6,24 @@ category: channel-api
 categoryItemType: documentation
 categoryItemIsShown: 1
 categoryItemWidth: 6
-categoryItemDescription: Test the API response for your Secret Key and Authentication Hash JSON.
-categoryItemLabel: Run an API test
+categoryItemDescription: Validate your Channel Secret Key and the JSON object with the authentication hash.
+categoryItemLabel: Run test
 ---
 <article data-sidenav="sidenav">
 	<section>
 
 		<h2>Test your authentication</h2>
 		
-		<p>On this page you can test the API response for your API Secret Key and the JSON token containing the authentication hash. Learn how to obtain these in the <a href="/channel-api/viewer-authentication-api.html">Viewer Authentication API document</a>.</p>
+		<p>On this page you can test your Channel Secret Key and the JSON object containing the authentication hash. Learn how to obtain these in the <a href="/channel-api/viewer-authentication-api.html">Viewer Authentication API document</a>.</p>
 		
 		<div class="form__control-group">
-			<label for="api-secret">Your API Secret Key</label>
-			<input type="text" id="api-secret" name="api-secret" placeholder="28e55ffa9bbd9a18dccde7f8a8d8cca">
+			<label for="channel-secret">Channel Secret Key</label>
+			<input type="text" id="channel-secret" name="channel-secret" placeholder="28e55ffa9bbd9a18dccde7f8a8d8cca">
 			<span class="message-invalid">This field is required</span>
 		</div>
 		
 		<div class="form__control-group">
-			<label for="json-hash">JSON token with authentication hash</label>
+			<label for="json-hash">JSON object with authentication hash</label>
 			<textarea class="form__textarea" id="json-hash" placeholder='[{"user":"user@example.com"},{"hash":"0253acee466a26b0327617b55851116e"},{"hashExpire":1520694398}]'></textarea>
 			<span class="message-invalid">This field is required</span>
 		</div>
@@ -31,43 +31,11 @@ categoryItemLabel: Run an API test
 		<p><button class="button">Run authentication test</button></p>
 		
 		<!-- Only show this section after button was clicked -->
-		<h3>API Response</h3>
-		<div class="response">
-			<p>Loading...</p>
-		</div>
-		
 		<div class="response">
 			<dl class="definition-list pros-cons">
-				<dd class="con">The API responded with an error:</dd>
+				<dd class="con bg"><strong>The authentication hash is not valid.</strong><br>Please check the JSON object or learn how to generate the object in the <a href="/channel-api/viewer-authentication-api.html">Viewer Authentication API document</a>.</dd>
+				<dd class="pro bg"><strong>The authentication hash is valid.</strong></dd>
 			</dl>
-			<table class="table responsive">
-				<tr>
-					<th>error value</th>
-					<th>HTTP response code</th>
-					<th width="100%">Description</th>
-				</tr>
-				<tr>
-					<td>invalid_request</td>
-					<td>400 Bad Request</td>
-					<td>One or more required parameters are missing (secret, url).</td>
-				</tr>
-			</table>
-		</div>
-		
-		<div class="response">
-			<dl class="definition-list pros-cons">
-				<dd class="pro">The API call was successful:</dd>
-			</dl>
-			<table class="table responsive">
-				<tr>
-					<th>HTTP response code</th>
-					<th width="100%">Description</th>
-				</tr>
-				<tr>
-					<td>200 OK</td>
-					<td>Success.</td>
-				</tr>
-			</table>
 		</div>
 		
 		

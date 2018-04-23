@@ -976,9 +976,16 @@ article .form__control-group {
 article textarea {
 	margin-bottom: 5px;
 }
-article .response .definition-list.pros-cons {
-	margin-bottom: 10px;
+article .response .definition-list.pros-cons .con.bg {
+	background: rgba(255, 61, 35, 0.05);
+	padding: 1.3rem 3rem;
 }
+article .response .definition-list.pros-cons .pro.bg {
+	background: rgba(163, 204, 20, 0.1);
+	padding: 1.3rem 3rem;
+}
+article .response .definition-list.pros-cons dd::before { top: 1.3rem; }
+
 @media screen and (max-width: 767px) {
 	.column-4.sidebar {
 		display:none;
