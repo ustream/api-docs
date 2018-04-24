@@ -35,6 +35,7 @@ categoryItemLabel: Run test
 			<dl class="definition-list pros-cons">
 				<dd class="con bg js-response-type js-hash-invalid" style="display:none"><strong>The authentication hash is not valid.</strong><br>Please check the JSON object or learn how to generate the object in the <a href="/channel-api/viewer-authentication-api.html">Viewer Authentication API document</a>.</dd>
 				<dd class="con bg js-response-type js-json-invalid" style="display:none"><strong>The JSON is not valid.</strong><br>Please check the format of the JSON string.</dd>
+				<dd class="con bg js-response-type js-hash-case" style="display:none"><strong>The authentication hash is valid, but it should be lower cased.</strong></dd>
 				<dd class="pro bg js-response-type js-valid" style="display:none"><strong>The authentication hash is valid.</strong></dd>
 			</dl>
 		</div>
@@ -93,14 +94,20 @@ categoryItemLabel: Run test
 			}
 			const hashData = json
 				.filter(obj => !obj.hasOwnProperty('hash'))
-		.map(obj => Object.values(obj)[0]);
+				.map(obj => Object.values(obj)[0]);
 			const inputHashObject = getHashObject(json);
 			if (inputHashObject.hashExpire) {
 				hashData.push(inputHashObject.hashExpire);
 			}
 			hashData.push(secret);
-			const generatedHash = md5(hashData.join('|'));
-			showResponse(inputHashObject.hash.toLowerCase() === generatedHash.toLowerCase() ? '.js-valid' : '.js-hash-invalid');
+			const generatedHash = md5(hashData.join('|')).toLowerCase();
+			if (
+				(inputHashObject.hash !== generatedHash) &&
+				(inputHashObject.hash.toLowerCase() === generatedHash)) {
+				showResponse('.js-hash-case');
+				return;
+			}
+			showResponse(inputHashObject.hash === generatedHash ? '.js-valid' : '.js-hash-invalid');
 		});
 	})();
 </script>
