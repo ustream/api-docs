@@ -13,33 +13,94 @@ categoryItemLabel: Run test
 	<section>
 
 		<h2>Test your authentication</h2>
-		
+
 		<p>On this page you can test your Channel Secret Key and the JSON object containing the authentication hash. Learn how to obtain these in the <a href="/channel-api/viewer-authentication-api.html">Viewer Authentication API document</a>.</p>
-		
+
 		<div class="form__control-group">
 			<label for="channel-secret">Channel Secret Key</label>
 			<input type="text" id="channel-secret" name="channel-secret" placeholder="28e55ffa9bbd9a18dccde7f8a8d8cca">
-			<span class="message-invalid">This field is required</span>
+			<span class="message-invalid" style="display:none">This field is required</span>
 		</div>
-		
+
 		<div class="form__control-group">
 			<label for="json-hash">JSON object with authentication hash</label>
 			<textarea class="form__textarea" id="json-hash" placeholder='[{"user":"user@example.com"},{"hash":"0253acee466a26b0327617b55851116e"},{"hashExpire":1520694398}]'></textarea>
-			<span class="message-invalid">This field is required</span>
+			<span class="message-invalid" style="display:none">This field is required</span>
 		</div>
-		
+
 		<p><button class="button">Run authentication test</button></p>
-		
+
 		<!-- Only show this section after button was clicked -->
-		<div class="response">
+		<div class="response js-response" style="display:none">
 			<dl class="definition-list pros-cons">
-				<dd class="con bg"><strong>The authentication hash is not valid.</strong><br>Please check the JSON object or learn how to generate the object in the <a href="/channel-api/viewer-authentication-api.html">Viewer Authentication API document</a>.</dd>
-				<dd class="pro bg"><strong>The authentication hash is valid.</strong></dd>
+				<dd class="con bg js-response-type js-hash-invalid" style="display:none"><strong>The authentication hash is not valid.</strong><br>Please check the JSON object or learn how to generate the object in the <a href="/channel-api/viewer-authentication-api.html">Viewer Authentication API document</a>.</dd>
+				<dd class="con bg js-response-type js-json-invalid" style="display:none"><strong>The JSON is not valid.</strong><br>Please check the format of the JSON string.</dd>
+				<dd class="pro bg js-response-type js-valid" style="display:none"><strong>The authentication hash is valid.</strong></dd>
 			</dl>
 		</div>
-		
-		
-		
+
+
+
 	</section>
 
 </article>
+<script src="/js/md5.min.js"></script>
+<script>
+	(() => {
+		function resetResponse() {
+			$('.message-invalid').hide();
+			$('.js-response-type').hide();
+			$('.js-response').hide();
+		}
+		function showResponse(which) {
+			$(which).show();
+			$('.js-response').show();
+		}
+		function getHashObject(json) {
+			return json.find(obj => obj.hasOwnProperty('hash'));
+		}
+		function validateFields() {
+			if (!$('#channel-secret').val().length) {
+				$('#channel-secret').next('.message-invalid').show();
+			}
+			if (!$('#json-hash').val().length) {
+				$('#json-hash').next('.message-invalid').show();
+			}
+			return $('#channel-secret').val().length && $('#json-hash').val().length;
+		}
+		$('#channel-secret, #json-hash').on('change', () => {
+			resetResponse();
+		});
+		$('button').on('click', function() {
+			resetResponse();
+			if (!validateFields()) {
+				return;
+			}
+			const secret = $('#channel-secret').val();
+			let json = $('#json-hash').val();
+			try {
+				json = JSON.parse(json);
+				if (!Array.isArray(json)) {
+					throw new Error('Not an array');
+				}
+				const hashObject = getHashObject(json);
+				if (!hashObject || !hashObject.hash) {
+					throw new Error('No hash provided');
+				}
+			} catch (e) {
+				showResponse('.js-json-invalid');
+				return;
+			}
+			const hashData = json
+				.filter(obj => !obj.hasOwnProperty('hash'))
+		.map(obj => Object.values(obj)[0]);
+			const inputHashObject = getHashObject(json);
+			if (inputHashObject.hashExpire) {
+				hashData.push(inputHashObject.hashExpire);
+			}
+			hashData.push(secret);
+			const generatedHash = md5(hashData.join('|'));
+			showResponse(inputHashObject.hash.toLowerCase() === generatedHash.toLowerCase() ? '.js-valid' : '.js-hash-invalid');
+		});
+	})();
+</script>
