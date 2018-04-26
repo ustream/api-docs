@@ -160,7 +160,16 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
                     <h6>Example</h6>
 <pre><code class="javascript">viewer.callMethod('cc', 1); //enable the closed caption with index 1</code>
 <code class="javascript">viewer.callMethod('cc', -1); //disables the closed caption</code></pre>
-                    
+
+										<h4>multi audio</h4>
+										<p>Sets the audio language of the stream. Requires one argument:</p>
+										<ul>
+											<li>an <code>audioIndex</code> key from the received audio tracks array in <code>audio</code> event</li>
+										</ul>
+
+										<h6>Example</h6>
+										<pre><code class="javascript">viewer.callMethod('audio', 1); //select audio track with index 1</code></pre>
+
                     <h3>getProperty</h3>
                     <p>Read a property of the embed player. This method is <strong>asynchronous</strong>, the data will be passed to a callback function, given as argument.<br/></p>
                     <p>Accessible properties by <code>getProperty</code>:</p>
@@ -308,7 +317,26 @@ viewer.getProperty('playingContent', function (content) {
 [
     {"index":0, "label":"English", "language":"en", "active":false}
 ]</code></pre>
-                    
+
+										<h4>multi audio</h4>
+										<p>Fired when there are multiple audio tracks.</p>
+										<p>Returns an array containing audio tracks as objects.</p>
+										<ul>
+											<li><code>index</code> (integer) unique index of the audio track</li>
+											<li><code>label</code> (string) label of the audio</li>
+											<li><code>language</code> (string) language code of the audio</li>
+											<li><code>country</code> (string) country code of the audio</li>
+											<li><code>active</code> (booelan)</li>
+										</ul>
+
+										<h6>Example</h6>
+										<pre><code class="javascript">viewer.addListener('audio', callBack);</code></pre>
+										<pre><code class="javascript">// example audio object
+[
+    { "index": 0, "label": "English (US)", "language": "en", "country": "US", "active": true },
+    { "index": 1, "label": "French", "language": "fr", "country": "00", "active": false }
+]</code></pre>
+
                     <h4>content</h4>
                     <p>Called when a the player content changes for some reason. Same data as received in <code>getProperty('content')</code></p>
                     <p>Received arguments: <code>data</code> (object)</p>
