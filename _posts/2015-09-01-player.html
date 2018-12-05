@@ -22,8 +22,13 @@ categoryItemLabel: Read the documentation
 
 				<section>
 					<h2>Usage</h2>
-					<p>Create an instance of the Embed API by providing the ID of the iframe, or the iframe DOM object itself:</p>
-					<pre><code class="html">&lt;iframe id=&quot;UstreamIframe&quot; src=&quot;//www.ustream.tv/embed/1524&quot; width=&quot;640&quot; height=&quot;480&quot; allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+					<p>First, a valid IBM Cloud Video embed iframe will be needed to use the Embed API. Log in to your managed <a href="https://video.ibm.com/" target="_blank">IBM Cloud Video</a> account as an administrator of your channel. Then navigate to the Embed Configurator page on your Dashboard by selecting the "Embed" option as seen below:</p>
+					<img class="no-border" src="/images/embed-configurator-page-location.png" alt="Embed configurator page location in channel menu">
+					<p>After selecting an option with the IBM Cloud Video Player, the Embed Configurator is displayed. The Configurator enables channel administrators to set the properties of the Player embed. When it's done, the proper iframe HTML element can be copied to the clipboard with the button which is highlighted in the next picture.</p>
+					<img class="no-border" src="/images/embed-configurator-copy-to-clipboard.png" alt="Embed configurator Copy to clipboard button location">
+					<p>The next step is to include a unique ID in this iframe element. We will use "UstreamIframe".</p>
+					<p>Create an instance of the Embed API by providing the ID of the iframe. The iframe code should look like this:</p>
+					<pre><code class="html">&lt;iframe id=&quot;UstreamIframe&quot; src=&quot;https://www.ustream.tv/embed/1524?html5ui&quot; width=&quot;640&quot; height=&quot;480&quot; allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;</code></pre>
 					<pre><code class="javascript">var viewer = UstreamEmbed('UstreamIframe');</code></pre>
 					<h3>URL parameters</h3>
 					<p>The default behaviour of the player can be modified by extending the src URL with any of the following parameters:</p>
@@ -51,7 +56,7 @@ categoryItemLabel: Read the documentation
 							</tr>
 							<tr>
 								<td>controls</td>
-								<td>Hides all UI elements.</td>
+								<td>When set to false it hides all UI elements.</td>
 								<td>true/false</td>
 								<td>true</td>
 							</tr>
