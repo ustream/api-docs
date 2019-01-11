@@ -138,7 +138,7 @@ nav .row {
 	padding-left: 1rem;
 	padding-right: 1rem;
 	/* max-width: initial; */
-	min-width: 320px; 
+	min-width: 320px;
 }
 
 nav .ibm-strip__logo {
@@ -211,6 +211,10 @@ nav #lower-header .unit-name {
 	position: relative;
 	font-weight: 700;
 	line-height: 50px;
+}
+
+nav #lower-header .unit-name span {
+	font-weight: 400;
 }
 
 nav ul {

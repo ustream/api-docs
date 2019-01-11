@@ -11,7 +11,7 @@
 	</div>
 	<div id="lower-header">
 		<div class="row">
-			<a href="{{ site.baseurl }}/" class="ibm-strip__link unit-name">IBM Cloud Video</a>
+			<a href="{{ site.baseurl }}/" class="ibm-strip__link unit-name">IBM Video Streaming <span>Developers</span></a>
 
 			<a class="nav-toggle ibm-strip__link">
 				<span></span>
@@ -20,7 +20,7 @@
 			<ul class="nav">
 				{% for c in site.data.categories %}
 				<li {% if c[0] == page.category %} class="selected" {% endif %}>
-					<a href="{{ site.baseurl }}/{{ c[0] }}/" class="ibm-strip__link">{{ c[1].name }}</i></a></li>	
+					<a href="{{ site.baseurl }}/{{ c[0] }}/" class="ibm-strip__link">{{ c[1].name }}</i></a></li>
 				{% endfor %}
 				<li><a href="https://video.ibm.com/" class="ibm-strip__link">Back to IBM Cloud Video</a></li>
 			</ul>
