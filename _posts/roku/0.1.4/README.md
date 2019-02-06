@@ -1,4 +1,4 @@
-# Ustream Player SDK for Roku v0.1.4
+# IBM Video Streaming Player SDK for Roku v0.1.4
 
 ## Introduction
 

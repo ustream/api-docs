@@ -1,11 +1,11 @@
-# Ustream Player SDK for Android v0.6
+# IBM Video Streaming Player SDK for Android v0.6
 
 ## Introduction
 
-The Ustream Player SDK lets you play Ustream live and recorded videos in your native applications. Using the native SDK 
+The IBM Video Streaming Player SDK lets you play IBM Video Streaming live and recorded videos in your native applications. Using the native SDK 
 gives you full control over the Player, including a customizable native user interface, callbacks on status changes, 
 and many more.
-This document describes the basic steps to make a mobile app using the Ustream Player SDK for Android.
+This document describes the basic steps to make a mobile app using the IBM Video Streaming Player SDK for Android.
 
 ## Before you begin
 
@@ -13,7 +13,7 @@ This document describes the basic steps to make a mobile app using the Ustream P
 
 Before going into details, please note that document assumes the following:
 *   You have a registered user at [ustream.tv](http://www.ustream.tv/).
-*   Your Ustream user is entitled to use the Ustream Player SDK specifically. Log-in to [Dashboard], 
+*   Your IBM Video Streaming user is entitled to use the IBM Video Streaming Player SDK specifically. Log-in to [Dashboard], 
 and check ["API/SDK access"] under the "Account" section. 
 If you have questions, please [contact us](https://video.ibm.com/enterprise-video/contact).
 
@@ -36,7 +36,7 @@ The supported minimum API level is 16 (Android version 4.1)
 
 ### Step 1: Create credentials for your mobile app
 
-The SDK requires the use of a **Ustream Player SDK key**, which is validated whenever the SDK communicates with Ustream 
+The SDK requires the use of a **Ustream Player SDK key**, which is validated whenever the SDK communicates with IBM Video Streaming 
 streaming servers. The sample application contains a sample SDK key which you can use for testing. The sample SDK key 
 can only be used to play content on the test channel(s) also used in the sample app.
 
@@ -45,7 +45,7 @@ to register the **Key Hash** of every app in which you will integrate the _Ustre
 Every registered application will have its own _Ustream Player SDK key_. Although there is a provided SDK key for the sample 
 app's sample content, you still need to register your **Key Hash** at Ustream. This will ensure that you can build the sample 
 project using your own certificates.
-Every time you initialize an instance of the Ustream Player SDK you have to use your **Ustream Player SDK key**.
+Every time you initialize an instance of the IBM Video Streaming Player SDK you have to use your **Ustream Player SDK key**.
 
 #### Generate your Key Hash
 
@@ -95,7 +95,7 @@ under the "Account" menu.
 
 * Select Android in the "Platform" drop-down. Enter your **Key Hash** and **Google Play Package Name** in the respective fields.
 
-* After you completed all fields, hit "Save" to generate your Ustream Player SDK for Android credentials. Make sure that 
+* After you completed all fields, hit "Save" to generate your IBM Video Streaming Player SDK for Android credentials. Make sure that 
 the "Key Hash" and "Google Play Package Name" are introduced correctly, as you will have no possibility to update them later. 
 If you accidentally saved wrong values, start the process from the beginning and create new credentials with the correct 
 values.
@@ -109,12 +109,12 @@ Click to the "Android Player SDK" link near the "Download" to download the zip a
 
 ### Step 3: Explore the SDK package
 
-The provided zip archive contains the sample Android application project for Ustream Player SDK for Android. The sample 
+The provided zip archive contains the sample Android application project for IBM Video Streaming Player SDK for Android. The sample 
 application uses the Player SDK as an AAR file found in the `/libs` folder in the archive.
 
 ### Step 4: Create (or open) your project
 
-Open the project that you would like to integrate the Ustream Player SDK in.
+Open the project that you would like to integrate the IBM Video Streaming Player SDK in.
 
 ### Step 5: Add the SDK to the project
 
@@ -375,7 +375,7 @@ public interface ErrorListener {
     void onHashLock();
     
     /**
-    * The provided Ustream Player SDK key is invalid or this key is not authorized to
+    * The provided IBM Video Streaming Player SDK key is invalid or this key is not authorized to
     * access this content.
     */
     void onInvalidApiKey();
@@ -601,7 +601,7 @@ void onHashLock();
 void onRestricted();
 
 /**
-* The provided Ustream Player SDK key is invalid or this key is not authorized to access this content.
+* The provided IBM Video Streaming Player SDK key is invalid or this key is not authorized to access this content.
 */
 void onInvalidApiKey();
 
@@ -644,7 +644,7 @@ try again by calling: `ustreamPlayer.play();`
 
 Other errors:
 
-*   `onInvalidApiKey()` – The provided Ustream Player SDK key is not authorized to play this content. You need to create a 
+*   `onInvalidApiKey()` – The provided IBM Video Streaming Player SDK key is not authorized to play this content. You need to create a 
 new Player SDK instance to provide the correct key. The key needs to be set upon init: 
 `ustreamPlayer.initWithContent(USTREAM_PLAYER_SDK_KEY, contentDescriptor);`
 

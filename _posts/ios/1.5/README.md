@@ -1,8 +1,8 @@
-# Ustream Player SDK for iOS v1.5
+# IBM Video Streaming Player SDK for iOS v1.5
 
 ## Introduction
 
-The Ustream Player SDK lets you play Ustream live and recorded videos in your native applications. Using the native SDK gives you full control over the Player, including a customizable native user interface, callbacks on status changes, and many more.
+The IBM Video Streaming Player SDK lets you play IBM Video Streaming live and recorded videos in your native applications. Using the native SDK gives you full control over the Player, including a customizable native user interface, callbacks on status changes, and many more.
 
 This document describes the basic steps to make a mobile app using the Player SDK for iOS.
 
@@ -12,7 +12,7 @@ This document describes the basic steps to make a mobile app using the Player SD
 
 Before going into details, please note that document assumes the following:
 *   You have a registered user at [ustream.tv](http://www.ustream.tv/).
-*   Your Ustream user is entitled to use the Ustream Player SDK specifically. Log-in to [Dashboard],
+*   Your IBM Video Streaming user is entitled to use the IBM Video Streaming Player SDK specifically. Log-in to [Dashboard],
 and check ["API/SDK access"] under the "Integrations & Apps" section.
 
 If you have questions, please [contact us](https://video.ibm.com/enterprise-video/contact).
@@ -63,14 +63,14 @@ Drag iOSPlayerSDK.framework into the Embedded Binaries section of your target.
 
 #### Add new build phase
 
-Since Apple does not strip the Simulator slice from embedded frameworks, we have to do it before submitting the application. This step is implemented in the sample application as the final Build Phase: _Strip embedded frameworks_. Please add a similar build step to your application, using the script invoked from the reference solution: `strip-dynamic-frameworks.sh`. It's a simple shell script which extracts the valid architectures from the FAT binary in the Ustream Player SDK.
+Since Apple does not strip the Simulator slice from embedded frameworks, we have to do it before submitting the application. This step is implemented in the sample application as the final Build Phase: _Strip embedded frameworks_. Please add a similar build step to your application, using the script invoked from the reference solution: `strip-dynamic-frameworks.sh`. It's a simple shell script which extracts the valid architectures from the FAT binary in the IBM Video Streaming Player SDK.
 
 Copy the `strip-dynamic-frameworks.sh` file into your project's source folder. Add a new Run Script Phase in your target's Build Phases. This new build phase should come after the Embed Frameworks phase. Copy the following to the shell text area:
 `"${SRCROOT}/strip-dynamic-frameworks.sh"`
 
 ### Step 6: Register your app at Ustream
 
-The SDK requires the use of a Ustream Player SDK key, which is validated whenever the SDK communicates with Ustream streaming
+The SDK requires the use of a IBM Video Streaming Player SDK key, which is validated whenever the SDK communicates with IBM Video Streaming streaming
 servers. The sample application contains a sample SDK key which you can use for testing. The sample SDK key can only be
 used to play content on the test channel(s) also used in the sample app.
 
@@ -78,13 +78,13 @@ Note: Although there is a provided SDK key for the sample app's sample content, 
 
 Before you can start using the Player SDK for playing content from your own channel(s), you will need to:
 
-*   Get a valid **Ustream Player SDK key** owned by the Ustream user that owns the content you would like to play.
+*   Get a valid **Ustream Player SDK key** owned by the IBM Video Streaming user that owns the content you would like to play.
 
-*   Register the **bundle identifier(s)** – of every app in which you will integrate the Ustream Player SDK in – at Ustream.
+*   Register the **bundle identifier(s)** – of every app in which you will integrate the IBM Video Streaming Player SDK in – at Ustream.
 
 The application identifier is typically structured as com.company.project.
 
-Before you can create and use an instance of the player you have to configure the lib with your Ustream Player SDK key:
+Before you can create and use an instance of the player you have to configure the lib with your IBM Video Streaming Player SDK key:
 
 ```objc
 [USUstreamPlayer configureWithApiKey:<#place your SDK key here#>];
@@ -124,7 +124,7 @@ Ustream content owners can protect their content using various "locks" that impl
 
 #### Generic callbacks
 
-`USUstreamPlayer` reports its state changes using the `USPlayerDelegate` protocol. It may also require user interaction in case the servers indicate the Player about content restrictions (so-called "locks") set up by the Ustream user. In order to catch these callbacks, you have to set a handler conforming to protocol `USPlayerDelegate` as a delegate of your player instance.
+`USUstreamPlayer` reports its state changes using the `USPlayerDelegate` protocol. It may also require user interaction in case the servers indicate the Player about content restrictions (so-called "locks") set up by the IBM Video Streaming user. In order to catch these callbacks, you have to set a handler conforming to protocol `USPlayerDelegate` as a delegate of your player instance.
 
 For example:
 ```objc
