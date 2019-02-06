@@ -6,7 +6,7 @@ category: channel-api
 categoryItemType: documentation
 categoryItemIsShown: 1
 categoryItemWidth: 6
-categoryItemDescription: Viewer Authentication API lets you implement custom authentication for authenticating viewers of live and recorded videos served by IBM Cloud Video.
+categoryItemDescription: Viewer Authentication API lets you implement custom authentication for authenticating viewers of live and recorded videos served by IBM Video Streaming.
 categoryItemLabel: Read the documentation
 ---
 <article data-sidenav="sidenav">
@@ -31,15 +31,15 @@ categoryItemLabel: Read the documentation
 
         <h2>Introduction</h2>
 
-        <p>Viewer Authentication API lets you implement custom authentication for authenticating viewers of live and recorded videos served by IBM Cloud Video.</p>
+        <p>Viewer Authentication API lets you implement custom authentication for authenticating viewers of live and recorded videos served by IBM Video Streaming.</p>
 
         <p>You need the following before you start implementing viewer authentication:</p>
 
         <ul>
-            <li><strong>Channel</strong>, which you can create on the <a href="https://www.ustream.tv/dashboard/manage-show" target="_blank">Your channels page</a> of your IBM Cloud Video dashboard</li>
-            <li><strong>Client id</strong>, which you can obtain on the <a href="https://www.ustream.tv/dashboard/integrations/api-access" target="_blank">API/SDK access page</a> of your IBM Cloud Video dashboard</li>
-            <li><strong>Token</strong>, which you can obtain through the IBM Cloud Video <a href="http://developers.ustream.tv/channel-api/getting-started.html#oauth2-authorization-server-endpoints_6" target="_blank">authorization endpoint</a></li>
-            <li><strong>Secret key</strong>, a string that will be used to create the hash in the authentication response your service passes to the IBM Cloud Video player. This secret key needs to be provided by you.</li>
+            <li><strong>Channel</strong>, which you can create on the <a href="https://www.ustream.tv/dashboard/manage-show" target="_blank">Your channels page</a> of your IBM Video Streaming dashboard</li>
+            <li><strong>Client id</strong>, which you can obtain on the <a href="https://www.ustream.tv/dashboard/integrations/api-access" target="_blank">API/SDK access page</a> of your IBM Video Streaming dashboard</li>
+            <li><strong>Token</strong>, which you can obtain through the IBM Video Streaming <a href="http://developers.ustream.tv/channel-api/getting-started.html#oauth2-authorization-server-endpoints_6" target="_blank">authorization endpoint</a></li>
+            <li><strong>Secret key</strong>, a string that will be used to create the hash in the authentication response your service passes to the IBM Video Streaming player. This secret key needs to be provided by you.</li>
         </ul>
 
     </section>
@@ -51,7 +51,7 @@ categoryItemLabel: Read the documentation
         <ul>
             <li>Screens your viewers need to go through to authenticate</li>
             <li>Backend code that validates these authentication requests</li>
-            <li>Process to pass the authentication response to the IBM Cloud Video player</li>
+            <li>Process to pass the authentication response to the IBM Video Streaming player</li>
         </ul>
 
         <a class="jslghtbx-thmb" href="/images/advanced-auth-2x.png" target="_blank" data-jslghtbx="/images/advanced-auth-2x.png">
@@ -63,10 +63,10 @@ categoryItemLabel: Read the documentation
         </a>
 
         <ol>
-            <li>When the viewer clicks the log in button in the IBM Cloud Video player the entry point of your custom authentication flow is displayed in an iframe in the player.</li>
+            <li>When the viewer clicks the log in button in the IBM Video Streaming player the entry point of your custom authentication flow is displayed in an iframe in the player.</li>
             <li>When the authentication is completed your service passes an authentication response to the player.</li>
-            <li>If the authentication was successful, the player passes the authentication response to IBM Cloud Video infrastructure in a validation request.</li>
-            <li>The IBM Cloud Video infrastructure validates the authentication response received from your service and passes a validation response to the player. If the response is positive, the viewer can start watching the video.</li>
+            <li>If the authentication was successful, the player passes the authentication response to IBM Video Streaming infrastructure in a validation request.</li>
+            <li>The IBM Video Streaming infrastructure validates the authentication response received from your service and passes a validation response to the player. If the response is positive, the viewer can start watching the video.</li>
         </ol>
 
     </section>
@@ -244,7 +244,7 @@ $json = json_encode($response);
 
         <div class="panel">The order of the parameters should match their order in the array when creating the hash.</div>
 
-        <p>To pass the response to the player your service has to redirect the page to the IBM Cloud Video return URL with passing the response in JSON format as a get parameter. You can test the API response at the <a href="/channel-api/hash-authentication-test.html">Hash Authentication Test</a> page.</p>
+        <p>To pass the response to the player your service has to redirect the page to the IBM Video Streaming return URL with passing the response in JSON format as a get parameter. You can test the API response at the <a href="/channel-api/hash-authentication-test.html">Hash Authentication Test</a> page.</p>
 
         <pre><code>https://www.ustream.tv/embed/hashlock/pass?hash=RESPONSE_IN_JSON_FORMAT</code></pre>
 
@@ -438,7 +438,7 @@ $json = json_encode($response);
 
         <h2>Hash lifetime and expiration</h2>
 
-        <p>Once is successfully validated by IBM Cloud Video, the player will store the hash in the end user’s browser. This lets the viewer watch the video when returning to the page without having authenticate again.</p>
+        <p>Once is successfully validated by IBM Video Streaming, the player will store the hash in the end user’s browser. This lets the viewer watch the video when returning to the page without having authenticate again.</p>
 
         <p>You can specify an expiration date for the hash. When the viewer returns to the page after the expiration date, she has to authenticate again.</p>
 
@@ -471,7 +471,7 @@ $response = array_chunk(
 $json = json_encode($response);
         </code></pre>
 
-        <p>When validating the authentication response the IBM Cloud Video infrastructure checks</p>
+        <p>When validating the authentication response the IBM Video Streaming infrastructure checks</p>
         <ul>
             <li>If the expiration is a past date</li>
             <li>If the expiration was hashed properly</li>
