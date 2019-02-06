@@ -15,7 +15,7 @@ permalink: /player-sdk/android/0.3.0/
 
 	<section>
 		<h2>Introduction</h2>
-		<p>The IBM Cloud Video Player SDK lets you play IBM Cloud Video live and recorded videos in your native applications.
+		<p>The IBM Video Streaming Player SDK lets you play IBM Video Streaming live and recorded videos in your native applications.
 		Using the native SDK gives you full control over the Player, including a customizable native user interface, callbacks on status changes, and many more.
 		(Note: if you need none of the above, you may use the HTML-based <a href="https://github.com/ustream/embedapi/blob/master/README.md">Player API</a> instead)</p>
 		<p>This document describes the basic steps to make a mobile app using the Player SDK for Android.</p>
@@ -28,7 +28,7 @@ permalink: /player-sdk/android/0.3.0/
 		<p>Before going into details, please note that document assumes the following:</p>
 		<ul>
 			<li>you have a registered user at <a href="http://ustream.tv">ustream.tv</a></li>
-			<li>your IBM Cloud Video user is entitled to use the Player SDK specifically (if you have questions, please <a href="https://video.ibm.com/enterprise-video/contact">contact us</a>)</li>
+			<li>your IBM Video Streaming user is entitled to use the Player SDK specifically (if you have questions, please <a href="https://video.ibm.com/enterprise-video/contact">contact us</a>)</li>
 		</ul>
 		<h3 id="step0-devreq">Development prerequisites</h3>
 		<h4>IDE</h4>
@@ -69,14 +69,14 @@ dependencies {
 	</section>
 
 	<section>
-		<h2>Step 4: Register your app at IBM Cloud Video</h2>
-		<p>The SDK requires the use of a <em>IBM Cloud Video API key</em>, which is validated whenever the SDK communicates with IBM Cloud Video streaming servers.
+		<h2>Step 4: Register your app at IBM Video Streaming</h2>
+		<p>The SDK requires the use of a <em>IBM Video Streaming API key</em>, which is validated whenever the SDK communicates with IBM Video Streaming streaming servers.
 		The sample application contains a sample API key which you can use for testing. The sample API key can only be used to play content on the test channel(s) also used in the sample app.</p>
 		<p>Note: Although there is a provided API key for the sample app's sample content, you still need to register your identifier at Ustream. This will ensure that you can build the sample project using your own certificates.</p>
 		<p>Before you can start using the Player SDK for playing content from your own channel(s), you will need to:</p>
 		<ul>
-			<li>get a valid <strong>IBM Cloud Video API key</strong> owned by the IBM Cloud Video user that owns the content you would like to play</li>
-			<li>register the <strong>application identifier(s)</strong> - of every app in which you will integrate the Player SDK in - at IBM Cloud Video</li>
+			<li>get a valid <strong>IBM Video Streaming API key</strong> owned by the IBM Video Streaming user that owns the content you would like to play</li>
+			<li>register the <strong>application identifier(s)</strong> - of every app in which you will integrate the Player SDK in - at IBM Video Streaming</li>
 		</ul>
 		<p>The application identifier uses:</p>
 		<ul>
@@ -87,7 +87,7 @@ dependencies {
 		<ul>
 			<li>Obtain your certificate's public key</li>
 			<li>Encode your keys using SHA1, then Base64 algorithm</li>
-			<li>Send the <strong>encoded string</strong> and your applcation's <strong>package name</strong> to IBM Cloud Video</li>
+			<li>Send the <strong>encoded string</strong> and your applcation's <strong>package name</strong> to IBM Video Streaming</li>
 		</ul>
 
 		<h4>Obtaining your identifiers</h4>
@@ -106,7 +106,7 @@ String appIdentifier = Base64.encodeToString(messageDigest.digest(signature), Ba
 		<p>Lets call the generated file <em>example-debug.key</em>. Now you can encode it using the following command:</p><code>openssl dgst -sha1 -binary example-debug.key | base64</code>
 		<p><br>Generate the indentifier for your release certificate's public key, and every other debug certificates that your developers will use.</p>
 
-		<p>Every time you initialise an instance of the Player Library you have to configure it with your <strong>IBM Cloud Video API key</strong>. More details on this in the next chapter.</p>
+		<p>Every time you initialise an instance of the Player Library you have to configure it with your <strong>IBM Video Streaming API key</strong>. More details on this in the next chapter.</p>
 	</section>
 
 	<section>
@@ -182,7 +182,7 @@ protected void onPause() {
 	<section>
 
 		<h2>Step 7: Handle Player callbacks</h2>
-		<p><strong>Note:</strong> IBM Cloud Video Android player library version: <strong>0.3.0</strong> introduced user facing API changes around the callback system. See the current state of the API below.</p>
+		<p><strong>Note:</strong> IBM Video Streaming Android player library version: <strong>0.3.0</strong> introduced user facing API changes around the callback system. See the current state of the API below.</p>
 		<h3 id="step7-stateflow">State flow diagram</h3>
 		<p>This diagram represents the state flow of the library, the nodes are the states reported by the player, the named edges are events that can be sent to the player. There is a decision in the flow that happens automatically based on the content selected (live or recorded).</p>
 		<img src="/images/android-state-flow-diagram-0.3.png">
