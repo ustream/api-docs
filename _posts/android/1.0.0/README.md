@@ -38,16 +38,16 @@ The supported minimum API level is 16 (Android version 4.1)
 
 ### Step 1: Create credentials for your mobile app
 
-The SDK requires the use of a **Ustream Player SDK key**, which is validated whenever the SDK communicates with IBM Video Streaming 
+The SDK requires the use of a **IBM Video Streaming Player SDK key**, which is validated whenever the SDK communicates with IBM Video Streaming 
 streaming servers. The sample application contains a sample SDK key which you can use for testing. The sample SDK key 
 can only be used to play content on the test channel(s) also used in the sample app.
 
-Before you can download and start using the _Ustream Player SDK for Android_ for playing content from your own channel(s), you will need 
-to register the **Key Hash** of every app in which you will integrate the _Ustream Player SDK for Android_ at Ustream. 
-Every registered application will have its own _Ustream Player SDK key_. Although there is a provided SDK key for the sample 
-app's sample content, you still need to register your **Key Hash** at Ustream. This will ensure that you can build the sample 
+Before you can download and start using the _IBM Video Streaming Player SDK for Android_ for playing content from your own channel(s), you will need 
+to register the **Key Hash** of every app in which you will integrate the _IBM Video Streaming Player SDK for Android_ at IBM Video Streaming. 
+Every registered application will have its own _IBM Video Streaming Player SDK key_. Although there is a provided SDK key for the sample 
+app's sample content, you still need to register your **Key Hash** at IBM Video Streaming. This will ensure that you can build the sample 
 project using your own certificates.
-Every time you create an instance of the `UstreamPlayerFactory` you have to use your **Ustream Player SDK key**.
+Every time you create an instance of the `UstreamPlayerFactory` you have to use your **IBM Video Streaming Player SDK key**.
 
 #### Generate your Key Hash
 
@@ -109,7 +109,7 @@ but beware as this will break any existing applications relying on those credent
 ### Step 2: Download SDK package
 
 After hitting "Save" in the "Create new credentials" step, you will see your credentials listed with the newly generated
-**Ustream Player SDK key**.
+**IBM Video Streaming Player SDK key**.
 
 Click to the "Android Player SDK" link near the "Download" to download the zip archive containing the SDK package.
 
@@ -163,7 +163,7 @@ Create a `UstreamPlayerFactory` in your Activity or Fragment with the Activity's
 private final UstreamPlayerFactory ustreamPlayerFactory = new UstreamPlayerFactory(USTREAM_PLAYER_SDK_KEY, context);
 ```
 This factory can be used to create or retrieve IBM Video Streaming Player instances.
-Ustream Players created for a specific `playerId` will be retained across configuration changes (like orientation change).
+IBM Video Streaming Players created for a specific `playerId` will be retained across configuration changes (like orientation change).
 Requesting a player with the same `playerId` will create a new UstreamPlayer interface, but that interface will 
 belong to the same player instance. The previous player for the same id must be detached before attaching a new one.
 
@@ -187,7 +187,7 @@ After the `ustreamPlayer` is created, initialize it with a content. This will mo
 Activity's `onCreate()` (Fragment's `onCreateView()`). A player instance can be initialized more than once with different 
 content, but `connect()` or `play()` has to be called in order to reconnect to the servers. The `connect()` method is 
 optional (a `play()` or `pause()` call will also handle it implicitly) though the player will respond to `play()` calls 
-more quickly because it is already connected to Ustream's servers.
+more quickly because it is already connected to IBM Video Streaming's servers.
 
 First time initialization:
 
@@ -214,9 +214,9 @@ if (!ustreamPlayer.isInitialized()) {
 }
 ```
 
-Remember to define a string constant `USTREAM_PLAYER_SDK_KEY` with your actual **Ustream Player SDK key**.
+Remember to define a string constant `USTREAM_PLAYER_SDK_KEY` with your actual **IBM Video Streaming Player SDK key**.
 
-Ustream Player SDK version 1.0.0 introduced changes in the user facing interface, see the [CHANGELOG.md] for details.
+IBM Video Streaming Player SDK version 1.0.0 introduced changes in the user facing interface, see the [CHANGELOG.md] for details.
 
 #### Setting your listeners
 
@@ -332,7 +332,7 @@ public interface PlayerListener {
     /**
     * The requested live channel is not broadcasting, or the stream is not
     * available in a playable format.
-    * Note: in this state, the player is still connected to Ustream's servers,
+    * Note: in this state, the player is still connected to IBM Video Streaming's servers,
     * waiting for the stream to become online.
     */
     void onWaitingForContent();
@@ -595,7 +595,7 @@ For more details see javadoc in `MediaTrackChangeListener` and `UstreamPlayer` c
 
 #### Interactive callbacks
 
-The `onStopped()` callback in `PlayerListener` indicate a full stop and disconnect from Ustream's servers. If the disconnect 
+The `onStopped()` callback in `PlayerListener` indicate a full stop and disconnect from IBM Video Streaming's servers. If the disconnect 
 happened due to an error, the appropriate callback of `ErrorListener` indicates the reason.
 Some of these errors can be resolved by you or the user of your application.
 

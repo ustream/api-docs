@@ -73,7 +73,7 @@ dependencies {
 		<h2>Step 4: Register your app at IBM Video Streaming</h2>
 		<p>The SDK requires the use of a <em>IBM Video Streaming API key</em>, which is validated whenever the SDK communicates with IBM Video Streaming streaming servers.
 		The sample application contains a sample API key which you can use for testing. The sample API key can only be used to play content on the test channel(s) also used in the sample app.</p>
-		<p>Note: Although there is a provided API key for the sample app's sample content, you still need to register your identifier at Ustream. This will ensure that you can build the sample project using your own certificates.</p>
+		<p>Note: Although there is a provided API key for the sample app's sample content, you still need to register your identifier at IBM Video Streaming. This will ensure that you can build the sample project using your own certificates.</p>
 		<p>Before you can start using the Player SDK for playing content from your own channel(s), you will need to:</p>
 		<ul>
 			<li>get a valid <strong>IBM Video Streaming API key</strong> owned by the IBM Video Streaming user that owns the content you would like to play</li>
@@ -134,7 +134,7 @@ String appIdentifier = Base64.encodeToString(messageDigest.digest(signature), Ba
 
 		<h2>Step 6: Play live or recorded content</h2>
 		<p>After the ustreamPlayer is created, initialize it with a content. This will most likely be in your Activity's onCreate()
-		(Fragment's onCreateView()). A player instance can be initialized more than once with different content, but connect() or play() has to be called in order to reconnect to the servers. The connect() method is optional (a play() or pause() call will also handle it implicitly) though the player will respond to play() calls more quickly because it is already connected to Ustream's servers.</p>
+		(Fragment's onCreateView()). A player instance can be initialized more than once with different content, but connect() or play() has to be called in order to reconnect to the servers. The connect() method is optional (a play() or pause() call will also handle it implicitly) though the player will respond to play() calls more quickly because it is already connected to IBM Video Streaming's servers.</p>
 		<p>First time initialization:</p>
 		<pre><code class="java">// To play videos, use ContentType.RECORDED and the video id
 ContentDescriptor contentDescriptor = new ContentDescriptor(ContentType.RECORDED, 54321);</code></pre>
@@ -232,7 +232,7 @@ public interface PlayerListener {
 	/**
 	* The requested live channel is not broadcasting, or the stream is not
 	* available in a playable format.
-	* Note: in this state, the player is still connected to Ustream's servers,
+	* Note: in this state, the player is still connected to IBM Video Streaming's servers,
 	* waiting for the stream to become online.
 	*/
 	void onWaitingForContent();
@@ -433,7 +433,7 @@ public interface MetaDataListener {
 }</code></pre>
 
 		<h3 id="step7-interactive">Interactive callbacks</h3>
-		<p>There are certain callbacks in PlayerListener that indicate a disconnect from Ustream's servers. These callback methods represent the reason for the disconnect. Some of these errors can be resolved by you or the user of your application.</p>
+		<p>There are certain callbacks in PlayerListener that indicate a disconnect from IBM Video Streaming's servers. These callback methods represent the reason for the disconnect. Some of these errors can be resolved by you or the user of your application.</p>
 		<p>These callbacks are found in <code class="java">tv.ustream.player.api.ErrorListener</code>:</p>
 		<pre><code class="java">/**
 * The requested recorded video is not available in a playable format.

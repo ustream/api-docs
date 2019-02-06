@@ -94,7 +94,7 @@ The following callbacks notify the app that playback has stopped due to a server
 
 | **Callback**                                   | **Reason**                                                                                                       | **Value to return** |
 |------------------------------------------------|------------------------------------------------------------------------------------------------------------------|---------------------|
-| **playerSdkLockHandle(playerSdkModule,error)** | API key verification error, please [double check](#step-3-register-your-app-at-ibm-cloud-video_6) your API key and application id registered at Ustream. | error code as int   |
+| **playerSdkLockHandle(playerSdkModule,error)** | API key verification error, please [double check](#step-3-register-your-app-at-ibm-cloud-video_6) your API key and application id registered at IBM Video Streaming. | error code as int   |
 | **geoLockHandle(geoLockModule,error)**         | Content is restricted and unavailable at the viewer’s geographical location.                                     | error code as Int   |
 | **ipLockHandle(ipLockModule,error)**           | Content is restricted and unavailable from the viewer’s IP address.                                              | error code as Int   |
 

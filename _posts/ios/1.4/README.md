@@ -69,19 +69,19 @@ Since Apple does not strip the Simulator slice from embedded frameworks, we have
 Copy the `strip-dynamic-frameworks.sh` file into your project's source folder. Add a new Run Script Phase in your target's Build Phases. This new build phase should come after the Embed Frameworks phase. Copy the following to the shell text area:
 `"${SRCROOT}/strip-dynamic-frameworks.sh"`
 
-### Step 6: Register your app at Ustream
+### Step 6: Register your app at IBM Video Streaming
 
 The SDK requires the use of a IBM Video Streaming Player SDK key, which is validated whenever the SDK communicates with IBM Video Streaming streaming
 servers. The sample application contains a sample SDK key which you can use for testing. The sample SDK key can only be
 used to play content on the test channel(s) also used in the sample app.
 
-Note: Although there is a provided SDK key for the sample app's sample content, you still need to register your identifier at Ustream. This will ensure that you can build the sample project using your own certificates.
+Note: Although there is a provided SDK key for the sample app's sample content, you still need to register your identifier at IBM Video Streaming. This will ensure that you can build the sample project using your own certificates.
 
 Before you can start using the Player SDK for playing content from your own channel(s), you will need to:
 
-*   Get a valid **Ustream Player SDK key** owned by the IBM Video Streaming user that owns the content you would like to play.
+*   Get a valid **IBM Video Streaming Player SDK key** owned by the IBM Video Streaming user that owns the content you would like to play.
 
-*   Register the **bundle identifier(s)** – of every app in which you will integrate the IBM Video Streaming Player SDK in – at Ustream.
+*   Register the **bundle identifier(s)** – of every app in which you will integrate the IBM Video Streaming Player SDK in – at IBM Video Streaming.
 
 The application identifier is typically structured as com.company.project.
 
@@ -107,7 +107,7 @@ self.ustreamPlayer.view.frame = self.view.bounds;
 
 ### Step 8: Play live or recorded content
 
-By now you have configured your player and it is ready to play live and recorded video content via Ustream.
+By now you have configured your player and it is ready to play live and recorded video content via IBM Video Streaming.
 
 `USUstreamPlayer` can play different kinds of media:
 - Live streams
@@ -121,7 +121,7 @@ USMediaDescriptor *mediaDescriptor = [USMediaDescriptor liveDescriptorWithID:<#p
 
 ### Step 9: Handle Player callbacks
 
-Ustream content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.
+IBM Video Streaming content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.
 
 #### Generic callbacks
 
@@ -186,7 +186,7 @@ Remarks:
 
 ## Localization
 
-Ustream provides localizations for all strings used in the Player SDK in the following languages:
+IBM Video Streaming provides localizations for all strings used in the Player SDK in the following languages:
 - English
 - Spanish
 - Japanese

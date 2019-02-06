@@ -6,7 +6,7 @@ The basic workflow of a third-party Client is the following:
 
 1. **Authorize the user:** Obtain and validate the user's credentials (username and password). The client must never store these credentials, only pass it to the server for authorization.
 2. **Obtain an access token:** If the user's credentials were entered correctly, the third-party client can obtain an access token. Once this token is received, it can be used to access the user's resources until the token expires or the user revokes it on the IBM Video Streaming website.
-3. **Access the user's resources:** The client can use Ustream's REST API or the IBM Video Streaming Broadcasting Library to access the user's resources (data) or to broadcast to the user's channel. The client authorizes itself using the access token, with methods described by the OAuth 2.0 Protocol Draft.
+3. **Access the user's resources:** The client can use IBM Video Streaming's REST API or the IBM Video Streaming Broadcasting Library to access the user's resources (data) or to broadcast to the user's channel. The client authorizes itself using the access token, with methods described by the OAuth 2.0 Protocol Draft.
 
 ### Authorization Flows
 The OAuth 2.0 protocol provides several flows (workflows) for the first two phases. It depends on the type and architecture of the client which flow is the most suitable. The following flows are supported:
