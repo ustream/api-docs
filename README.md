@@ -1,4 +1,4 @@
-IBM Cloud Video Enterprise Channel API Documentation
+IBM Video Streaming Enterprise Channel API Documentation
 =======
 
 https://developers.video.ibm.com/
