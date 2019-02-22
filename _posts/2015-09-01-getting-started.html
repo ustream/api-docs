@@ -6,13 +6,13 @@ category: channel-api
 categoryItemType: documentation
 categoryItemIsShown: 1
 categoryItemWidth: 12
-categoryItemDescription: IBM Cloud Video allows third-party clients to access IBM Cloud Video users&#39; resources (data) via a HTTP-based (RESTful) API. It also provides a Broadcaster Library that is capable of broadcasting to a user&#39;s channel. Both the REST API and the Broadcaster Library uses the OAuth 2.0 protocol for authentication and authorization.
+categoryItemDescription: IBM Video Streaming allows third-party clients to access IBM Video Streaming users&#39; resources (data) via a HTTP-based (RESTful) API. It also provides a Broadcaster Library that is capable of broadcasting to a user&#39;s channel. Both the REST API and the Broadcaster Library uses the OAuth 2.0 protocol for authentication and authorization.
 categoryItemLabel: Read the documentation
 ---     
         <article data-sidenav="sidenav">
             <section>
                 <h2>Overview</h2>
-                <p>IBM Cloud Video allows third-party clients to access IBM Cloud Video users&#39; resources (data) via a HTTP-based (RESTful) API. It also provides a Broadcaster Library that is capable of broadcasting to a user&#39;s channel. Both the REST API and the Broadcaster Library uses the OAuth 2.0 protocol for authentication and authorization.</p>
+                <p>IBM Video Streaming allows third-party clients to access IBM Video Streaming users&#39; resources (data) via a HTTP-based (RESTful) API. It also provides a Broadcaster Library that is capable of broadcasting to a user&#39;s channel. Both the REST API and the Broadcaster Library uses the OAuth 2.0 protocol for authentication and authorization.</p>
                 
                 
                 
@@ -20,8 +20,8 @@ categoryItemLabel: Read the documentation
                 <p>The basic workflow of a third-party Client is the following:</p>
                 <ol>
                     <li><strong>Authorize the user:</strong> Obtain and validate the user&#39;s credentials (username and password). The client must never store these credentials, only pass it to the server for authorization.</li>
-                    <li><strong>Obtain an access token:</strong> If the user&#39;s credentials were entered correctly, the third-party client can obtain an access token. Once this token is received, it can be used to access the user&#39;s resources until the token expires or the user revokes it on the IBM Cloud Video website.</li>
-                    <li><strong>Access the user&#39;s resources:</strong> The client can use Ustream&#39;s REST API or the IBM Cloud Video Broadcasting Library to access the user&#39;s resources (data) or to broadcast to the user&#39;s channel. The client authorizes itself using the access token, with methods described by the OAuth 2.0 Protocol Draft.</li>
+                    <li><strong>Obtain an access token:</strong> If the user&#39;s credentials were entered correctly, the third-party client can obtain an access token. Once this token is received, it can be used to access the user&#39;s resources until the token expires or the user revokes it on the IBM Video Streaming website.</li>
+                    <li><strong>Access the user&#39;s resources:</strong> The client can use IBM Video Streaming&#39;s REST API or the IBM Video Streaming Broadcasting Library to access the user&#39;s resources (data) or to broadcast to the user&#39;s channel. The client authorizes itself using the access token, with methods described by the OAuth 2.0 Protocol Draft.</li>
                 </ol>
                 
                 
@@ -37,7 +37,7 @@ categoryItemLabel: Read the documentation
                 
                 
                 <h3>Endpoints</h3>
-                <p>The webpages and HTTP services invoked in during this authorization process are called endpoints. IBM Cloud Video has the following endpoints:</p>
+                <p>The webpages and HTTP services invoked in during this authorization process are called endpoints. IBM Video Streaming has the following endpoints:</p>
                 <ul>
                     <li><strong>Authorization endpoint:</strong> this is the webpage where the user enters his/her credentials.</li>
                     <li><strong>Token endpoint:</strong> this is the HTTP service where the access token can be obtained in an authorization code flow (when using the implicit flow, the access token can be obtained directly from the authorization endpoint).</li>
@@ -46,16 +46,16 @@ categoryItemLabel: Read the documentation
                 
                 
                 <h3>Access tokens</h3>
-                <p>There are two types of access tokens: <strong>Bearer tokens</strong> and <strong>MAC tokens.</strong> They are equivalent in the sense that they can access the same resources on the IBM Cloud Video REST API. The difference is that while bearer tokens can be only used on encrypted channels (HTTPS), MAC tokens are suitable on non-encrypted channels as well.</p>
-                <p>If the client uses the IBM Cloud Video Broadcasting Library, it must use MAC tokens: the broadcasting is done on the RTMP protocol, which is unencrypted. If the client only uses the REST API, the bearer tokens are preferred because their usage is very simple and lightweight.</p>
+                <p>There are two types of access tokens: <strong>Bearer tokens</strong> and <strong>MAC tokens.</strong> They are equivalent in the sense that they can access the same resources on the IBM Video Streaming REST API. The difference is that while bearer tokens can be only used on encrypted channels (HTTPS), MAC tokens are suitable on non-encrypted channels as well.</p>
+                <p>If the client uses the IBM Video Streaming Broadcasting Library, it must use MAC tokens: the broadcasting is done on the RTMP protocol, which is unencrypted. If the client only uses the REST API, the bearer tokens are preferred because their usage is very simple and lightweight.</p>
                 <p>Bearer tokens and MAC tokens can be obtained in the same way: the authorization endpoint has a token type parameter, so the client can specify what kind of token it wants to create.</p>
                 
                 
                 
                 <h3>Token scopes, expiration</h3>
-                <p>By default, access tokens have a limited lifetime (they expire in a day) and can access only a limited amount of resources. In the authorization process the client can request extra permissions (scopes) from the user to overcome these limitations. These requests are shown to the user on the authorization endpoint. IBM Cloud Video currently supports the following scope:</p>
+                <p>By default, access tokens have a limited lifetime (they expire in a day) and can access only a limited amount of resources. In the authorization process the client can request extra permissions (scopes) from the user to overcome these limitations. These requests are shown to the user on the authorization endpoint. IBM Video Streaming currently supports the following scope:</p>
                 <ul>
-                    <li><strong>Broadcaster scope:</strong> If this scope is enabled, the access token can be used for broadcasting with the IBM Cloud Video Broadcasting Library. This scope can only be used with MAC tokens.</li>
+                    <li><strong>Broadcaster scope:</strong> If this scope is enabled, the access token can be used for broadcasting with the IBM Video Streaming Broadcasting Library. This scope can only be used with MAC tokens.</li>
                 </ul>
             </section>
 
@@ -98,13 +98,13 @@ categoryItemLabel: Read the documentation
                         <td><strong>client_id</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash that identifies the Client. Provided by Ustream.</td>
+                        <td>40 character sha1 hash that identifies the Client. Provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>redirect_uri</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>The URI where the browser will redirect after the authentication process. The prefix of this URI must be registered at Ustream.</td>
+                        <td>The URI where the browser will redirect after the authentication process. The prefix of this URI must be registered at IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>state</strong></td>
@@ -120,7 +120,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                 </table>
                 
-                <h6>IBM Cloud Video specific extra parameters</h6>
+                <h6>IBM Video Streaming specific extra parameters</h6>
                 <table class="table responsive">
                     <tr>
                         <th>parameter</th>
@@ -138,7 +138,7 @@ categoryItemLabel: Read the documentation
                         <td><strong>device_name</strong></td>
                         <td>string</td>
                         <td>OPTIONAL</td>
-                        <td>Full product name of the Client device or application. It is used for easy identification of the OAuth2 Token. The User will be able to review which Clients are connected to his/her account, and revoke these grants on the IBM Cloud Video website.</td>
+                        <td>Full product name of the Client device or application. It is used for easy identification of the OAuth2 Token. The User will be able to review which Clients are connected to his/her account, and revoke these grants on the IBM Video Streaming website.</td>
                     </tr>
                     <tr>
                         <td><strong>display</strong></td>
@@ -204,7 +204,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>access_token</strong></td>
-                        <td>Access Token (40 character length, hexa encoded sha1 hash). Referred as <em>macId</em> in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>Access Token (40 character length, hexa encoded sha1 hash). Referred as <em>macId</em> in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>expires_in</strong></td>
@@ -212,11 +212,11 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>mac_key</strong></td>
-                        <td>MAC secret (40 character length, hexa encoded sha1 hash). Referred as <em>macSecret</em> in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>MAC secret (40 character length, hexa encoded sha1 hash). Referred as <em>macSecret</em> in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>created_at</strong></td>
-                        <td>UTC timestamp of the creation datetime. Referred as <em>macIssueTime</em> in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>UTC timestamp of the creation datetime. Referred as <em>macIssueTime</em> in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>mac_algorithm</strong></td>
@@ -283,7 +283,7 @@ categoryItemLabel: Read the documentation
                         <td><strong>client_id</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash, provided by Ustream.</td>
+                        <td>40 character sha1 hash, provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>code</strong></td>
@@ -344,25 +344,25 @@ categoryItemLabel: Read the documentation
                         <td><strong>client_id</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash, provided by Ustream.</td>
+                        <td>40 character sha1 hash, provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>client_secret</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash, provided by Ustream.</td>
+                        <td>40 character sha1 hash, provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>username</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>IBM Cloud Video username</td>
+                        <td>IBM Video Streaming username</td>
                     </tr>
                     <tr>
                         <td><strong>password</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>IBM Cloud Video password</td>
+                        <td>IBM Video Streaming password</td>
                     </tr>
                     <tr>
                         <td><strong>device_name</strong></td>
@@ -407,11 +407,11 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>mac_key</strong></td>
-                        <td>MAC secret (40 character length, hexa encoded sha1 hash). Referred as macSecret in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>MAC secret (40 character length, hexa encoded sha1 hash). Referred as macSecret in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>created_at</strong></td>
-                        <td>UTC timestamp of the creation datetime. Referred as macIssueTime in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>UTC timestamp of the creation datetime. Referred as macIssueTime in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>mac_algorithm</strong></td>
@@ -439,7 +439,7 @@ categoryItemLabel: Read the documentation
                         <td><strong>client_id</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash, provided by Ustream.</td>
+                        <td>40 character sha1 hash, provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>device_name</strong></td>
@@ -484,11 +484,11 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>mac_key</strong></td>
-                        <td>MAC tokens only: MAC secret (40 character length, hexa encoded sha1 hash). Referred as macSecret in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>MAC tokens only: MAC secret (40 character length, hexa encoded sha1 hash). Referred as macSecret in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>created_at</strong></td>
-                        <td>UTC timestamp of the creation datetime. Referred as macIssueTime in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>UTC timestamp of the creation datetime. Referred as macIssueTime in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>mac_algorithm</strong></td>
