@@ -27,6 +27,9 @@ categoryItemLabel:
 			<li>if you would like to build a full custom UI on the player, use the `controls=false&showtitle=false` url
 				params to hide the default IBM Video Streaming UI components
 			</li>
+			<li>
+				autoplay permission must be delegated on cross-origin iframes since Chrome 66 for video elements by policy. Therefore, the iframe tag must contain an `allow="autoplay"` feature policy attribute to allow play calls from a cross-orgin parent to the player iframe. For more information visit https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#iframe
+			</li>
 		</ul>
 	</section>
 
@@ -101,7 +104,7 @@ categoryItemLabel:
 
 		<div class="player-container">
 			<iframe id="UstreamPlayer" src="//www.ustream.tv/embed/recorded/81056340?html5ui" frameborder="0"
-			        allowfullscreen webkitallowfullscreen scrolling="no"></iframe>
+			        allow="autoplay" allowfullscreen webkitallowfullscreen scrolling="no"></iframe>
 		</div>
 
 		<h5>Custom UI pieces:</h5>
@@ -234,7 +237,7 @@ categoryItemLabel:
 	<section class="code">
 		<h4>HTML</h4>
 		<pre><code class="xml">&lt;div class="player-container"&gt;
-    &lt;iframe id="UstreamPlayer" src="//www.ustream.tv/embed/12762028?html5ui" frameborder="0" allowfullscreen webkitallowfullscreen scrolling="no"&gt;&lt;/iframe&gt;
+    &lt;iframe id="UstreamPlayer" src="//www.ustream.tv/embed/12762028?html5ui" frameborder="0" allow="autoplay" allowfullscreen webkitallowfullscreen scrolling="no"&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;div class="custom-ui-container"&gt;
