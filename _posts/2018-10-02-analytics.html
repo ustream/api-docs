@@ -34,7 +34,7 @@ categoryItemLabel: Read the documentation
         <h3>Base URL</h3>
 
         <p>
-            Version: <span class="sw-info-version">1.0.2</span>
+            Version: <span class="sw-info-version">1.0.3</span>
         </p>
 
 		<table class="table fill-bg-light1 table-chromeless">
@@ -53,11 +53,15 @@ categoryItemLabel: Read the documentation
         </p>
 
         <h4>Obtaining the Access token</h4>
+        
+        <p>
+            You can get JWT token from the OAuth2 token endpoint by setting the <code>token_type</code> parameter to <code>jwt</code>. 
+            <strong>This parameter must be set as HTTP POST parameter.</strong>
+        </p>
 
         <p>
-            You can get JWT token from the OAuth2 token endpoint by setting the <code>token_type</code> parameter to <code>jwt</code>.
-            The OAuth2 flows are described here:
-            <a href="/channel-api/getting-started.html#client-credentials-flow_11">http://developers.video.ibm.com/channel-api/getting-started.html</a>
+                The OAuth2 flows are described here:
+                <a href="/channel-api/getting-started.html#client-credentials-flow_11">http://developers.video.ibm.com/channel-api/getting-started.html</a>
         </p>
 
         <p>
@@ -1843,10 +1847,10 @@ categoryItemLabel: Read the documentation
                     <td>Start date and time for a period in ISO8601 format</td>
                     <td>query</td>
                     <td>
-                        string, <br />
-                        default value: 3 months before the actual server date
+                        string <br />
                     </td>
                     <td>
+                        true
                     </td>
                 </tr>
                 <tr>
@@ -1858,9 +1862,9 @@ categoryItemLabel: Read the documentation
                     <td>query</td>
                     <td>
                         string <br />
-                        default value: current date
                     </td>
                     <td>
+                        true
                     </td>
                 </tr>
                 <tr>
