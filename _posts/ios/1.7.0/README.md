@@ -11,7 +11,7 @@ This document describes the basic steps to make a mobile app using the Player SD
 ### Account prerequisites
 
 Before going into details, please note that document assumes the following:
-*   You have a registered user at [ustream.tv](http://www.ustream.tv/).
+*   You have a registered user at [video.ibm.com](https://video.ibm.com/).
 *   Your IBM Video Streaming user is entitled to use the IBM Video Streaming Player SDK specifically. Log-in to [Dashboard],
 and check ["API/SDK access"] under the "Integrations & Apps" section.
 
@@ -244,6 +244,6 @@ If you want to support other languages and/or redefine texts, include the keys l
 
 See the [CHANGELOG.md] for changes.
 
-[Dashboard]: https://www.ustream.tv/dashboard
-["API/SDK access"]: https://www.ustream.tv/dashboard/integrations/api-access
+[Dashboard]: https://video.ibm.com/dashboard
+["API/SDK access"]: https://video.ibm.com/dashboard/integrations/api-access
 [CHANGELOG.md]: CHANGELOG

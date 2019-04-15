@@ -12,7 +12,7 @@ This document describes the basic steps to make a mobile app using the IBM Video
 ### Account prerequisites
 
 Before going into details, please note that document assumes the following:
-*   You have a registered user at [ustream.tv](http://www.ustream.tv/).
+*   You have a registered user at [video.ibm.com](https://video.ibm.com/).
 *   Your IBM Video Streaming user is entitled to use the IBM Video Streaming Player SDK specifically. Log-in to [Dashboard], 
 and check ["API/SDK access"] under the "Account" section. 
 If you have questions, please [contact us](https://video.ibm.com/enterprise-video/contact).
@@ -730,6 +730,6 @@ containing the most likely needed strings.
 
 See the [CHANGELOG.md] for changes.
 
-[Dashboard]: https://www.ustream.tv/dashboard
-["API/SDK access"]: https://www.ustream.tv/dashboard/account/api-access
+[Dashboard]: https://video.ibm.com/dashboard
+["API/SDK access"]: https://video.ibm.com/dashboard/account/api-access
 [CHANGELOG.md]: CHANGELOG

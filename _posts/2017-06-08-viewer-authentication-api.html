@@ -36,9 +36,9 @@ categoryItemLabel: Read the documentation
         <p>You need the following before you start implementing viewer authentication:</p>
 
         <ul>
-            <li><strong>Channel</strong>, which you can create on the <a href="https://www.ustream.tv/dashboard/manage-show" target="_blank">Your channels page</a> of your IBM Video Streaming dashboard</li>
-            <li><strong>Client id</strong>, which you can obtain on the <a href="https://www.ustream.tv/dashboard/integrations/api-access" target="_blank">API/SDK access page</a> of your IBM Video Streaming dashboard</li>
-            <li><strong>Token</strong>, which you can obtain through the IBM Video Streaming <a href="http://developers.ustream.tv/channel-api/getting-started.html#oauth2-authorization-server-endpoints_6" target="_blank">authorization endpoint</a></li>
+            <li><strong>Channel</strong>, which you can create on the <a href="https://video.ibm.com/dashboard/manage-show" target="_blank">Your channels page</a> of your IBM Video Streaming dashboard</li>
+            <li><strong>Client id</strong>, which you can obtain on the <a href="https://video.ibm.com/dashboard/integrations/api-access" target="_blank">API/SDK access page</a> of your IBM Video Streaming dashboard</li>
+            <li><strong>Token</strong>, which you can obtain through the IBM Video Streaming <a href="https://developers.video.ibm.com/channel-api/getting-started.html#oauth2-authorization-server-endpoints_6" target="_blank">authorization endpoint</a></li>
             <li><strong>Secret key</strong>, a string that will be used to create the hash in the authentication response your service passes to the IBM Video Streaming player. This secret key needs to be provided by you.</li>
         </ul>
 
@@ -79,7 +79,7 @@ categoryItemLabel: Read the documentation
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
                 <td class="verb">PUT</td>
-                <td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/hash/advanced.FORMAT</a> (format can be json or xml)</td>
+                <td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/hash/advanced.FORMAT</a> (format can be json or xml)</td>
             </tr>
         </table>
 
@@ -161,7 +161,7 @@ categoryItemLabel: Read the documentation
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
                 <td class="verb">PUT</td>
-                <td><a>https://api.ustream.tv/videos/VIDEO_ID/locks/hash.json</a></td>
+                <td><a>https://api.video.ibm.com/videos/VIDEO_ID/locks/hash.json</a></td>
             </tr>
         </table>
 
@@ -264,7 +264,7 @@ $json = json_encode($response);
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
                 <td class="verb">GET</td>
-                <td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/hash.FORMAT</a> (format can be json or xml)</td>
+                <td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/hash.FORMAT</a> (format can be json or xml)</td>
             </tr>
         </table>
 
@@ -316,7 +316,7 @@ $json = json_encode($response);
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
                 <td class="verb">DELETE</td>
-                <td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/hash.FORMAT</a> (format can be json or xml)</td>
+                <td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/hash.FORMAT</a> (format can be json or xml)</td>
             </tr>
         </table>
 
@@ -353,7 +353,7 @@ $json = json_encode($response);
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
                 <td class="verb">GET</td>
-                <td><a>https://api.ustream.tv/videos/VIDEO_ID/locks/hash.json</a></td>
+                <td><a>https://api.video.ibm.com/videos/VIDEO_ID/locks/hash.json</a></td>
             </tr>
         </table>
 
@@ -401,7 +401,7 @@ $json = json_encode($response);
         <table class="table fill-bg-light1 table-chromeless">
             <tr>
                 <td class="verb">DELETE</td>
-                <td><a>https://api.ustream.tv/videos/VIDEO_ID/locks/hash.json</a></td>
+                <td><a>https://api.video.ibm.com/videos/VIDEO_ID/locks/hash.json</a></td>
             </tr>
         </table>
 

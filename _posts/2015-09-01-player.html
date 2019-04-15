@@ -8,7 +8,7 @@ categoryItemIsShown: 1
 categoryItemWidth: 6
 categoryItemDescription: Control the features of the IBM Video Streaming player and customize its layout, while maintaining a continuous, interactive data connection with IBM Video Streaming’s backend. Embed the player anywhere and manage it according to your needs and preferences.
 categoryItemLabel: Read the documentation
---- 
+---
 
 <article data-sidenav="sidenav">
 				<section>
@@ -28,7 +28,7 @@ categoryItemLabel: Read the documentation
 					<img class="no-border" src="/images/embed-configurator-copy-to-clipboard.png" alt="Embed configurator Copy to clipboard button location">
 					<p>The next step is to include a unique ID in this iframe element. We will use "UstreamIframe".</p>
 					<p>Create an instance of the Embed API by providing the ID of the iframe. The iframe code should look like this:</p>
-					<pre><code class="html">&lt;iframe id=&quot;UstreamIframe&quot; src=&quot;https://www.ustream.tv/embed/1524?html5ui&quot; width=&quot;640&quot; height=&quot;480&quot; allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+					<pre><code class="html">&lt;iframe id=&quot;UstreamIframe&quot; src=&quot;https://video.ibm.com/embed/1524?html5ui&quot; width=&quot;640&quot; height=&quot;480&quot; allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;</code></pre>
 					<pre><code class="javascript">var viewer = UstreamEmbed('UstreamIframe');</code></pre>
 					<h3>URL parameters</h3>
 					<p>The default behaviour of the player can be modified by extending the src URL with any of the following parameters:</p>
@@ -164,7 +164,7 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
 
 					<h6>Example</h6>
 					<pre><code class="javascript">viewer.callMethod('quality', 16); //set to high</code></pre>
-			
+
 			<h4>cc (closed caption)</h4>
 					<p>Enables the selected closed caption if available. Requires one argument:</p>
 					<ul>
@@ -216,7 +216,7 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
     // content == ['recorded', 123456]
     ...
 });</code></pre>
-					
+
 					<h4>playingContent</h4>
 					<p>Get the actual content type and id as an array. This will return the currently played offair video's id if the loaded content is an offair channel or with the channel id if the channel is live.</p>
 
@@ -305,7 +305,7 @@ viewer.getProperty('playingContent', function (content) {
     "2":{"label":"480p","active":false},
     "16":{"label":"BEST","active":true}
 }</code></pre>
-			
+
 			<h4>cc (closed caption)</h4>
 					<p>Fired when there are closed captions available on the stream.</p>
 					<p>Returns an array containing closed captions as objects.</p>
@@ -364,4 +364,4 @@ viewer.getProperty('playingContent', function (content) {
 				</section>
 </article>
 
-			
+

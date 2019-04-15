@@ -13,9 +13,9 @@ This document describes the basic steps to make a mobile app using the Player SD
 ### Account prerequisites
 
 Before going into details, please note that document assumes the following:
-*   You have a registered user at [ustream.tv](http://www.ustream.tv/).
-*   Your IBM Video Streaming user is entitled to use the IBM Video Streaming Player SDK specifically. Log-in to [Dashboard](https://www.ustream.tv/dashboard), 
-and check ["API/SDK access"](https://www.ustream.tv/dashboard/account/api-access) under the "Account" section.
+*   You have a registered user at [video.ibm.com](https://video.ibm.com/).
+*   Your IBM Video Streaming user is entitled to use the IBM Video Streaming Player SDK specifically. Log-in to [Dashboard](https://video.ibm.com/dashboard), 
+and check ["API/SDK access"](https://video.ibm.com/dashboard/account/api-access) under the "Account" section.
 
 If you have questions, please [contact us](https://video.ibm.com/enterprise-video/contact).
 
@@ -33,7 +33,7 @@ The Player SDK requires iOS 8.0 or above.
 
 ### Step 1: Create credentials for your mobile app
 
-Log-in into your account, navigate to the Dashboard and select ["API/SDK access"](https://www.ustream.tv/dashboard/account/api-access)
+Log-in into your account, navigate to the Dashboard and select ["API/SDK access"](https://video.ibm.com/dashboard/account/api-access)
 under the Account menu.
 
 Click on "Create new credentials" and provide a name for your application in the "Application name" field. Your credentials will be listed under the "API/SDK access" page based on this name.

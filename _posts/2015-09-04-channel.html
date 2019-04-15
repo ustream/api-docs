@@ -18,7 +18,7 @@ categoryItemLabel: Read the documentation
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -188,16 +188,16 @@ categoryItemLabel: Read the documentation
 		<h4>Prerequisites</h4>
 		<p>The caller must have an access token capable initializing channel creation. To obtain a token, the client must request one from the authorization server.</p>
 		<p>Example initialization of a web-server token-acquiring flow:</p>
-		<pre>https://www.ustream.tv/oauth2/authorize?response_type=code&amp;client_id=A...Z&amp;redirect_uri=http://...</pre>
+		<pre>https://video.ibm.com/oauth2/authorize?response_type=code&amp;client_id=A...Z&amp;redirect_uri=http://...</pre>
 		<p>Example initialization of an implicit token-acquiring flow:</p>
-		<pre>https://www.ustream.tv/oauth2/authorize?response_type=token&amp;client_id=A...Z&amp;redirect_uri=http://...</pre>
+		<pre>https://video.ibm.com/oauth2/authorize?response_type=token&amp;client_id=A...Z&amp;redirect_uri=http://...</pre>
 		<p><a href="getting-started.html#examples_9">See more examples</a></p>
 
 		<h4>Channel creation</h4>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a href="https://api.ustream.tv/users/self/channels.json">https://api.ustream.tv/users/self/channels.json</a></td>
+				<td><a href="https://api.video.ibm.com/users/self/channels.json">https://api.video.ibm.com/users/self/channels.json</a></td>
 			</tr>
 		</table>
 
@@ -226,7 +226,7 @@ categoryItemLabel: Read the documentation
 		<p>The body of the request should contain the channel title, and optionally it can contain the description and tags. The Content-Type of the request should be <strong>application/x-www-form-urlencoded</strong>.</p>
 		<p>Example:</p>
 		<pre><code class="nohighlight">POST users/self/channels.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
@@ -256,7 +256,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID.FORMAT</a>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -321,7 +321,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -359,7 +359,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/users/self/channels.FORMAT</a>
+				<td><a>https://api.video.ibm.com/users/self/channels.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -413,7 +413,7 @@ title=API+Testing+Channel</code></pre>
 			<tr>
 				<td>url</td>
 				<td>string</td>
-				<td>Long web URL of the channel (<a>http://www.ustream.tv/channel/</a>...)</td>
+				<td>Long web URL of the channel (<a>https://video.ibm.com/channel/</a>...)</td>
 			</tr>
 			<tr>
 				<td>tiny_url</td>
@@ -451,13 +451,13 @@ title=API+Testing+Channel</code></pre>
 		<pre><code class="json">{
 	"paging": {
 		"previous": {
-			"href": "https://api.ustream.tv/users/self/channels.json?pagesize=PAGESIZE&p=PREVIOUS_PAGE"
+			"href": "https://api.video.ibm.com/users/self/channels.json?pagesize=PAGESIZE&p=PREVIOUS_PAGE"
 		},
 		"actual": {
-			"href": "https://api.ustream.tv/users/self/channels.json?pagesize=PAGESIZE&p=PAGE"
+			"href": "https://api.video.ibm.com/users/self/channels.json?pagesize=PAGESIZE&p=PAGE"
 		},
 		"next": {
-			"href": "https://api.ustream.tv/users/self/channels.json?pagesize=PAGESIZE&p=NEXT_PAGE"
+			"href": "https://api.video.ibm.com/users/self/channels.json?pagesize=PAGESIZE&p=NEXT_PAGE"
 		}
 	}
 }</code></pre>
@@ -467,7 +467,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/custom-metadata.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -529,7 +529,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID//custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID//custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 		<h6>Parameters</h6>
@@ -575,7 +575,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -605,7 +605,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/custom-metadata-display.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata-display.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 		<h6>Response</h6>
@@ -650,7 +650,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/custom-metadata-display/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata-display/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 		<h6>Parameters</h6>
@@ -698,7 +698,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/custom-metadata-display/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata-display/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -732,7 +732,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a href="https://api.ustream.tv/users/self/device-passwords.json">https://api.ustream.tv/users/self/device-passwords.FORMAT</a> (format can be json or xml)</td>
+				<td><a href="https://api.video.ibm.com/users/self/device-passwords.json">https://api.video.ibm.com/users/self/device-passwords.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -818,8 +818,8 @@ title=API+Testing+Channel</code></pre>
 		<p>Paging information can be found under the "paging" key. Example:</p>
 
 		<pre><code class="json">"paging": {
-	"previous": "https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": "https://api.ustream.tv/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+	"previous": "https://api.video.ibm.com/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": "https://api.video.ibm.com/users/self/device-passwords.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 }</code>
 </pre>
 
@@ -841,7 +841,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a href="https://api.ustream.tv/users/self/device-passwords.json">https://api.ustream.tv/users/self/device-passwords.FORMAT</a> (format can be json or xml)</td>
+				<td><a href="https://api.video.ibm.com/users/self/device-passwords.json">https://api.video.ibm.com/users/self/device-passwords.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -942,7 +942,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/users/self/device-passwords/USER_NAME.FORMAT</a>format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/users/self/device-passwords/USER_NAME.FORMAT</a>format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -975,7 +975,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET, PUT, DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/password.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/password.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1063,7 +1063,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/hash/advanced.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/hash/advanced.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1143,7 +1143,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/hash.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/hash.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1195,7 +1195,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/hash.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/hash.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1234,7 +1234,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td>GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/embed.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/embed.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1274,7 +1274,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/embed.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/embed.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1321,7 +1321,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/embed/allowed-urls.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/embed/allowed-urls.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1361,7 +1361,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/embed/allowed-urls.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/embed/allowed-urls.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 
 		</table>
@@ -1409,7 +1409,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/embed/allowed-urls.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/embed/allowed-urls.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1438,7 +1438,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/settings/viewer.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/settings/viewer.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1491,7 +1491,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/branding.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/branding.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1559,7 +1559,7 @@ title=API+Testing+Channel</code></pre>
 			<tr>
 				<td class="verb">DELETE</td>
 				<td>
-					<a>https://api.ustream.tv/channels/CHANNEL_ID/branding.FORMAT</a> (format can be json or xml)</td>
+					<a>https://api.video.ibm.com/channels/CHANNEL_ID/branding.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1573,7 +1573,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/branding/logo/LOGO_ID/settings.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/branding/logo/LOGO_ID/settings.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 		<p class="note">Only 0 is supported as LOGO_ID currently.</p>
@@ -1643,7 +1643,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/branding/logo/LOGO_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/branding/logo/LOGO_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 		<p class="note">Only 0 is supported as LOGO_ID currently.</p>
@@ -1685,7 +1685,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/locks/page.FORMAT</a>(format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/page.FORMAT</a>(format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1726,7 +1726,7 @@ title=API+Testing+Channel</code></pre>
 			<tr>
 				<td class="verb">PUT</td>
 				<td>
-					<a>https://api.ustream.tv/channels/CHANNEL_ID/locks/page.FORMAT</a>
+					<a>https://api.video.ibm.com/channels/CHANNEL_ID/locks/page.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -1775,7 +1775,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/settings/hide-viewers.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/settings/hide-viewers.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1827,7 +1827,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/design/background.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/design/background.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1872,7 +1872,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/design/background.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/design/background.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -1923,7 +1923,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/design/background.FORMAT</a>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/design/background.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 
@@ -1960,7 +1960,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/design/picture.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/design/picture.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2006,7 +2006,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/design/picture.FORMAT</a>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/design/picture.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 
@@ -2041,7 +2041,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/users/self/managers.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/users/self/managers.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2102,7 +2102,7 @@ title=API+Testing+Channel</code></pre>
 			<tr>
 				<td class="verb">POST</td>
 
-				<td><a>https://api.ustream.tv/users/self/managers.FORMAT</a>
+				<td><a>https://api.video.ibm.com/users/self/managers.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 
@@ -2184,7 +2184,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/users/self/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/users/self/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2246,7 +2246,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/users/self/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/users/self/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2306,7 +2306,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/users/self/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/users/self/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2339,7 +2339,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2377,7 +2377,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/managers/MANAGER_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2422,7 +2422,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/featured-videos.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/featured-videos.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2477,7 +2477,7 @@ title=API+Testing+Channel</code></pre>
 		},
 		"links": {
 			"channel": {
-				"href": "https://api.ustream.tv/channels/1.json",
+				"href": "https://api.video.ibm.com/channels/1.json",
 				"id": "1"
 			}
 		}
@@ -2492,7 +2492,7 @@ title=API+Testing+Channel</code></pre>
 		"id": "111",
 		"links": {
 			"channel": {
-				"href": "https://api.ustream.tv/channels/1.json",
+				"href": "https://api.video.ibm.com/channels/1.json",
 				"id": "1"
 			}
 		}
@@ -2535,8 +2535,8 @@ title=API+Testing+Channel</code></pre>
 		<p>The paging information can be found under the "paging" key. Example:</p>
 		<pre><code class="json">{
 "paging": {
-		"previous": "https://api.ustream.tv/channels/CHANNEL_ID/featured-videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-		"next": "https://api.ustream.tv/channels/CHANNEL_ID/featured-videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
+		"previous": "https://api.video.ibm.com/channels/CHANNEL_ID/featured-videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+		"next": "https://api.video.ibm.com/channels/CHANNEL_ID/featured-videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
 		"page_count": 8,
 		"item_count": 38
 	}
@@ -2566,7 +2566,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/featured-videos.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/featured-videos.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2588,7 +2588,7 @@ title=API+Testing+Channel</code></pre>
 
 		<p>Example:</p>
 		<pre><code class="nohighlight">POST /channels/CHANNEL_ID/featured-videos.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
@@ -2655,7 +2655,7 @@ video_ids[]=111&video_ids[]=222</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/settings/multi-quality.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/settings/multi-quality.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2706,7 +2706,7 @@ video_ids[]=111&video_ids[]=222</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/recorder.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/recorder.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2732,7 +2732,7 @@ video_ids[]=111&video_ids[]=222</code></pre>
 
 		<p>Example usage:</p>
 		<pre><code class="http">POST /channels/42/recorder.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
@@ -2742,7 +2742,7 @@ command=stop</code></pre>
 		<pre><code class="json">{
 	"video": {
 		"id": 11111,
-		"url": "https://api.ustream.tv/videos/11111.json"
+		"url": "https://api.video.ibm.com/videos/11111.json"
 	}
 }</code></pre>
 
@@ -2751,7 +2751,7 @@ command=stop</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/recorder.FORMAT</a>(format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/recorder.FORMAT</a>(format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2759,7 +2759,7 @@ command=stop</code></pre>
 		<pre><code class="json">{
 	"video": {
 		"id": "11111",
-		"url": "https://api.ustream.tv/videos/11111.json"
+		"url": "https://api.video.ibm.com/videos/11111.json"
 	}
 }</code></pre>
 
@@ -2769,7 +2769,7 @@ command=stop</code></pre>
 			<tr>
 				<td class="verb">PUT</td>
 				<td>
-					<a>https://api.ustream.tv/channels/CHANNEL_ID/settings/autorecord.FORMAT</a>
+					<a>https://api.video.ibm.com/channels/CHANNEL_ID/settings/autorecord.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -2818,7 +2818,7 @@ command=stop</code></pre>
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/channels/CHANNEL_ID/limits/recording.FORMAT</a>
+					<a>https://api.video.ibm.com/channels/CHANNEL_ID/limits/recording.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -2868,7 +2868,7 @@ command=stop</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/videos.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/videos.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -2943,7 +2943,7 @@ command=stop</code></pre>
 			},
 			"links": {
 				"channel": {
-					"href": "https://api.ustream.tv/channels/1.json"
+					"href": "https://api.video.ibm.com/channels/1.json"
 				}
 			},
 			"caption_matches": [
@@ -3013,8 +3013,8 @@ command=stop</code></pre>
 		<p>The paging information can be found under the "paging" key. Example:</p>
 		<pre><code class="json">{
 	"paging": {
-		"previous": "https://api.ustream.tv/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-		"next": "https://api.ustream.tv/channels/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+		"previous": "https://api.video.ibm.com/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+		"next": "https://api.video.ibm.com/channels/CHANNEL_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 	}
 }</code></pre>
 
@@ -3042,7 +3042,7 @@ command=stop</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/users/self/videos.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/users/self/videos.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3056,7 +3056,7 @@ command=stop</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3108,7 +3108,7 @@ command=stop</code></pre>
 		},
 		"links": {
 			"channel": {
-				"href": "https://api.ustream.tv/channels/1.json",
+				"href": "https://api.video.ibm.com/channels/1.json",
 				"id": "1"
 			}
 		}
@@ -3121,7 +3121,7 @@ command=stop</code></pre>
 		"id": "111",
 		"links": {
 			"channel": {
-				"href": "https://api.ustream.tv/channels/1.json",
+				"href": "https://api.video.ibm.com/channels/1.json",
 				"id": "1"
 			}
 		}
@@ -3185,7 +3185,7 @@ command=stop</code></pre>
 			<tr>
 				<td class="verb">PUT</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -3256,7 +3256,7 @@ command=stop</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/downloadable/VIDEO_FORMAT.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/downloadable/VIDEO_FORMAT.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3290,7 +3290,7 @@ command=stop</code></pre>
 
 		<h4>Example call</h4>
 		<pre><code class="nohighlight">GET /videos/123456/downloadable/mp4.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 {
@@ -3327,7 +3327,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/downloadable/VIDEO_FORMAT.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/downloadable/VIDEO_FORMAT.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3343,7 +3343,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<h4>Example call</h4>
 		<pre><code class="nohighlight">POST /videos/123456/downloadable/mp4.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 {
@@ -3372,7 +3372,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/uploads.FORMAT?type=videoupload-ftp</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/uploads.FORMAT?type=videoupload-ftp</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3465,7 +3465,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/uploads/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/uploads/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3508,7 +3508,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/uploads/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/uploads/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3554,7 +3554,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">DELETE</td>
 
-				<td><a>https://api.ustream.tv/videos/VIDOE_ID.FORMAT</a>
+				<td><a>https://api.video.ibm.com/videos/VIDOE_ID.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 
@@ -3593,7 +3593,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/expiration.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/expiration.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -3649,7 +3649,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/expiration.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/expiration.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3706,7 +3706,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/custom-metadata.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/custom-metadata.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3768,7 +3768,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 		<h6>Parameters</h6>
@@ -3814,7 +3814,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -3854,14 +3854,14 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">POST</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/thumbnail.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/thumbnail.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
 
 		<h6>Example request with cURL:</h6>
 		<pre><code>curl \
-	-X POST 'https://api.ustream.tv/videos/123456/thumbnail.json' \
+	-X POST 'https://api.video.ibm.com/videos/123456/thumbnail.json' \
 	-H 'Authorization: Bearer abcdef123456' \
 	-F 'thumbnail=@thumbnail.jpg;type=image/jpeg'</code></pre>
 
@@ -3875,7 +3875,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">POST</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/thumbnail/frame.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/thumbnail/frame.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -3908,7 +3908,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">POST</td>
 				<td>
-					<a>https://api.ustream.tv/users/self/labels.FORMAT</a>
+					<a>https://api.video.ibm.com/users/self/labels.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -3946,7 +3946,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/users/self/labels.FORMAT</a>
+					<a>https://api.video.ibm.com/users/self/labels.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -3972,7 +3972,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">PUT</td>
 				<td>
-					<a>https://api.ustream.tv/users/self/label/LABEL_ID.FORMAT</a>
+					<a>https://api.video.ibm.com/users/self/label/LABEL_ID.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4001,7 +4001,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">DELETE</td>
 				<td>
-					<a>https://api.ustream.tv/users/self/label/LABEL_ID.FORMAT</a>
+					<a>https://api.video.ibm.com/users/self/label/LABEL_ID.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4017,7 +4017,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">PUT</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/labels.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/labels.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4046,7 +4046,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">DELETE</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/labels.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/labels.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4075,7 +4075,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/labels.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/labels.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4104,7 +4104,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/captions.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/captions.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4162,7 +4162,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/captions/LANGUAGE.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4223,7 +4223,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			<tr>
 				<td class="verb">PUT</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/captions/LANGUAGE.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4252,7 +4252,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 
 		<p>Example:</p>
 		<pre><code class="nohighlight">PUT videos/VIDEO_ID/captions/en-00.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer xxxxxxxxxxxxxx
 Content-Type: application/x-www-form-urlencoded
 
@@ -4314,7 +4314,7 @@ is_visible=1&is_default=0</code></pre>
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE/vtt</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/captions/LANGUAGE/vtt</a>
 				</td>
 			</tr>
 		</table>
@@ -4357,14 +4357,14 @@ We are in New York City
 			<tr>
 				<td class="verb">PUT</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/captions/LANGUAGE/vtt</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/captions/LANGUAGE/vtt</a>
 				</td>
 			</tr>
 		</table>
 
 		<p>Example:</p>
 		<pre><code class="nohighlight">PUT videos/VIDEO_ID/captions/en-00/vtt HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer xxxxxxxxxxxxxx
 Content-Type: text/vtt
 
@@ -4411,7 +4411,7 @@ We are in New York City
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/caption-languages.FORMAT</a>
+					<a>https://api.video.ibm.com/caption-languages.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4448,7 +4448,7 @@ We are in New York City
 			<tr>
 				<td class="verb">PUT</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/trim.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/trim.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4497,7 +4497,7 @@ We are in New York City
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/trim.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/trim.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4537,7 +4537,7 @@ We are in New York City
 			<tr>
 				<td class="verb">DELETE</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/trim.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/trim.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4558,7 +4558,7 @@ We are in New York City
 			<tr>
 				<td class="verb">POST</td>
 				<td>
-					<a>https://api.ustream.tv/videos/VIDEO_ID/copy.FORMAT</a>
+					<a>https://api.video.ibm.com/videos/VIDEO_ID/copy.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4636,7 +4636,7 @@ We are in New York City
 			<tr>
 				<td class="verb">GET</td>
 				<td>
-					<a>https://api.ustream.tv/videos-copy-status/REQUEST_ID.FORMAT</a>
+					<a>https://api.video.ibm.com/videos-copy-status/REQUEST_ID.FORMAT</a>
 					(format can be json or xml)</td>
 			</tr>
 		</table>
@@ -4674,7 +4674,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/chapters.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/chapters.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -4739,7 +4739,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/chapters.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/chapters.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -4800,7 +4800,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/chapters.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/chapters.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -4835,7 +4835,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/chapters/CHAPTER_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/chapters/CHAPTER_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -4892,7 +4892,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/chapters/CHAPTER_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/chapters/CHAPTER_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -4953,7 +4953,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/videos/VIDEO_ID/chapters/CHAPTER_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/chapters/CHAPTER_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5000,7 +5000,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/settings/playlists.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/settings/playlists.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5038,7 +5038,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/settings/playlists.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/settings/playlists.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5089,7 +5089,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/playlists.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/playlists.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5163,8 +5163,8 @@ We are in New York City
 
 		<p>The paging information can be found under the "paging" key. Example:</p>
 		<pre><code class="json">"paging": {
-	"previous": "https://api.ustream.tv/channels/CHANNEL_ID/playlists.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": "https://api.ustream.tv/channels/CHANNEL_ID/playlists.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
+	"previous": "https://api.video.ibm.com/channels/CHANNEL_ID/playlists.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": "https://api.video.ibm.com/channels/CHANNEL_ID/playlists.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
 	"page_count": 8,
 	"item_count": 38
 }</code></pre>
@@ -5187,7 +5187,7 @@ We are in New York City
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">POST</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/playlists.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/playlists.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5215,7 +5215,7 @@ We are in New York City
 
 		<p>Example:</p>
 		<pre><code class="nohighlight">POST playlists.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
@@ -5272,7 +5272,7 @@ title=API+Testing+Playlist&is_enabled=1</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/playlists/PLAYLIST_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5348,7 +5348,7 @@ title=API+Testing+Playlist&is_enabled=1</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/playlists/PLAYLIST_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5371,7 +5371,7 @@ title=API+Testing+Playlist&is_enabled=1</code></pre>
 		<p>The request body must contain the playlist title ("title" field).</p>
 		<p>Example:</p>
 		<pre><code class="nohighlight">PUT playlists/PLAYLIST_ID.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
@@ -5426,13 +5426,13 @@ title=API+Testing+Playlist+edited</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/playlists/PLAYLIST_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
 		<p>Example:</p>
 		<pre><code class="nohighlight">DELETE playlists/PLAYLIST_ID.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded</code></pre>
 		<p class="note">The token in the request above is only an example.</p>
@@ -5480,7 +5480,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/playlists/PLAYLIST_ID/videos.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5535,7 +5535,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 		},
 		"links": {
 			"channel": {
-				"href": "https://api.ustream.tv/channels/1.json",
+				"href": "https://api.video.ibm.com/channels/1.json",
 				"id": "1"
 			}
 		}
@@ -5549,7 +5549,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 	"id": "111",
 	"links": {
 		"channel": {
-			"href": "https://api.ustream.tv/channels/1.json",
+			"href": "https://api.video.ibm.com/channels/1.json",
 			"id": "1"
 		}
 	}
@@ -5590,8 +5590,8 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 
 		<p>The paging information can be found under the "paging" key. Example:</p>
 		<pre><code class="json">"paging": {
-	"previous": "https://api.ustream.tv/playlists/PLAYLIST_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-	"next": "https://api.ustream.tv/playlists/PLAYLIST_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
+	"previous": "https://api.video.ibm.com/playlists/PLAYLIST_ID/videos.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+	"next": "https://api.video.ibm.com/playlists/PLAYLIST_ID/videos.json?pagesize=PAGE_SIZE&page=NEXT_PAGE",
 	"page_count": 8,
 	"item_count": 38
 }</code></pre>
@@ -5631,7 +5631,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/playlists/PLAYLIST_ID/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5721,7 +5721,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/playlists/PLAYLIST_ID/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5779,7 +5779,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/playlists/PLAYLIST_ID/videos/VIDEO_ID.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5832,7 +5832,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/playlists/PLAYLIST_ID/videos/VIDEO_ID/position.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/playlists/PLAYLIST_ID/videos/VIDEO_ID/position.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5855,7 +5855,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 		<p>The body of the call must contain the video position. The Content-Type of the request should be <strong>application/x-www-form-urlencoded</strong>.</p>
 		<p>Example:</p>
 		<pre><code class="nohighlight">PUT playlists/PLAYLIST_ID/videos/VIDEO_ID/position.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950
 Content-Type: application/x-www-form-urlencoded
 
@@ -5913,7 +5913,7 @@ position=3</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/upcoming-events.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/upcoming-events.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -5976,8 +5976,8 @@ position=3</code></pre>
 		<p>The paging information can be found under the "paging" key. Example:</p>
 		<pre><code class="json">{
 	"paging": {
-		"previous": "https://api.ustream.tv/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
-		"next": "https://api.ustream.tv/channels/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
+		"previous": "https://api.video.ibm.com/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=PREVIOUS_PAGE",
+		"next": "https://api.video.ibm.com/channels/CHANNEL_ID/upcoming-events.json?pagesize=PAGE_SIZE&page=NEXT_PAGE"
 	}
 }</code></pre>
 
@@ -6009,7 +6009,7 @@ position=3</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/hooks/EVENT.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/hooks/EVENT.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -6055,7 +6055,7 @@ position=3</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/hooks/EVENT.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/hooks/EVENT.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -6101,7 +6101,7 @@ position=3</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/hooks/EVENT.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/hooks/EVENT.FORMAT</a> (format can be json or xml)</td>
 			</tr>
 		</table>
 
@@ -6161,7 +6161,7 @@ position=3</code></pre>
 		<h4>Handshake example</h4>
 		<p>Your app needs to be notified about channel 123 whenever it goes live, so the app initiates a new hook.</p>
 		<pre><code class="nohighlight">POST /channels/123/hooks/channel.status.live.json HTTP/1.1
-Host: api.ustream.tv
+Host: api.video.ibm.com
 Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 Content-Type: application/x-www-form-urlencoded
 
@@ -6217,7 +6217,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 	<table class="table fill-bg-light1 table-chromeless">
 		<tr>
 			<td class="verb">GET</td>
-			<td><a>https://api.ustream.tv/custom-metadata-fields.FORMAT</a> (format can be json or xml)</td>
+			<td><a>https://api.video.ibm.com/custom-metadata-fields.FORMAT</a> (format can be json or xml)</td>
 		</tr>
 	</table>
 	<h6>Parameters</h6>
@@ -6383,7 +6383,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 	<table class="table fill-bg-light1 table-chromeless">
 		<tr>
 			<td class="verb">POST</td>
-			<td><a>https://api.ustream.tv/custom-metadata-fields.FORMAT</a> (format can be json or xml)</td>
+			<td><a>https://api.video.ibm.com/custom-metadata-fields.FORMAT</a> (format can be json or xml)</td>
 		</tr>
 	</table>
 
@@ -6570,7 +6570,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 	<table class="table fill-bg-light1 table-chromeless">
 		<tr>
 			<td class="verb">DELETE</td>
-			<td><a>https://api.ustream.tv/custom-metadata-fields/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+			<td><a>https://api.video.ibm.com/custom-metadata-fields/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
 		</tr>
 	</table>
 	<h6>Response</h6>
@@ -6607,7 +6607,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.ustream.tv/channels/CHANNEL_ID/ingest.json</a></td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/ingest.json</a></td>
 			</tr>
 		</table>
 
