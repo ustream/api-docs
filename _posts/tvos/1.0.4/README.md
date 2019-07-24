@@ -1,8 +1,8 @@
-# Ustream Player SDK for tvOS
+# IBM Video Streaming Player SDK for tvOS
 
 ## Introduction
 
-The Ustream Player SDK lets you play Ustream live and recorded videos in your native applications. Using the native SDK gives you full control over the Player, including a customizable native user interface, callbacks on status changes, and many more.
+The IBM Video Streaming Player SDK lets you play IBM Video Streaming live and recorded videos in your native applications. Using the native SDK gives you full control over the Player, including a customizable native user interface, callbacks on status changes, and many more.
 
 This document describes the basic steps to make an Apple TV app using the Player SDK for tvOS.
 
@@ -11,9 +11,9 @@ This document describes the basic steps to make an Apple TV app using the Player
 ### Account prerequisites
 
 Before going into details, please note that document assumes the following:
-*   You have a registered user at [ustream.tv](http://www.ustream.tv/).
-*   Your Ustream user is entitled to use the Ustream Player SDK specifically. Log-in to [Dashboard](https://www.ustream.tv/dashboard), 
-and check ["API/SDK access"](https://www.ustream.tv/dashboard/account/api-access) under the "Account" section.
+*   You have a registered user at [video.ibm.com](https://video.ibm.com/).
+*   Your IBM Video Streaming user is entitled to use the IBM Video Streaming Player SDK specifically. Log-in to [Dashboard](https://video.ibm.com/dashboard), 
+and check ["API/SDK access"](https://video.ibm.com/dashboard/account/api-access) under the "Account" section.
 
 If you have questions, please [contact us](https://video.ibm.com/enterprise-video/contact).
 
@@ -31,7 +31,7 @@ The Player SDK requires tvOS 9.0 or above.
 
 ### Step 1: Create credentials for your mobile app
 
-Log-in into your account, navigate to the Dashboard and select ["API/SDK access"](https://www.ustream.tv/dashboard/account/api-access)
+Log-in into your account, navigate to the Dashboard and select ["API/SDK access"](https://video.ibm.com/dashboard/account/api-access)
 under the Account menu.
 
 Click on "Create new credentials" and provide a name for your application in the "Application name" field. Your credentials will be listed under the "API/SDK access" page based on this name.
@@ -63,28 +63,28 @@ Drag TvOSPlayerSDK.framework into the Embedded Binaries section of your target.
 
 #### Add new build phase
 
-Since Apple does not strip the Simulator slice from embedded frameworks, we have to do it before submitting the application. This step is implemented in the sample application as the final Build Phase: _Strip embedded frameworks_. Please add a similar build step to your application, using the script invoked from the reference solution: `strip-dynamic-frameworks.sh`. It's a simple shell script which extracts the valid architectures from the FAT binary in the Ustream Player SDK.
+Since Apple does not strip the Simulator slice from embedded frameworks, we have to do it before submitting the application. This step is implemented in the sample application as the final Build Phase: _Strip embedded frameworks_. Please add a similar build step to your application, using the script invoked from the reference solution: `strip-dynamic-frameworks.sh`. It's a simple shell script which extracts the valid architectures from the FAT binary in the IBM Video Streaming Player SDK.
 
 Copy the `strip-dynamic-frameworks.sh` file into your project's source folder. Add a new Run Script Phase in your target's Build Phases. This new build phase should come after the Embed Frameworks phase. Copy the following to the shell text area:
 `"${SRCROOT}/strip-dynamic-frameworks.sh"`
 
-### Step 6: Register your app at Ustream
+### Step 6: Register your app at IBM Video Streaming
 
-The SDK requires the use of a Ustream Player SDK key, which is validated whenever the SDK communicates with Ustream streaming
+The SDK requires the use of a IBM Video Streaming Player SDK key, which is validated whenever the SDK communicates with IBM Video Streaming streaming
 servers. The sample application contains a sample SDK key which you can use for testing. The sample SDK key can only be
 used to play content on the test channel(s) also used in the sample app.
 
-Note: Although there is a provided SDK key for the sample app's sample content, you still need to register your identifier at Ustream. This will ensure that you can build the sample project using your own certificates.
+Note: Although there is a provided SDK key for the sample app's sample content, you still need to register your identifier at IBM Video Streaming. This will ensure that you can build the sample project using your own certificates.
 
 Before you can start using the Player SDK for playing content from your own channel(s), you will need to:
 
-*   Get a valid **Ustream Player SDK key** owned by the Ustream user that owns the content you would like to play.
+*   Get a valid **IBM Video Streaming Player SDK key** owned by the IBM Video Streaming user that owns the content you would like to play.
 
-*   Register the **bundle identifier(s)** – of every app in which you will integrate the Ustream Player SDK in – at Ustream.
+*   Register the **bundle identifier(s)** – of every app in which you will integrate the IBM Video Streaming Player SDK in – at IBM Video Streaming.
 
 The application identifier is typically structured as com.company.project.
 
-Before you can create and use an instance of the player you have to configure the lib with your Ustream Player SDK key:
+Before you can create and use an instance of the player you have to configure the lib with your IBM Video Streaming Player SDK key:
 
 ```objc
 [USUstreamPlayer configureWithApiKey:<#place your SDK key here#>];
@@ -106,7 +106,7 @@ self.ustreamPlayer.view.frame = self.view.bounds;
 
 ### Step 8: Play live or recorded content
 
-By now you have configured your player and it is ready to play live and recorded video content via Ustream.
+By now you have configured your player and it is ready to play live and recorded video content via IBM Video Streaming.
 
 `USUstreamPlayer` can play different kinds of media:
 - Live streams using the `-[USUstreamPlayer playChannel:]` API call.
@@ -120,11 +120,11 @@ For example, you can play the live video streamed right now on your channel:
 
 ### Step 9: Handle Player callbacks
 
-Ustream content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.
+IBM Video Streaming content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.
 
 #### Generic callbacks
 
-`USUstreamPlayer` reports its state changes using the `USPlayerDelegate` protocol. It may also require user interaction in case the servers indicate the Player about content restrictions (so-called "locks") set up by the Ustream user. In order to catch these callbacks, you have to set a handler conforming to protocol `USPlayerDelegate` as a delegate of your player instance.
+`USUstreamPlayer` reports its state changes using the `USPlayerDelegate` protocol. It may also require user interaction in case the servers indicate the Player about content restrictions (so-called "locks") set up by the IBM Video Streaming user. In order to catch these callbacks, you have to set a handler conforming to protocol `USPlayerDelegate` as a delegate of your player instance.
 
 For example:
 ```objc
@@ -160,7 +160,7 @@ You can set any of the player toolbar’s contents using the `-[USToolbar setToo
 
 ## Localization
 
-Ustream provides localizations for all strings used in the Player SDK in the following languages:
+IBM Video Streaming provides localizations for all strings used in the Player SDK in the following languages:
 - English
 - Spanish
 - Japanese

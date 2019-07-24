@@ -6,14 +6,14 @@ category: player-api
 categoryItemType: documentation
 categoryItemIsShown: 1
 categoryItemWidth: 6
-categoryItemDescription: Control the features of the IBM Cloud Video player and customize its layout, while maintaining a continuous, interactive data connection with Ustream’s backend. Embed the player anywhere and manage it according to your needs and preferences.
+categoryItemDescription: Control the features of the IBM Video Streaming player and customize its layout, while maintaining a continuous, interactive data connection with IBM Video Streaming’s backend. Embed the player anywhere and manage it according to your needs and preferences.
 categoryItemLabel: Read the documentation
---- 
+---
 
 <article data-sidenav="sidenav">
 				<section>
 					<h2>Overview</h2>
-						<p>Enables sites using the <a href="https://video.ibm.com/" target="_blank">IBM Cloud Video</a> embed iframe to build and adapt on the embed live player.</p>
+						<p>Enables sites using the <a href="https://video.ibm.com/" target="_blank">IBM Video Streaming</a> embed iframe to build and adapt on the embed live player.</p>
 						<p>The Player API provides basic methods to control the live stream or recorded video playback, and enables the user to access essential events of the live stream or the played video.</p>
 						<p>The Player API requires <a href="http://www.w3.org/TR/webmessaging/" target="_blank">postMessage</a> DOM API, it won't work in browsers that does not support the postMessage API.</p>
 				</section>
@@ -22,8 +22,13 @@ categoryItemLabel: Read the documentation
 
 				<section>
 					<h2>Usage</h2>
-					<p>Create an instance of the Embed API by providing the ID of the iframe, or the iframe DOM object itself:</p>
-					<pre><code class="html">&lt;iframe id=&quot;UstreamIframe&quot; src=&quot;//www.ustream.tv/embed/1524&quot; width=&quot;640&quot; height=&quot;480&quot; allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+					<p>First, a valid IBM Cloud Video embed iframe will be needed to use the Embed API. Log in to your managed <a href="https://video.ibm.com/" target="_blank">IBM Cloud Video</a> account as an administrator of your channel. Then navigate to the Embed Configurator page on your Dashboard by selecting the "Embed" option as seen below:</p>
+					<img class="no-border" src="/images/embed-configurator-page-location.png" alt="Embed configurator page location in channel menu">
+					<p>After selecting an option with the IBM Cloud Video Player, the Embed Configurator is displayed. The Configurator enables channel administrators to set the properties of the Player embed. When it's done, the proper iframe HTML element can be copied to the clipboard with the button which is highlighted in the next picture.</p>
+					<img class="no-border" src="/images/embed-configurator-copy-to-clipboard.png" alt="Embed configurator Copy to clipboard button location">
+					<p>The next step is to include a unique ID in this iframe element. We will use "UstreamIframe".</p>
+					<p>Create an instance of the Embed API by providing the ID of the iframe. The iframe code should look like this:</p>
+					<pre><code class="html">&lt;iframe id=&quot;UstreamIframe&quot; src=&quot;https://video.ibm.com/embed/1524?html5ui&quot; width=&quot;640&quot; height=&quot;480&quot; allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;</code></pre>
 					<pre><code class="javascript">var viewer = UstreamEmbed('UstreamIframe');</code></pre>
 					<h3>URL parameters</h3>
 					<p>The default behaviour of the player can be modified by extending the src URL with any of the following parameters:</p>
@@ -51,7 +56,7 @@ categoryItemLabel: Read the documentation
 							</tr>
 							<tr>
 								<td>controls</td>
-								<td>Hides all UI elements.</td>
+								<td>When set to false it hides all UI elements.</td>
 								<td>true/false</td>
 								<td>true</td>
 							</tr>
@@ -159,7 +164,7 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
 
 					<h6>Example</h6>
 					<pre><code class="javascript">viewer.callMethod('quality', 16); //set to high</code></pre>
-			
+
 			<h4>cc (closed caption)</h4>
 					<p>Enables the selected closed caption if available. Requires one argument:</p>
 					<ul>
@@ -211,7 +216,7 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
     // content == ['recorded', 123456]
     ...
 });</code></pre>
-					
+
 					<h4>playingContent</h4>
 					<p>Get the actual content type and id as an array. This will return the currently played offair video's id if the loaded content is an offair channel or with the channel id if the channel is live.</p>
 
@@ -300,7 +305,7 @@ viewer.getProperty('playingContent', function (content) {
     "2":{"label":"480p","active":false},
     "16":{"label":"BEST","active":true}
 }</code></pre>
-			
+
 			<h4>cc (closed caption)</h4>
 					<p>Fired when there are closed captions available on the stream.</p>
 					<p>Returns an array containing closed captions as objects.</p>
@@ -347,7 +352,7 @@ viewer.getProperty('playingContent', function (content) {
         description: "The Future of Video with Watson",
         id: 123,
         imageUrl: "URL of image",
-        title: "IBM Cloud Video"
+        title: "IBM Video Streaming"
     }
 }</code></pre>
 					<pre><code class="javascript">// example cta object when removed:
@@ -359,4 +364,4 @@ viewer.getProperty('playingContent', function (content) {
 				</section>
 </article>
 
-			
+

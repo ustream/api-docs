@@ -6,26 +6,26 @@ category: channel-api
 categoryItemType: documentation
 categoryItemIsShown: 1
 categoryItemWidth: 12
-categoryItemDescription: IBM Cloud Video allows third-party clients to access IBM Cloud Video users&#39; resources (data) via a HTTP-based (RESTful) API. It also provides a Broadcaster Library that is capable of broadcasting to a user&#39;s channel. Both the REST API and the Broadcaster Library uses the OAuth 2.0 protocol for authentication and authorization.
+categoryItemDescription: IBM Video Streaming allows third-party clients to access IBM Video Streaming users&#39; resources (data) via a HTTP-based (RESTful) API. It also provides a Broadcaster Library that is capable of broadcasting to a user&#39;s channel. Both the REST API and the Broadcaster Library uses the OAuth 2.0 protocol for authentication and authorization.
 categoryItemLabel: Read the documentation
----     
+---
         <article data-sidenav="sidenav">
             <section>
                 <h2>Overview</h2>
-                <p>IBM Cloud Video allows third-party clients to access IBM Cloud Video users&#39; resources (data) via a HTTP-based (RESTful) API. It also provides a Broadcaster Library that is capable of broadcasting to a user&#39;s channel. Both the REST API and the Broadcaster Library uses the OAuth 2.0 protocol for authentication and authorization.</p>
-                
-                
-                
+                <p>IBM Video Streaming allows third-party clients to access IBM Video Streaming users&#39; resources (data) via a HTTP-based (RESTful) API. It also provides a Broadcaster Library that is capable of broadcasting to a user&#39;s channel. Both the REST API and the Broadcaster Library uses the OAuth 2.0 protocol for authentication and authorization.</p>
+
+
+
                 <h3>Basic workflow</h3>
                 <p>The basic workflow of a third-party Client is the following:</p>
                 <ol>
                     <li><strong>Authorize the user:</strong> Obtain and validate the user&#39;s credentials (username and password). The client must never store these credentials, only pass it to the server for authorization.</li>
-                    <li><strong>Obtain an access token:</strong> If the user&#39;s credentials were entered correctly, the third-party client can obtain an access token. Once this token is received, it can be used to access the user&#39;s resources until the token expires or the user revokes it on the IBM Cloud Video website.</li>
-                    <li><strong>Access the user&#39;s resources:</strong> The client can use Ustream&#39;s REST API or the IBM Cloud Video Broadcasting Library to access the user&#39;s resources (data) or to broadcast to the user&#39;s channel. The client authorizes itself using the access token, with methods described by the OAuth 2.0 Protocol Draft.</li>
+                    <li><strong>Obtain an access token:</strong> If the user&#39;s credentials were entered correctly, the third-party client can obtain an access token. Once this token is received, it can be used to access the user&#39;s resources until the token expires or the user revokes it on the IBM Video Streaming website.</li>
+                    <li><strong>Access the user&#39;s resources:</strong> The client can use IBM Video Streaming&#39;s REST API or the IBM Video Streaming Broadcasting Library to access the user&#39;s resources (data) or to broadcast to the user&#39;s channel. The client authorizes itself using the access token, with methods described by the OAuth 2.0 Protocol Draft.</li>
                 </ol>
-                
-                
-                
+
+
+
                 <h3>Authorization Flows</h3>
                 <p>The OAuth 2.0 protocol provides several flows (workflows) for the first two phases. It depends on the type and architecture of the client which flow is the most suitable. The following flows are supported:</p>
                 <ul>
@@ -33,40 +33,40 @@ categoryItemLabel: Read the documentation
                     <li><strong>Authorization code flow:</strong> Suitable for third-party websites which contain a client and a server component. The user enters its credentials to a secure login webpage. After logging in, the browser is redirected to a special URL (defined by the client), passing an authorization code in the URL. The third-party server obtains the access token with another HTTP request in the background, using the authorization code. This method is more secure than the implicit flow if the third-party client has a client+server model. See the OAuth2 Draft for details.</li>
                     <li><strong>Client credentials flow:</strong> Best choice for users developing server-side applications to manage their content / settings. <a href="#client-credentials-flow_11">Read more</a></li>
                 </ul>
-                
-                
-                
+
+
+
                 <h3>Endpoints</h3>
-                <p>The webpages and HTTP services invoked in during this authorization process are called endpoints. IBM Cloud Video has the following endpoints:</p>
+                <p>The webpages and HTTP services invoked in during this authorization process are called endpoints. IBM Video Streaming has the following endpoints:</p>
                 <ul>
                     <li><strong>Authorization endpoint:</strong> this is the webpage where the user enters his/her credentials.</li>
                     <li><strong>Token endpoint:</strong> this is the HTTP service where the access token can be obtained in an authorization code flow (when using the implicit flow, the access token can be obtained directly from the authorization endpoint).</li>
                 </ul>
-                
-                
-                
+
+
+
                 <h3>Access tokens</h3>
-                <p>There are two types of access tokens: <strong>Bearer tokens</strong> and <strong>MAC tokens.</strong> They are equivalent in the sense that they can access the same resources on the IBM Cloud Video REST API. The difference is that while bearer tokens can be only used on encrypted channels (HTTPS), MAC tokens are suitable on non-encrypted channels as well.</p>
-                <p>If the client uses the IBM Cloud Video Broadcasting Library, it must use MAC tokens: the broadcasting is done on the RTMP protocol, which is unencrypted. If the client only uses the REST API, the bearer tokens are preferred because their usage is very simple and lightweight.</p>
+                <p>There are two types of access tokens: <strong>Bearer tokens</strong> and <strong>MAC tokens.</strong> They are equivalent in the sense that they can access the same resources on the IBM Video Streaming REST API. The difference is that while bearer tokens can be only used on encrypted channels (HTTPS), MAC tokens are suitable on non-encrypted channels as well.</p>
+                <p>If the client uses the IBM Video Streaming Broadcasting Library, it must use MAC tokens: the broadcasting is done on the RTMP protocol, which is unencrypted. If the client only uses the REST API, the bearer tokens are preferred because their usage is very simple and lightweight.</p>
                 <p>Bearer tokens and MAC tokens can be obtained in the same way: the authorization endpoint has a token type parameter, so the client can specify what kind of token it wants to create.</p>
-                
-                
-                
+
+
+
                 <h3>Token scopes, expiration</h3>
-                <p>By default, access tokens have a limited lifetime (they expire in a day) and can access only a limited amount of resources. In the authorization process the client can request extra permissions (scopes) from the user to overcome these limitations. These requests are shown to the user on the authorization endpoint. IBM Cloud Video currently supports the following scope:</p>
+                <p>By default, access tokens have a limited lifetime (they expire in a day) and can access only a limited amount of resources. In the authorization process the client can request extra permissions (scopes) from the user to overcome these limitations. These requests are shown to the user on the authorization endpoint. IBM Video Streaming currently supports the following scope:</p>
                 <ul>
-                    <li><strong>Broadcaster scope:</strong> If this scope is enabled, the access token can be used for broadcasting with the IBM Cloud Video Broadcasting Library. This scope can only be used with MAC tokens.</li>
+                    <li><strong>Broadcaster scope:</strong> If this scope is enabled, the access token can be used for broadcasting with the IBM Video Streaming Broadcasting Library. This scope can only be used with MAC tokens.</li>
                 </ul>
             </section>
 
             <section>
                 <h2>OAuth2 authorization server endpoints</h2>
-                
+
                 <h3>Authorization endpoint</h3>
                 <table class="table responsive">
                     <tr>
                         <td><strong>Location</strong></td>
-                        <td><a>https://www.ustream.tv/oauth2/authorize</a></td>
+                        <td><a>https://video.ibm.com/oauth2/authorize</a></td>
                     </tr>
                     <tr>
                         <td><strong>Supported flows</strong></td>
@@ -79,7 +79,7 @@ categoryItemLabel: Read the documentation
                 </table>
                 <p>The Authorization endpoint is a secure web page that contains a login form. The client should show this page to the user in an embedded browser. When the user completes the login process, the browser is redirected to a special URL. The client can capture this redirect call, and obtain the authorization code or access token (depending on the flow type).</p>
                 <p>The parameters below specify the behavior of the authorization endpoint. They have to be set in GET or POST HTTP parameters.</p>
-                
+
                 <h6>Supported OAuth 2.0 standard parameters</h6>
                 <table class="table responsive">
                     <tr>
@@ -98,13 +98,13 @@ categoryItemLabel: Read the documentation
                         <td><strong>client_id</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash that identifies the Client. Provided by Ustream.</td>
+                        <td>40 character sha1 hash that identifies the Client. Provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>redirect_uri</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>The URI where the browser will redirect after the authentication process. The prefix of this URI must be registered at Ustream.</td>
+                        <td>The URI where the browser will redirect after the authentication process. The prefix of this URI must be registered at IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>state</strong></td>
@@ -119,8 +119,8 @@ categoryItemLabel: Read the documentation
                         <td>Currently, only use of the "broadcaster" scope is supported. If the parameter is empty, no scope will be set.</td>
                     </tr>
                 </table>
-                
-                <h6>IBM Cloud Video specific extra parameters</h6>
+
+                <h6>IBM Video Streaming specific extra parameters</h6>
                 <table class="table responsive">
                     <tr>
                         <th>parameter</th>
@@ -138,7 +138,7 @@ categoryItemLabel: Read the documentation
                         <td><strong>device_name</strong></td>
                         <td>string</td>
                         <td>OPTIONAL</td>
-                        <td>Full product name of the Client device or application. It is used for easy identification of the OAuth2 Token. The User will be able to review which Clients are connected to his/her account, and revoke these grants on the IBM Cloud Video website.</td>
+                        <td>Full product name of the Client device or application. It is used for easy identification of the OAuth2 Token. The User will be able to review which Clients are connected to his/her account, and revoke these grants on the IBM Video Streaming website.</td>
                     </tr>
                     <tr>
                         <td><strong>display</strong></td>
@@ -153,7 +153,7 @@ categoryItemLabel: Read the documentation
                         <td>Show the authorization page in this locale (e.g. en_US); This parameter will also set the language of the newly registered users. See section 4.2.1. for available locales.</td>
                     </tr>
                 </table>
-                
+
                 <h6>Result</h6>
                 <p>The result values below are appended to the <em>redirect_uri</em> as HTTP GET parameters. If the <em>response_type</em> parameter is "code", the following values are returned:</p>
                 <table class="table responsive">
@@ -171,7 +171,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                 </table>
                 <p class="note">MAC tokens are currently not implemented for Authorization Code Flow.</p>
-                
+
                 <p>If the <em>response_type</em> is "token" and <em>token_type</em> is "bearer" (or not set), the following values are returned:</p>
                 <table class="table responsive">
                     <tr>
@@ -204,7 +204,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>access_token</strong></td>
-                        <td>Access Token (40 character length, hexa encoded sha1 hash). Referred as <em>macId</em> in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>Access Token (40 character length, hexa encoded sha1 hash). Referred as <em>macId</em> in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>expires_in</strong></td>
@@ -212,11 +212,11 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>mac_key</strong></td>
-                        <td>MAC secret (40 character length, hexa encoded sha1 hash). Referred as <em>macSecret</em> in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>MAC secret (40 character length, hexa encoded sha1 hash). Referred as <em>macSecret</em> in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>created_at</strong></td>
-                        <td>UTC timestamp of the creation datetime. Referred as <em>macIssueTime</em> in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>UTC timestamp of the creation datetime. Referred as <em>macIssueTime</em> in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>mac_algorithm</strong></td>
@@ -231,7 +231,7 @@ categoryItemLabel: Read the documentation
                         <td>If state was sent to the endpoint, we send it back</td>
                     </tr>
                 </table>
-                
+
                 <h6>Error handling</h6>
                 <p>If the authentication was not successful, there is no HTTP redirection: the User can stay on the Authorization Endpoint page until the correct credentials are entered. It is also possible to sign up a new user, or to request a password reset if the password is forgotten.</br>If the User authenticates correctly, but presses "Deny" on the authorization page, the browser is redirected to the <em>redirect_uri</em> with the following parameters:</p>
                 <table class="table responsive">
@@ -248,22 +248,22 @@ categoryItemLabel: Read the documentation
                         <td>If state was sent to the endpoint, we send it back</td>
                     </tr>
                 </table>
-        
-        
-        
+
+
+
                 <h3>Token Endpoint</h3>
                 <table class="table responsive">
                     <tr>
                         <td><strong>Location</strong></td>
-                        <td><a>https://www.ustream.tv/oauth2/token</a></td>
+                        <td><a>https://video.ibm.com/oauth2/token</a></td>
                     </tr>
                     <tr>
                         <td><strong>Supported HTTP methods</strong></td>
                         <td>POST</td>
                     </tr>
                 </table>
-        
-        
+
+
                 <h3>Authorization Code flow</h3>
                 <p>When the Client receives the Authorization Code, the server-side component of the Client calls this Endpoint to return the Access Token. The parameters below must be set as HTTP POST parameters.</p>
                 <table class="table responsive">
@@ -283,7 +283,7 @@ categoryItemLabel: Read the documentation
                         <td><strong>client_id</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash, provided by Ustream.</td>
+                        <td>40 character sha1 hash, provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>code</strong></td>
@@ -299,10 +299,10 @@ categoryItemLabel: Read the documentation
                     </tr>
                 </table>
                 <p class="note">The Token Endpoint currently works for Bearer Tokens only.</p>
-        
+
                 <p>In addition to the parameters above, the Client has to provide its Client secret (provided along with the Client key) to authenticate itself. The authentication is done with HTTP Basic authorization method. Example HTTP Header:</p>
                 <pre>Authorization: Basic bc345abc45d6789abcdef0123aef0126789def01</pre>
-                
+
                 <h6>Response</h6>
                 <p>The response of the Token Endpoint is a JSON object. JSON response on success (for Bearer Tokens):</p>
                 <table class="table responsive">
@@ -323,8 +323,8 @@ categoryItemLabel: Read the documentation
                         <td>Will be "bearer"</td>
                     </tr>
                 </table>
-        
-        
+
+
                 <h3>Resource Owner Password Credentials flow</h3>
                 <p>The server-side component of the Client calls this Endpoint to return the Access Token using resource owner's credentials (username and password). The parameters below must be set as HTTP POST parameters.</p>
                 <table class="table responsive">
@@ -344,25 +344,25 @@ categoryItemLabel: Read the documentation
                         <td><strong>client_id</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash, provided by Ustream.</td>
+                        <td>40 character sha1 hash, provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>client_secret</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash, provided by Ustream.</td>
+                        <td>40 character sha1 hash, provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>username</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>IBM Cloud Video username</td>
+                        <td>IBM Video Streaming username</td>
                     </tr>
                     <tr>
                         <td><strong>password</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>IBM Cloud Video password</td>
+                        <td>IBM Video Streaming password</td>
                     </tr>
                     <tr>
                         <td><strong>device_name</strong></td>
@@ -383,10 +383,10 @@ categoryItemLabel: Read the documentation
                         <td>Currently, only use of the "broadcaster" scope is supported. If the parameter is empty, no scope will be set.</td>
                     </tr>
                 </table>
-                
+
                 <p>In addition to the parameters above, the Client has to provide its Client secret (provided along with the Client key) to authenticate itself. The authentication is done with HTTP Basic authorization method. Example HTTP Header:</p>
                 <pre><code class="http">Authorization: Basic bc345abc45d6789abcdef0123aef0126789def01</code></pre>
-                
+
                 <h6>Response</h6>
                 <table class="table responsive">
                     <tr>
@@ -407,11 +407,11 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>mac_key</strong></td>
-                        <td>MAC secret (40 character length, hexa encoded sha1 hash). Referred as macSecret in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>MAC secret (40 character length, hexa encoded sha1 hash). Referred as macSecret in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>created_at</strong></td>
-                        <td>UTC timestamp of the creation datetime. Referred as macIssueTime in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>UTC timestamp of the creation datetime. Referred as macIssueTime in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>mac_algorithm</strong></td>
@@ -419,7 +419,7 @@ categoryItemLabel: Read the documentation
                     </tr>
                 </table>
 
-        
+
                 <h3>Client credentials flow</h3>
                 <p>There are several API resources which aren't connected to any user. Those are resources implemented for the API client (application). <a href="channel.html#channel_hooks">Hook management</a> is a good example for that. Those resources needs the clients to identify themselves. For that purpose we implemented the Client Credentials OAuth2 Flow which provides your app a client access token. With normal user level tokens these resources dedicated to clients are inaccessible, however a <strong>client token can access the application owner user's resources</strong>.<br>The parameters below must be set as HTTP POST parameters.</p>
                 <table class="table responsive">
@@ -439,7 +439,7 @@ categoryItemLabel: Read the documentation
                         <td><strong>client_id</strong></td>
                         <td>string</td>
                         <td>REQUIRED</td>
-                        <td>40 character sha1 hash, provided by Ustream.</td>
+                        <td>40 character sha1 hash, provided by IBM Video Streaming.</td>
                     </tr>
                     <tr>
                         <td><strong>device_name</strong></td>
@@ -460,10 +460,10 @@ categoryItemLabel: Read the documentation
                         <td>Currently, only use of the "broadcaster" scope is supported. If the parameter is empty, no scope will be set.</td>
                     </tr>
                 </table>
-        
+
                 <p>In addition to the parameters above, the Client has to provide its Client secret (provided along with the Client key) to authenticate itself. The authentication is done with HTTP Basic authorization method. Example HTTP Header:</p>
                 <pre><code class="http">Authorization: Basic bc345abc45d6789abcdef0123aef0126789def01</code></pre>
-                
+
                 <h6>Response</h6>
                 <table class="table responsive">
                     <tr>
@@ -484,24 +484,24 @@ categoryItemLabel: Read the documentation
                     </tr>
                     <tr>
                         <td><strong>mac_key</strong></td>
-                        <td>MAC tokens only: MAC secret (40 character length, hexa encoded sha1 hash). Referred as macSecret in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>MAC tokens only: MAC secret (40 character length, hexa encoded sha1 hash). Referred as macSecret in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>created_at</strong></td>
-                        <td>UTC timestamp of the creation datetime. Referred as macIssueTime in the IBM Cloud Video Broadcaster Library.</td>
+                        <td>UTC timestamp of the creation datetime. Referred as macIssueTime in the IBM Video Streaming Broadcaster Library.</td>
                     </tr>
                     <tr>
                         <td><strong>mac_algorithm</strong></td>
                         <td>MAC tokens only: Will be "hmac-sha-1"</td>
                     </tr>
                 </table>
-        
+
                 <h6>Error responses for Authorization Code, Password, and Client Credentials token flows</h6>
                 <p>If there is an error, the Token Endpoint returns a JSON object with the following format:</p>
                 <pre><code class="json">{
     "error": "ERROR_VALUE"
 }</code></pre>
-                
+
                 <p>It also sends a HTTP status code indicating the error. Possible error responses:</p>
                 <table class="table responsive">
                     <tr>
@@ -535,17 +535,17 @@ categoryItemLabel: Read the documentation
                         <td>The Server cannot handle the request at this moment for some reason. Try again later.</td>
                     </tr>
                 </table>
-                
-        
-        
+
+
+
                 <h3>Examples</h3>
-                
-        
+
+
                 <h4>Authorization Code Flow</h4>
                 <ol>
                     <li>
                         <p>The Client opens a browser with the Authorization Endpoint:</p>
-                        <pre>https://www.ustream.tv/oauth2/authorize
+                        <pre>https://video.ibm.com/oauth2/authorize
 ?response_type=code
 &amp;client_id=AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDD
 &amp;redirect_uri=http://example.com/get_access_token
@@ -560,7 +560,7 @@ categoryItemLabel: Read the documentation
                     <li>
                         <p>The page handler at <a>http://example.com/get_access_token</a> retrieves the Access Token using the Token Endpoint:</p>
                         <pre><code class="nohighlight">POST /oauth2/token HTTP/1.1
-    Host: www.ustream.tv
+    Host: video.ibm.com
     Authorization: Basic xxxxxxxxxxyyyyyyyyyywwwwwwwwwwzzzzzzzzzz
     Content-Type: application/x-www-form-urlencoded
     grant_type=authorization_code&amp;client_id=AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDD
@@ -578,7 +578,7 @@ categoryItemLabel: Read the documentation
     authorization page</h4>
                 <ol>
                     <li><p>The Client opens a browser with the Authorization Endpoint:</p>
-                    <pre>https://www.ustream.tv/oauth2/authorize
+                    <pre>https://video.ibm.com/oauth2/authorize
 ?response_type=token
 &amp;token_type=mac
 &amp;client_id=AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDD
@@ -609,36 +609,36 @@ categoryItemLabel: Read the documentation
                 </li>
             </ol>
         </section>
-    
-    
-    
-    
+
+
+
+
         <section>
                 <h2>Testing API from command line (with curl)</h2>
-                
-            
-            
+
+
+
                 <h3>Get an access token</h3>
 
                 <pre>
-https://www.ustream.tv/oauth2/authorize
+https://video.ibm.com/oauth2/authorize
 ?response_type=token
 &amp;client_id=057ce944b015ec9fdf546dfbbe1b7af4b19e8158
-&amp;redirect_uri=https://www.ustream.tv/oauth2/redirect
+&amp;redirect_uri=https://video.ibm.com/oauth2/redirect
 &amp;device_name=MyDevice
 &amp;display=touch
 &amp;state=XYZ</pre>
                 <p>After logging in, the browser is redirected to a special URL (defined by the Client), passing the Access Token in the URL. As you can see in the examples below, you should use Authorization HTTP header with token in the requests: "Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950"</p>
-                
-            
-            
+
+
+
                 <h3>Creating a channel (POST)</h3>
                 <pre><code>curl \
     -i \
     -X POST \
     -H "Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950" \
     -d "title=Whatever+Test+1234" \
-    https://api.ustream.tv/users/self/channels.json</code></pre>
+    https://api.video.ibm.com/users/self/channels.json</code></pre>
                 <pre><code class="nohighlight">HTTP/1.1 201 CREATED
 Server: nginx/1.2.6
 Date: Tue, 15 Jan 2013 13:08:06 GMT

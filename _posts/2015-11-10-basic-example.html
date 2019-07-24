@@ -5,14 +5,14 @@ weight: 1
 category: player-api
 categoryItemType: example
 categoryItemIsShown: 1
-categoryItemWidth: 
-categoryItemDescription: 
-categoryItemLabel: 
---- 
+categoryItemWidth:
+categoryItemDescription:
+categoryItemLabel:
+---
 
 <article class="row">
 	<div style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
-		<iframe src="https://www.ustream.tv/embed/1524?html5ui" id="UstreamFrame" width="100%" height="100%" allowfullscreen webkitallowfullscreen style="border: 0 transparent none; position:absolute; top:0; left: 0"></iframe>
+		<iframe src="https://video.ibm.com/embed/1524?html5ui" id="UstreamFrame" width="100%" height="100%" allowfullscreen webkitallowfullscreen style="border: 0 transparent none; position:absolute; top:0; left: 0"></iframe>
 	</div>
 	<div class="panel clear">
 		<div class="row gutter-30">
@@ -31,7 +31,7 @@ categoryItemLabel:
 				<label>Volume</label>
 				<div class="input-button-inside">
 					<input type="text" id="SetVolume" placeholder="1-100" />
-					<button type="button" class="button small control-volume">Set volume</button>	
+					<button type="button" class="button small control-volume">Set volume</button>
 				</div>
 				<label>Content</label>
 				<input type="text" placeholder="Content ID" id="LoadContent">
@@ -55,24 +55,24 @@ categoryItemLabel:
 					<label>Current viewers</label>
 					<div class="input-button-inside">
 						<input type="text" id="Viewers" readonly="readonly"/>
-						<button type="button" class="button small control-viewers">Get viewers</button>	
+						<button type="button" class="button small control-viewers">Get viewers</button>
 					</div>
 				</div>
 				<div class="recorded-settings hidden">
 					<label>Seek</label>
 					<div class="input-button-inside">
 						<input type="text" id="SeekTo" placeholder="Time in secounds" />
-						<button type="button" class="button small control-seek">Seek to</button>	
+						<button type="button" class="button small control-seek">Seek to</button>
 					</div>
 					<label>Video duration</label>
 					<div class="input-button-inside">
 						<input type="text" id="Duration" placeholder="" readonly="readonly"/>
-						<button type="button" class="button small control-duration">Get duration</button>	
+						<button type="button" class="button small control-duration">Get duration</button>
 					</div>
 					<label>Video progress</label>
 					<div class="input-button-inside">
 						<input type="text" id="Progress" placeholder="" readonly="readonly"/>
-						<button type="button" class="button small control-progress">Get progress</button>	
+						<button type="button" class="button small control-progress">Get progress</button>
 					</div>
 				</div>
 			</div>
@@ -80,7 +80,7 @@ categoryItemLabel:
 	</div>
 	<div class="row gutter-30">
 		<h3>Example media</h3>
-		
+
 		<div class="media clear" data-media="4307895" data-type="channel">
 			<a class="pull-left" href="#">
 				<img class="media-object" src="../images/example-channel-creativelive.png" style="border-color:transparent">
@@ -167,7 +167,7 @@ categoryItemLabel:
 	.media-object {
 		width: 9.6rem;
 		margin-right: 2rem;
-		
+
 	}
 	.media-body {
 		font-size: 1.3rem;
@@ -190,15 +190,15 @@ categoryItemLabel:
 		color: #539eec;
 		display: block;
 	}
-	
+
 </style>
 <script type="text/javascript">
 
 	$(document).ready(function () {
-		
+
 		viewer = UstreamEmbed("UstreamFrame");
-		
-		
+
+
 		$('.media').on("click", function (e) {
 			clearFields();
 			var target = $(e.currentTarget),
@@ -211,9 +211,9 @@ categoryItemLabel:
 		/* set up controls */
 		$('article .button').click(function (e) {
 			var target = $(e.currentTarget),
-			
+
 				control = target[0].className.match(/control-([a-zA-Z0-9\-]*)/);
-			
+
 			if (control && control[1]) {
 
 				switch (control[1]) {
@@ -264,11 +264,11 @@ categoryItemLabel:
 
 			e.preventDefault();
 		});
-		
+
 		$('.quality-selector').change(function() {
 			viewer.callMethod('quality', $(this).val());
 		});
-		
+
 		$('.media-selector').change(function() {
 			$(this).next().find('span').text($(this).find('option:selected').text());
 			$('#Load').attr('class','button control-load-'+$(this).val());
@@ -282,7 +282,7 @@ categoryItemLabel:
 			for (var id in data) {
 				list.append('<option value="' + id + '" ' + (data[id].selected ? 'selected="selected"' : '') +'>' + data[id].label + '</option>');
 			}
-			
+
 			//updating value of the custom select gui element
 			list.next().find('span').text(list.find('option:selected').text());
 		}
@@ -330,14 +330,14 @@ categoryItemLabel:
 				case "content":
 					$(".media-selector option").filter(function() {
 						var t = data[0].replace('recorded','video');
-    					return $(this).val() == t; 
+    					return $(this).val() == t;
 					}).attr('selected', true);
 					$('.media-selector').trigger('change');
 					$('#LoadContent').val(data[1]);
-					
+
 					$('.channel-settings, .recorded-settings').addClass('hidden');
 					$('.'+data[0]+'-settings').removeClass('hidden');
-					
+
 					break;
 				case "size":
 					break;
@@ -351,8 +351,8 @@ categoryItemLabel:
 		viewer.addListener('finished', onEmbedEvent);
 		viewer.addListener('size', onEmbedEvent);
 		viewer.addListener('content', onEmbedEvent);
-		
+
 	});
 
 </script>
-	
+

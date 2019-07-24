@@ -1,13 +1,20 @@
 /* Hero */
+body {
+	font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+}
+
 header {
 	position: relative;
 	background-color: #2c3c4c;
 	overflow-x: hidden;
 	box-sizing: border-box;
-	padding: 5rem 1rem 0;
+	padding: 0 1rem 0;
+	background-image: none;
+	background-color: #321260;
 }
+
 .hero > .row {
-	padding: 10rem 1rem 4rem 1rem;
+	padding: 3.7rem 1rem 4.3rem 1rem;
 	display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
@@ -19,13 +26,13 @@ header {
 	justify-content: center;
 }
 .hero.large > .row {
-   min-height: 44rem;
+   min-height: 39rem;
 }
 .hero.medium > .row {
-   min-height: 44rem;
+   min-height: 39rem;
 }
 .hero.small > .row {
-   min-height: 32rem;
+   min-height: 27rem;
 }
 .hero a {
 	text-decoration: none;
@@ -109,12 +116,10 @@ header {
 /* ========================================== */
 
 nav {
-	font-family: 'Helvetica Neue for IBM',Helvetica,Arial,sans-serif;
 	font-weight: 400;
 	font-size: 16px;
 	height: 100px;
 	overflow: hidden;
-	position: absolute;
 	background: #fff;
 	width: 100%;
 	z-index: 100;
@@ -215,6 +220,7 @@ nav #lower-header .unit-name {
 
 nav #lower-header .unit-name span {
 	font-weight: 400;
+	margin-left: 8px;
 }
 
 nav ul {
@@ -767,9 +773,10 @@ only screen and (min-resolution: 120dpi) {
 #developers-home .column-4 h4 span {
 	display: block;
 	font-size: 1.2rem;
+	margin-top: 8px;
 	line-height: 1.8rem;
 	text-transform: uppercase;
-	color: #9cacbc;
+	color: #677787;
 }
 #developers-home .column-4 {
 	margin-bottom: 8rem;
@@ -777,90 +784,41 @@ only screen and (min-resolution: 120dpi) {
 #developers-home .column-4 .column-wrapper {
 	position: relative;
 }
+
+#developers-home .column-4 .column-wrapper .illustrative-icon {
+	margin: 0 0 20px 0;
+}
+
 #developers-home .column-4 .description {
 	padding-bottom: 3rem;
+	text-align: left;
 }
 #developers-home .column-4 .buttons {
 	font-size: 1.3rem;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	text-align: center;
+	text-align: left;
 }
 #developers-home .column-4 .buttons a+a {
 	margin-left: 1rem;
 	white-space: nowrap;
 	line-height: 2.8rem;
 }
+
 #ApiLogo {
 	position: absolute;
-	width: 566px;
-	height: 514px;
-	top: -8rem;
-	right: -5rem;
-	-webkit-transform: rotateZ(0);
-	-moz-transform: rotateZ(0);
-	-ms-transform: rotateZ(0);
-	transform: rotateZ(0);
-}
-#ApiLogo.no-transition {
-	background: url(../images/developers-hero-image.png) no-repeat;
-}
-#ApiLogo.has-transition div {
-	position: absolute;
-	width: 566px;
-	height: 514px;
-	top: 0;
-	left: 0;
-}
-#ApiLogo.has-transition #ApiLogoShadow {
-	background: url(../images/developers-hero-shadow.png) no-repeat;
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-ms-transform: scale(1);
-	transform: scale(1);
-	-webkit-transform-origin: 51% 78%;
-	-moz-transform-origin: 51% 78%;
-	-ms-transform-origin: 51% 78%;
-	transform-origin: 51% 78%;
-}
-#ApiLogo.has-transition #ApiLogoBase {
-	background: url(../images/developers-hero-base.png) no-repeat;
-	-webkit-transform: translateY(0);
-	-moz-transform: translateY(0);
-	-ms-transform: translateY(0);
-	transform: translateY(0);
-}
-#ApiLogo.has-transition #ApiLogoGrid {
-	background: url(../images/developers-hero-grid.png) no-repeat;
-	-webkit-transform: translateY(0);
-	-moz-transform: translateY(0);
-	-ms-transform: translateY(0);
-	transform: translateY(0);
-}
-#ApiLogo.has-transition #ApiLogoU {
-	background: url(../images/developers-hero-U.png) no-repeat;
-	-webkit-transform: translateY(0);
-	-moz-transform: translateY(0);
-	-ms-transform: translateY(0);
-	transform: translateY(0);
-}
-#ApiLogo.has-transition.start #ApiLogoBase, #ApiLogo.hastransition.start #ApiLogoGrid, #ApiLogo.has-transition.start #ApiLogoU {
-	-webkit-transform: translateY(0);
-	-moz-transform: translateY(0);
-	-ms-transform: translateY(0);
-	transform: translateY(0)
-}
-#ApiLogo.has-transition.start #ApiLogoShadow {
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-ms-transform: scale(1);
-	transform: scale(1)
+	width: 371px;
+	height: 364px;
+	top: 50%;
+	margin-top: -182px;
+	right: 6rem;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1000px) {
 	#ApiLogo {
 		transform: scale(.9);
+		right: 0;
 	}
 }
 
@@ -1016,24 +974,6 @@ article .response .definition-list.pros-cons dd::before { top: 1.3rem; }
 header h1 {
 	margin: 0;
 }
-
-.fill-grad1 {
-	background-image: linear-gradient(150deg,#683468,#38447d);
-}
-
-header {
-	background-image: url(../images/hero-bg.jpg);
-	background-position: top center;
-	background-size: 2000px 600px;
-	background-repeat: no-repeat;
-	background-color: transparent;
-}
-@media screen and (min-width: 2000px) {
-	header {
-		background-size: cover;
-	}
-}
-
 
 .row {
 	max-width: 96rem;

@@ -1,20 +1,20 @@
-# Ustream Player SDK for Android v1.1
+# IBM Video Streaming Player SDK for Android v1.1
 
 ## Introduction
 
-The Ustream Player SDK lets you play Ustream live and recorded videos in your native applications. Using the native SDK 
+The IBM Video Streaming Player SDK lets you play IBM Video Streaming live and recorded videos in your native applications. Using the native SDK 
 gives you full control over the Player, including a customizable native user interface, callbacks on status changes, 
 and many more.
 
-This document describes the basic steps to make a mobile app using the Ustream Player SDK for Android.
+This document describes the basic steps to make a mobile app using the IBM Video Streaming Player SDK for Android.
 
 ## Before you begin
 
 ### Account prerequisites
 
 Before going into details, please note that document assumes the following:
-*   You have a registered user at [ustream.tv](http://www.ustream.tv/).
-*   Your Ustream user is entitled to use the Ustream Player SDK specifically. Log-in to [Dashboard], 
+*   You have a registered user at [video.ibm.com](https://video.ibm.com/).
+*   Your IBM Video Streaming user is entitled to use the IBM Video Streaming Player SDK specifically. Log-in to [Dashboard], 
 and check ["API/SDK access"] under the "Integrations & Apps" section.
 
 If you have questions, please [contact us](https://video.ibm.com/enterprise-video/contact).
@@ -38,16 +38,16 @@ The supported minimum API level is 16 (Android version 4.1)
 
 ### Step 1: Create credentials for your mobile app
 
-The SDK requires the use of a **Ustream Player SDK key**, which is validated whenever the SDK communicates with Ustream 
+The SDK requires the use of a **IBM Video Streaming Player SDK key**, which is validated whenever the SDK communicates with IBM Video Streaming 
 streaming servers. The sample application contains a sample SDK key which you can use for testing. The sample SDK key 
 can only be used to play content on the test channel(s) also used in the sample app.
 
-Before you can download and start using the _Ustream Player SDK for Android_ for playing content from your own channel(s), you will need 
-to register the **Key Hash** of every app in which you will integrate the _Ustream Player SDK for Android_ at Ustream. 
-Every registered application will have its own _Ustream Player SDK key_. Although there is a provided SDK key for the sample 
-app's sample content, you still need to register your **Key Hash** at Ustream. This will ensure that you can build the sample 
+Before you can download and start using the _IBM Video Streaming Player SDK for Android_ for playing content from your own channel(s), you will need 
+to register the **Key Hash** of every app in which you will integrate the _IBM Video Streaming Player SDK for Android_ at IBM Video Streaming. 
+Every registered application will have its own _IBM Video Streaming Player SDK key_. Although there is a provided SDK key for the sample 
+app's sample content, you still need to register your **Key Hash** at IBM Video Streaming. This will ensure that you can build the sample 
 project using your own certificates.
-Every time you create an instance of the `UstreamPlayerFactory` you have to use your **Ustream Player SDK key**.
+Every time you create an instance of the `UstreamPlayerFactory` you have to use your **IBM Video Streaming Player SDK key**.
 
 #### Generate your Key Hash
 
@@ -101,7 +101,7 @@ under the "Integrations & Apps" menu.
 
 * Select Android in the "Platform" drop-down. Enter your **Key Hash** and **Google Play Package Name** in the respective fields.
 
-* After you completed all fields, hit "Save" to generate your Ustream Player SDK for Android credentials. Make sure that 
+* After you completed all fields, hit "Save" to generate your IBM Video Streaming Player SDK for Android credentials. Make sure that 
 the "Key Hash" and "Google Play Package Name" are introduced correctly.
 If you accidentally saved wrong values, you can edit or delete your credentials,
 but beware as this will break any existing applications relying on those credentials.
@@ -109,18 +109,18 @@ but beware as this will break any existing applications relying on those credent
 ### Step 2: Download SDK package
 
 After hitting "Save" in the "Create new credentials" step, you will see your credentials listed with the newly generated
-**Ustream Player SDK key**.
+**IBM Video Streaming Player SDK key**.
 
 Click to the "Android Player SDK" link near the "Download" to download the zip archive containing the SDK package.
 
 ### Step 3: Explore the SDK package
 
-The provided zip archive contains the sample Android application project for Ustream Player SDK for Android. The sample 
+The provided zip archive contains the sample Android application project for IBM Video Streaming Player SDK for Android. The sample 
 application uses the Player SDK as an AAR file found in the `/libs` folder in the archive.
 
 ### Step 4: Create (or open) your project
 
-Open the project that you would like to integrate the Ustream Player SDK in.
+Open the project that you would like to integrate the IBM Video Streaming Player SDK in.
 Update the `AndroidManifest.xml` of your application with the following permission:
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -170,8 +170,8 @@ Create a `UstreamPlayerFactory` in your Activity or Fragment with the Activity's
 ```java
 private final UstreamPlayerFactory ustreamPlayerFactory = new UstreamPlayerFactory(USTREAM_PLAYER_SDK_KEY, context);
 ```
-This factory can be used to create or retrieve Ustream Player instances.
-Ustream Players created for a specific `playerId` will be retained across configuration changes (like orientation change).
+This factory can be used to create or retrieve IBM Video Streaming Player instances.
+IBM Video Streaming Players created for a specific `playerId` will be retained across configuration changes (like orientation change).
 Requesting a player with the same `playerId` will create a new UstreamPlayer interface, but that interface will 
 belong to the same player instance. The previous player for the same id must be detached before attaching a new one.
 
@@ -195,7 +195,7 @@ After the `ustreamPlayer` is created, initialize it with a content. This will mo
 Activity's `onCreate()` (Fragment's `onCreateView()`). A player instance can be initialized more than once with different 
 content, but `connect()` or `play()` has to be called in order to reconnect to the servers. The `connect()` method is 
 optional (a `play()` or `pause()` call will also handle it implicitly) though the player will respond to `play()` calls 
-more quickly because it is already connected to Ustream's servers.
+more quickly because it is already connected to IBM Video Streaming's servers.
 
 First time initialization:
 
@@ -222,9 +222,9 @@ if (!ustreamPlayer.isInitialized()) {
 }
 ```
 
-Remember to define a string constant `USTREAM_PLAYER_SDK_KEY` with your actual **Ustream Player SDK key**.
+Remember to define a string constant `USTREAM_PLAYER_SDK_KEY` with your actual **IBM Video Streaming Player SDK key**.
 
-Ustream Player SDK version 1.1.0 introduced changes in the user facing interface, see the [CHANGELOG.md] for details.
+IBM Video Streaming Player SDK version 1.1.0 introduced changes in the user facing interface, see the [CHANGELOG.md] for details.
 
 #### Setting your listeners
 
@@ -233,7 +233,7 @@ but all of these listeners have to be set prior to calling `ustreamPlayer.attach
 happen in the `onResume()` or `onStart()` callback of your Activity or Fragment. Calling `attach()` is an important step, this is where 
 your listeners and the player view is bound to the Player SDK. Forgetting to call this will cause the player to not render 
 video on your view, and you will not receive any callback on your listeners.
-Also since version 0.9.0 this is the place to set your `PlayerView` to the ustream player.
+Also since version 0.9.0 this is the place to set your `PlayerView` to the IBM Video Streaming player.
 The reason behind this is, now you can optionally pre-buffer your player by calling `ustreamPlayer.pause()` without the need to add a `PlayerView`.
 PlayerView can be later set, when it is appropriate. For example a news feed like application's `PlayerView`s will be in a `RecyclerView`.
 
@@ -340,7 +340,7 @@ public interface PlayerListener {
     /**
     * The requested live channel is not broadcasting, or the stream is not
     * available in a playable format.
-    * Note: in this state, the player is still connected to Ustream's servers,
+    * Note: in this state, the player is still connected to IBM Video Streaming's servers,
     * waiting for the stream to become online.
     */
     void onWaitingForContent();
@@ -416,7 +416,7 @@ public interface ErrorListener {
     void onRestricted();
 
     /**
-     * The provided Ustream Player SDK key is invalid or this key is not authorized to
+     * The provided IBM Video Streaming Player SDK key is invalid or this key is not authorized to
      * access this content.
      */
     void onInvalidApiKey();
@@ -603,7 +603,7 @@ For more details see javadoc in `MediaTrackChangeListener` and `UstreamPlayer` c
 
 #### Interactive callbacks
 
-The `onStopped()` callback in `PlayerListener` indicate a full stop and disconnect from Ustream's servers. If the disconnect 
+The `onStopped()` callback in `PlayerListener` indicate a full stop and disconnect from IBM Video Streaming's servers. If the disconnect 
 happened due to an error, the appropriate callback of `ErrorListener` indicates the reason.
 Some of these errors can be resolved by you or the user of your application.
 
@@ -628,7 +628,7 @@ try again by calling: `ustreamPlayer.play();`
 
 Other errors:
 
-*   `onInvalidApiKey()` – The provided Ustream Player SDK key is not authorized to play this content. You need to create a 
+*   `onInvalidApiKey()` – The provided IBM Video Streaming Player SDK key is not authorized to play this content. You need to create a 
 new Player SDK Factory instance to provide the correct key. The key needs to be set upon factory creation: 
 `new UstreamPlayerFactory(USTREAM_PLAYER_SDK_KEY, context);`
 
@@ -861,6 +861,6 @@ This limitations is imposed by Google IMA SDK on which we depend to show ads.
 
 See the [CHANGELOG.md] for changes.
 
-[Dashboard]: https://www.ustream.tv/dashboard
-["API/SDK access"]: https://www.ustream.tv/dashboard/integrations/api-access
+[Dashboard]: https://video.ibm.com/dashboard
+["API/SDK access"]: https://video.ibm.com/dashboard/integrations/api-access
 [CHANGELOG.md]: CHANGELOG

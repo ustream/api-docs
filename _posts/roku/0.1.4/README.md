@@ -1,8 +1,8 @@
-# Ustream Player SDK for Roku v0.1.4
+# IBM Video Streaming Player SDK for Roku v0.1.4
 
 ## Introduction
 
-The IBM Cloud Video Player SDK lets you play IBM Cloud Video live and recorded videos in your native applications. Using the SDK gives you full control over the embedded Player, including a customizable native user interface, callbacks on status changes, and many more.
+The IBM Video Streaming Player SDK lets you play IBM Video Streaming live and recorded videos in your native applications. Using the SDK gives you full control over the embedded Player, including a customizable native user interface, callbacks on status changes, and many more.
 
 This document describes the basic steps to make a Roku app using the Player SDK.
 
@@ -12,8 +12,8 @@ This document describes the basic steps to make a Roku app using the Player SDK.
 
 Before going into details, please note that document assumes the following:
 
-*   you have a registered user at [IBM Cloud Video](http://www.ustream.tv)
-*   your IBM Cloud Video user is entitled to use the Player SDK specifically. Log-in to [Dashboard],
+*   you have a registered user at [IBM Video Streaming](https://video.ibm.com)
+*   your IBM Video Streaming user is entitled to use the Player SDK specifically. Log-in to [Dashboard],
 and check ["API/SDK access"] under the "Integrations & Apps" section.
 If you have questions, please [contact us](https://video.ibm.com/enterprise-video/contact).
 
@@ -36,20 +36,20 @@ Copy the **api** folder of the SDK package into your application. Make sure your
 
 The `Main()` function of the **sampleapplication** folder can be found in the **UstreamSampleApplication.brs** file.
 
-## Step 3: Register your app at IBM Cloud Video
+## Step 3: Register your app at IBM Video Streaming
 
-The SDK requires the use of a _IBM Cloud Video API key_, which is validated whenever the SDK communicates with IBM Cloud Video streaming servers. The sample application contains a sample API key which you can use for testing. The sample API key can only be used to play content on the test channel(s) also used in the sample app.
+The SDK requires the use of a _IBM Video Streaming API key_, which is validated whenever the SDK communicates with IBM Video Streaming streaming servers. The sample application contains a sample API key which you can use for testing. The sample API key can only be used to play content on the test channel(s) also used in the sample app.
 
 Before you can start using the Player SDK for playing content from your own channel(s), you will need to:
 
-*   get a valid **IBM Cloud Video API key** owned by the IBM Cloud Video user that owns the content you would like to play
-*   register the **application identifier(s)** - of every app in which you will integrate the Player SDK in - at IBM Cloud Video
+*   get a valid **IBM Video Streaming API key** owned by the IBM Video Streaming user that owns the content you would like to play
+*   register the **application identifier(s)** - of every app in which you will integrate the Player SDK in - at IBM Video Streaming
 
 The application identifier is typically structured as _com.your_company.your_project_.
 
-Before you can create and use an instance of the player you have to configure the lib with your **IBM Cloud Video API key**:
+Before you can create and use an instance of the player you have to configure the lib with your **IBM Video Streaming API key**:
 
-*   Replace **your_api_key** to your actual **IBM Cloud Video API key**.
+*   Replace **your_api_key** to your actual **IBM Video Streaming API key**.
 *   Replace **your_application_bundle** to your actual application identifier.
 
 ```
@@ -62,7 +62,7 @@ Before you can create and use an instance of the player you have to configure th
 
 You can intiate playback of live or recorded content using the `playChannel` or `playRecorded` method.
 
-Starting playback of a IBM Cloud Video channel:
+Starting playback of a IBM Video Streaming channel:
 
 ```javascript
     Function Main()
@@ -71,7 +71,7 @@ Starting playback of a IBM Cloud Video channel:
     end Function
 ```
 
-Starting playback of a IBM Cloud Video recorded video:
+Starting playback of a IBM Video Streaming recorded video:
 
 ```javascript
     Function Main()
@@ -84,7 +84,7 @@ The `playChannel` and `playRecorded` methods need to be called using String para
 
 ## Step 5: Handle Player callbacks
 
-IBM Cloud Video content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.
+IBM Video Streaming content owners can protect their content using various "locks" that implement password protection, age restriction and other limitations. Streaming servers reject clients connecting for playback if lock conditions are not met. The SDK calls the appropriate callback function to indicate this to the application.
 
 ### Generic callbacks
 
@@ -94,7 +94,7 @@ The following callbacks notify the app that playback has stopped due to a server
 
 | **Callback**                                   | **Reason**                                                                                                       | **Value to return** |
 |------------------------------------------------|------------------------------------------------------------------------------------------------------------------|---------------------|
-| **playerSdkLockHandle(playerSdkModule,error)** | API key verification error, please [double check](#step-3-register-your-app-at-ibm-cloud-video_6) your API key and application id registered at Ustream. | error code as int   |
+| **playerSdkLockHandle(playerSdkModule,error)** | API key verification error, please [double check](#step-3-register-your-app-at-ibm-cloud-video_6) your API key and application id registered at IBM Video Streaming. | error code as int   |
 | **geoLockHandle(geoLockModule,error)**         | Content is restricted and unavailable at the viewer’s geographical location.                                     | error code as Int   |
 | **ipLockHandle(ipLockModule,error)**           | Content is restricted and unavailable from the viewer’s IP address.                                              | error code as Int   |
 
@@ -106,7 +106,7 @@ The following callbacks are designed to notify the app about playback issues tha
 
 | **Callback**                | **Reason**                                                                                      | **Value to return** |
 |-----------------------------|-------------------------------------------------------------------------------------------------|---------------------|
-| **requestFailed()**         | Communication has failed between the SDK and IBM Cloud Video servers.                           | error code as Int   |
+| **requestFailed()**         | Communication has failed between the SDK and IBM Video Streaming servers.                           | error code as Int   |
 | **channelOffline()**        | The channel to be played is currently off-air, there is no live broadcast taking place.         | error code as Int   |
 | **recordedVideoNonExist()** | The recorded video to be played can not be found. It may have been deleted.                     | error code as Int   |
 | **privateVideo()**          | The recorded video to be played is not available because it has been made private by the owner. | error code as Int   |
@@ -131,4 +131,4 @@ Sample code is located for each of these callbacks in the **Utils.brs**, **Passw
 
 Empty strings ("") returned from `getPassword` or `getBirthDay` do not get verified, the app returns to the `Main()` function instead.
 
-["API/SDK access"]: https://www.ustream.tv/dashboard/integrations/api-access
+["API/SDK access"]: https://video.ibm.com/dashboard/integrations/api-access

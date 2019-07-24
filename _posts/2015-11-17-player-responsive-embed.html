@@ -5,32 +5,34 @@ weight: 3
 category: player-api
 categoryItemType: example
 categoryItemIsShown: 1
-categoryItemWidth: 
-categoryItemDescription: 
-categoryItemLabel: 
---- 
+categoryItemWidth:
+categoryItemDescription:
+categoryItemLabel:
+---
 
 
 <article>
 	<section>
-		<h3>Follow these steps to create a repsonsive embed</h3>
+		<h3>Follow these steps to create a responsive embed</h3>
 		<ul>
 			<li>Insert the player embed code into an HTML page</li>
 			<li>Set the iframe tag's width and height attributes to 100% inside of the embed code</li>
 			<li>Change iframe tag's CSS position parameter to 'absolute' and set the left and top css parameters to '0' if needed</li>
 			<li>Add a div container around the iframe tag with the following css parameters where 'padding-bottom' parameter's value is calculated from the original proportions of the embedded content (eg. 9/16 = 0.5625)</li>
 		</ul>
-		
+
 		<pre>
 <code class="xml">&lt;div id="Container"
 	style="padding-bottom:56.25%; position:relative; display:block; width: 100%"&gt;
-	&lt;iframe id="UstreamIframe" 
-		width="100%" height="100%" 
+	&lt;iframe id="UstreamIframe"
+		width="100%" height="100%"
 		src="https://www.ustream.tv/embed/1524"
+		allowfullscreen
+		webkitallowfullscreen
 		frameborder="0"
 		style="position:absolute; top:0; left: 0"&gt;&lt;/iframe&gt;
 &lt;/div&gt;</code></pre>
-		
+
 		<div id="Container" style="padding-bottom:56.25% !important; position:relative; display:block; width: 100%; margin-bottom: 4rem">
 			<iframe src="https://www.ustream.tv/embed/1524?html5ui" id="UstreamIframe" width="100%" height="100%" allowfullscreen webkitallowfullscreen style="border: 0 transparent none; position:absolute; top:0; left: 0"></iframe>
 		</div>

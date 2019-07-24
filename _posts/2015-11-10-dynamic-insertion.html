@@ -5,16 +5,16 @@ weight: 3
 category: player-api
 categoryItemType: example
 categoryItemIsShown: 1
-categoryItemWidth: 
-categoryItemDescription: 
-categoryItemLabel: 
---- 
+categoryItemWidth:
+categoryItemDescription:
+categoryItemLabel:
+---
 
 
 <article class="row">
 	<section>
 		<div style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
-			<iframe src="https://www.ustream.tv/embed/1524?html5ui" id="FrameAlpha" width="100%" height="100%" allowfullscreen webkitallowfullscreen style="border: 0 transparent none; position:absolute; top:0; left: 0"></iframe>
+			<iframe src="https://video.ibm.com/embed/1524?html5ui" id="FrameAlpha" width="100%" height="100%" allowfullscreen webkitallowfullscreen style="border: 0 transparent none; position:absolute; top:0; left: 0"></iframe>
 		</div>
 		<div class="panel clear">
 			<div id="PlayAlpha" class="button button-icon control-play"><i class="glyphicon icon-play-2"></i>Play</div>
@@ -27,7 +27,7 @@ categoryItemLabel:
 			</div>
 		</div>
 	</section>
-	
+
 	<section>
 		<div style="padding-bottom:56.25%; position:relative; display:block; width: 100%" id="Beta">
 		</div>
@@ -42,7 +42,7 @@ categoryItemLabel:
 			</div>
 		</div>
 	</section>
-	
+
 	<section>
 		<div id="Gamma">
 			<div id="InsertGamma" class="button">Insert embed</div>
@@ -96,12 +96,12 @@ categoryItemLabel:
 				'height="100%" ' +
 				'allowfullscreen webkitallowfullscreen style="border: 0 transparent none; position:absolute; top:0; left:0"></iframe>');
 
-		
+
 		/* create player instances */
 		var alpha = UstreamEmbed("FrameAlpha"),
 		beta = UstreamEmbed("FrameBeta"),
 		gamma;
-		
+
 		/* bind controls to buttons */
 		$('#PlayAlpha').on('click', function (e) { e.preventDefault(); e.stopPropagation(); alpha.callMethod('play'); });
 		$('#PlayBeta').on('click', function (e) { e.preventDefault(); e.stopPropagation(); beta.callMethod('play'); });
@@ -156,25 +156,25 @@ categoryItemLabel:
 		$('#InsertGamma').on('click', function (e) {
 			e.preventDefault();
 			e.stopPropagation();
-			
-		
+
+
 			var gammaHolder = $('#Gamma');
 			gammaHolder.attr('style','padding-bottom:56.25%; position:relative; display:block; width: 100%');
-			
+
 			var gammaFrame = $('<iframe src="https://www.ustream.tv/embed/recorded/24364591?html5ui" ' +
 							   'id="FrameGamma" ' +
 							   'width="100%" height="100%" ' +
 							   'allowfullscreen webkitallowfullscreen style="border: 0 transparent none; position:absolute; top:0; left: 0"></iframe>'
 							  );
 			gammaHolder.append(gammaFrame);
-			
+
 			gammaHolder.next().removeClass('hidden');
 
 			gamma = UstreamEmbed(gammaFrame[0]);
-			
+
 			$('#PlayGamma').on('click', function (e) { e.preventDefault(); e.stopPropagation(); gamma.callMethod('play'); });
 			$('#PauseGamma').on('click', function (e) { e.preventDefault(); e.stopPropagation(); gamma.callMethod('pause'); });
-			
+
 			gamma.addListener('live', $.proxy(onEmbedEvent, null, 'StatusGamma'));
 			gamma.addListener('offline', $.proxy(onEmbedEvent, null, 'StatusGamma'));
 			gamma.addListener('playing', $.proxy(onEmbedEvent, null, 'StatusGamma'));
