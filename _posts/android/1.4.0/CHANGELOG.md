@@ -234,6 +234,7 @@ saved anymore.
 after initialization.
 - Bugfixes and stability improvements
 
+[1.4.0]: ../1.4.0/
 [1.3.1]: ../1.3.0/
 [1.1.1]: ../1.1.0/
 [1.1.0]: ../1.1.0/
