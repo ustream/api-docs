@@ -8,6 +8,6 @@ categoryItemIsShown: 0
 categoryItemWidth: 6
 categoryItemDescription:
 categoryItemLabel: Read the documentation
-permalink: /player-sdk/android/latest/CHANGELOG
+permalink: /player-sdk/android/1.4.0/CHANGELOG
 ---
-{% include_relative 1.3.0/CHANGELOG.md  %}
+{% include_relative CHANGELOG.md  %}
