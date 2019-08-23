@@ -5508,7 +5508,7 @@ Content-Type: application/x-www-form-urlencoded</code></pre>
 				<td>detail_level</td>
 				<td>string</td>
 				<td>OPTIONAL</td>
-				<td>Verbosity level. Possible value: "minimal". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="#security_10">security</a> section), only minimal data can be retrieved without a valid access token.</td>
+				<td>Verbosity level. Possible values: "minimal", "owner". In case of minimal verbosity level the result set is limited to id, and links data. If the channel is protected (see <a href="#security_10">security</a> section), only minimal data can be retrieved without a valid access token. By default (by omitting or leaving the parameter empty) all insensitive information will be retrieved. The "owner" detail level always requires a valid access token, and it will also return more sensitive information about the video (for example the DHLS link if this feature is available for you).</td>
 			</tr>
 		</table>
 
