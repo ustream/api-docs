@@ -889,6 +889,11 @@ article pre {
 	-webkit-overflow-scrolling: touch;
 }
 
+article td pre {
+	margin-bottom: 0;
+	padding: 5px;
+}
+
 article pre::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 6px;

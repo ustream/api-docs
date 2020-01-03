@@ -467,7 +467,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata.json</a></td>
 			</tr>
 		</table>
 
@@ -529,7 +529,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID//custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID//custom-metadata/FIELD_ID.json</a></td>
 			</tr>
 		</table>
 		<h6>Parameters</h6>
@@ -547,7 +547,59 @@ title=API+Testing+Channel</code></pre>
 				<td>The metadata field value</td>
 			</tr>
 		</table>
-
+		<h6>Examples</h6>
+		<p>Make sure the values are always properly URL encoded.</p>
+		<table class="table responsive">
+			<tr>
+				<th>type</th>
+				<th>possible values</th>
+				<th>example body</th>
+			</tr>
+			<tr>
+				<td>string</td>
+				<td>string</td>
+				<td>
+					<pre><code class="nohighlight">value=test%20string</code></pre>
+				</td>
+			</tr>
+			<tr>
+				<td>numeric</td>
+				<td>int/float</td>
+				<td><pre><code class="nohighlight">value=55.4</code></pre></td>
+			</tr>
+			<tr>
+				<td>date</td>
+				<td>ISO 8601</td>
+				<td><pre><code class="nohighlight">value=2020-01-02T15%3A20%3A59%2B0100</code></pre></td>
+			</tr>
+			<tr>
+				<td>boolean</td>
+				<td>true/1, false/0</td>
+				<td><pre><code class="nohighlight">value=true</code></pre></td>
+			</tr>
+			<tr>
+				<td>tag list</td>
+				<td>comma separated list of strings</td>
+				<td><pre><code class="nohighlight">value=a%2Cb%2Cc%2Cd</code></pre></td>
+			</tr>
+			<tr>
+				<td>link</td>
+				<td>
+					URL (Required): target of the link<br>
+					Text (Optional): text of the link
+				</td>
+				<td><pre><code class="nohighlight">value[url]=https%3A%2F%2Fvideo.ibm.com%2F&value[text]=IBM%20Video%20Streaming</code></pre></td>
+			</tr>
+			<tr>
+				<td>multiple choice</td>
+				<td>list of choice IDs</td>
+				<td><pre><code class="nohighlight">value[]=1&value[]=2</code></pre></td>
+			</tr>
+			<tr>
+				<td>group of fields</td>
+				<td colspan="2">Currently it is not possible to set the values of group fields with the API.</td>
+			</tr>
+		</table>
 		<h6>Response</h6>
 		<p>On success save a response with HTTP status 204 is returned.</p>
 
@@ -575,7 +627,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata/FIELD_ID.json</a></td>
 			</tr>
 		</table>
 
@@ -605,7 +657,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">GET</td>
-				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata-display.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata-display.json</a></td>
 			</tr>
 		</table>
 		<h6>Response</h6>
@@ -650,7 +702,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata-display/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata-display/FIELD_ID.json</a></td>
 			</tr>
 		</table>
 		<h6>Parameters</h6>
@@ -698,7 +750,7 @@ title=API+Testing+Channel</code></pre>
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata-display/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/channels/CHANNEL_ID/custom-metadata-display/FIELD_ID.json</a></td>
 			</tr>
 		</table>
 
@@ -3768,7 +3820,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">PUT</td>
-				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/custom-metadata/FIELD_ID.json</a></td>
 			</tr>
 		</table>
 		<h6>Parameters</h6>
@@ -3786,6 +3838,9 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 				<td>The metadata field value</td>
 			</tr>
 		</table>
+
+		<h6>Examples</h6>
+		<p>See at the <a href="#set-channel-metadata-value_7">Set channel metadata value</a> section</p>
 
 		<h6>Response</h6>
 		<p>On success save a response with HTTP status 204 is returned.</p>
@@ -3814,7 +3869,7 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<table class="table fill-bg-light1 table-chromeless">
 			<tr>
 				<td class="verb">DELETE</td>
-				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/custom-metadata/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+				<td><a>https://api.video.ibm.com/videos/VIDEO_ID/custom-metadata/FIELD_ID.json</a></td>
 			</tr>
 		</table>
 
@@ -6217,7 +6272,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 	<table class="table fill-bg-light1 table-chromeless">
 		<tr>
 			<td class="verb">GET</td>
-			<td><a>https://api.video.ibm.com/custom-metadata-fields.FORMAT</a> (format can be json or xml)</td>
+			<td><a>https://api.video.ibm.com/custom-metadata-fields.json</a></td>
 		</tr>
 	</table>
 	<h6>Parameters</h6>
@@ -6279,7 +6334,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 				</tr>
 				<tr>
 					<td>type</td>
-					<td>mixed</td>
+					<td>string</td>
 					<td>The type of the field</td>
 				</tr>
 				<tr>
@@ -6339,7 +6394,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 							</tr>
 							<tr>
 								<td>type</td>
-								<td>mixed</td>
+								<td>string</td>
 								<td>The type of the field</td>
 							</tr>
 							<tr>
@@ -6383,7 +6438,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 	<table class="table fill-bg-light1 table-chromeless">
 		<tr>
 			<td class="verb">POST</td>
-			<td><a>https://api.video.ibm.com/custom-metadata-fields.FORMAT</a> (format can be json or xml)</td>
+			<td><a>https://api.video.ibm.com/custom-metadata-fields.json</a></td>
 		</tr>
 	</table>
 
@@ -6415,7 +6470,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 		</tr>
 		<tr>
 			<td>type</td>
-			<td>mixed</td>
+			<td>string</td>
 			<td>REQUIRED</td>
 			<td>The type of the field. Possible values are: "string", "float", "tag_list", "bool", "enum", "group", "datetime", "link"</td>
 		</tr>
@@ -6469,7 +6524,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 		</tr>
 		<tr>
 			<td>type</td>
-			<td>mixed</td>
+			<td>string</td>
 			<td>The type of the field</td>
 		</tr>
 		<tr>
@@ -6529,7 +6584,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 					</tr>
 					<tr>
 						<td>type</td>
-						<td>mixed</td>
+						<td>string</td>
 						<td>The type of the field</td>
 					</tr>
 					<tr>
@@ -6570,7 +6625,7 @@ X-Hook-Signature: 61f34d324ac51dde1288825dab2111</code></pre>
 	<table class="table fill-bg-light1 table-chromeless">
 		<tr>
 			<td class="verb">DELETE</td>
-			<td><a>https://api.video.ibm.com/custom-metadata-fields/FIELD_ID.FORMAT</a> (format can be json or xml)</td>
+			<td><a>https://api.video.ibm.com/custom-metadata-fields/FIELD_ID.json</a></td>
 		</tr>
 	</table>
 	<h6>Response</h6>
