@@ -3120,13 +3120,13 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 		<p>Key-value pairs with details of the ftp access. Example:</p>
 <pre><code class="json">{
 	"protocol":"ftp",
-	"host":"red44.ustream.tv",
+	"host":"sjc03-vod-upload02.services.video.ibm.com",
 	"port":21,
 	"path":"/1_12345_12345678901234",
 	"user":"1_12345_1234567890",
 	"password":"ftppw",
 	"videoId":"52177361",
-	"url":"ftp://1_1234_1234567890:ftppw@red44.ustream.tv/1_12345_12345678901234"
+	"url":"ftp://1_1234_1234567890:ftppw@sjc03-vod-upload02.services.video.ibm.com/1_12345_12345678901234"
 }</code></pre>
 
 		<h6>Error codes</h6>
@@ -3163,7 +3163,13 @@ Authorization: Bearer 782f6544405a22636f3d5d3b63c2573673bf3950
 			you can use the following FTP command to upload it:
 		</p>
 		<p>
-			<code>ftp -u ftp://1_1234_1234567890:ftppw@red44.ustream.tv/1_12345_12345678901234 test.mov</code>
+			<code>ftp -u ftp://1_1234_1234567890:ftppw@sjc03-vod-upload02.services.video.ibm.com/1_12345_12345678901234 test.mov</code>
+		</p>
+		<p>
+			Or using the cURL command:
+		</p>
+		<p>
+			<code>curl ftp://1_1234_1234567890:ftppw@sjc03-vod-upload02.services.video.ibm.com/1_12345_12345678901234 -v -T test.mov</code>
 		</p>
 		<p>
 			<b>Supported file extensions are:</b> mp4, mov, flv.
