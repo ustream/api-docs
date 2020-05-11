@@ -66,7 +66,7 @@ categoryItemLabel: Read the documentation
                 <table class="table responsive">
                     <tr>
                         <td><strong>Location</strong></td>
-                        <td><a>https://video.ibm.com/oauth2/authorize</a></td>
+                        <td><a>https://authentication.video.ibm.com/authorize</a></td>
                     </tr>
                     <tr>
                         <td><strong>Supported flows</strong></td>
@@ -139,12 +139,6 @@ categoryItemLabel: Read the documentation
                         <td>string</td>
                         <td>OPTIONAL</td>
                         <td>Full product name of the Client device or application. It is used for easy identification of the OAuth2 Token. The User will be able to review which Clients are connected to his/her account, and revoke these grants on the IBM Video Streaming website.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>display</strong></td>
-                        <td>string</td>
-                        <td>OPTIONAL</td>
-                        <td>If set to "touch", a mobile-optimized version will be shown</td>
                     </tr>
                     <tr>
                         <td><strong>lang</strong></td>
@@ -313,6 +307,10 @@ categoryItemLabel: Read the documentation
                     <tr>
                         <td><strong>access_token</strong></td>
                         <td>Access Token (40 character length, hexa encoded sha1 hash)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>refresh_token</strong></td>
+                        <td>Refresh Token (40 character length, hexa encoded sha1 hash)</td>
                     </tr>
                     <tr>
                         <td><strong>expires_in</strong></td>
@@ -545,13 +543,12 @@ categoryItemLabel: Read the documentation
                 <ol>
                     <li>
                         <p>The Client opens a browser with the Authorization Endpoint:</p>
-                        <pre>https://video.ibm.com/oauth2/authorize
+                        <pre>https://authentication.video.ibm.com/authorize
 ?response_type=code
 &amp;client_id=AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDD
 &amp;redirect_uri=http://example.com/get_access_token
 &amp;device_name=My%20Device
 &amp;scope=broadcaster
-&amp;display=touch
 &amp;state=XYZ</pre></li>
                     <li>
                         <p>The User enters his/her credentials and presses the Allow button. The browser is redirected to the following URL:</p>
@@ -578,14 +575,13 @@ categoryItemLabel: Read the documentation
     authorization page</h4>
                 <ol>
                     <li><p>The Client opens a browser with the Authorization Endpoint:</p>
-                    <pre>https://video.ibm.com/oauth2/authorize
+                    <pre>https://authentication.video.ibm.com/authorize
 ?response_type=token
 &amp;token_type=mac
 &amp;client_id=AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDD
 &amp;redirect_uri=http://example.com/token
 &amp;device_name=My%20Device
 &amp;scope=broadcaster
-&amp;display=touch
 &amp;state=XYZ
 </pre></li>
                 <li class="hide-counter">
@@ -621,12 +617,11 @@ categoryItemLabel: Read the documentation
                 <h3>Get an access token</h3>
 
                 <pre>
-https://video.ibm.com/oauth2/authorize
+https://authentication.video.ibm.com/authorize
 ?response_type=token
 &amp;client_id=057ce944b015ec9fdf546dfbbe1b7af4b19e8158
 &amp;redirect_uri=https://video.ibm.com/oauth2/redirect
 &amp;device_name=MyDevice
-&amp;display=touch
 &amp;state=XYZ</pre>
                 <p>After logging in, the browser is redirected to a special URL (defined by the Client), passing the Access Token in the URL. As you can see in the examples below, you should use Authorization HTTP header with token in the requests: "Authorization: Bearer 3c2573673b782f6544405a22636f3d5d3b6f3950"</p>
 
