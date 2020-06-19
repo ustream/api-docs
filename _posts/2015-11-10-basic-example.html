@@ -12,7 +12,7 @@ categoryItemLabel:
 
 <article class="row">
 	<div style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
-		<iframe src="https://video.ibm.com/embed/1524?html5ui" id="UstreamFrame" width="100%" height="100%" allowfullscreen webkitallowfullscreen style="border: 0 transparent none; position:absolute; top:0; left: 0"></iframe>
+		<iframe src="https://video.ibm.com/embed/1524?autoplay=true&volume=0" id="UstreamFrame" width="100%" height="100%" allowfullscreen webkitallowfullscreen style="border: 0 transparent none; position:absolute; top:0; left: 0"></iframe>
 	</div>
 	<div class="panel clear">
 		<div class="row gutter-30">
@@ -280,7 +280,7 @@ categoryItemLabel:
 			var list =  $('.quality-selector');
 			list.empty();
 			for (var id in data) {
-				list.append('<option value="' + id + '" ' + (data[id].selected ? 'selected="selected"' : '') +'>' + data[id].label + '</option>');
+				list.append('<option value="' + (data[id].id == -1 ? '-1' : id) + '" ' + (data[id].selected ? 'selected="selected"' : '') +'>' + (data[id].label.text !== 'ui.qualityAuto' ? data[id].label.text : 'Auto') + '</option>');
 			}
 
 			//updating value of the custom select gui element
