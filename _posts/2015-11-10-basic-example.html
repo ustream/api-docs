@@ -280,7 +280,7 @@ categoryItemLabel:
 			var list =  $('.quality-selector');
 			list.empty();
 			for (var id in data) {
-				list.append('<option value="' + (data[id].id == -1 ? '-1' : id) + '" ' + (data[id].selected ? 'selected="selected"' : '') +'>' + (data[id].label.text !== 'ui.qualityAuto' ? data[id].label.text : 'Auto') + '</option>');
+				list.append('<option value="' + data[id].id + '" ' + (data[id].selected ? 'selected="selected"' : '') +'>' + (data[id].id !== -1 ? data[id].label.text : 'Auto') + '</option>');
 			}
 
 			//updating value of the custom select gui element
