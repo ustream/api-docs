@@ -78,3 +78,5 @@ Fixed a bug in access handling which made some videos unavailable in certain con
 [1.6.1]: ../1.6.1/
 [1.7.0]: ../1.7.0/
 [1.7.1]: ../1.7.1/
+[1.7.2]: ../1.7.2/
+[1.8.0]: ../1.8.0/
