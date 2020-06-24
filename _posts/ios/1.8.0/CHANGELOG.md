@@ -5,9 +5,6 @@
 - Removed references to `UIWebView`
 - Updated the supported version of Google IMA SDK to 3.11.1
 
-## [1.7.2] - 2020-05-15
-- Stability improvements and bug fixes.
-
 ## [1.7.1] - 2018-10-01
 - Stability improvements and bug fixes.
 
@@ -77,6 +74,5 @@ Fixed a bug in access handling which made some videos unavailable in certain con
 [1.6]: ../1.6/
 [1.6.1]: ../1.6.1/
 [1.7.0]: ../1.7.0/
-[1.7.1]: ../1.7.1/
-[1.7.2]: ../1.7.2/
+[1.7.1]: ../1.7.0/
 [1.8.0]: ../1.8.0/
