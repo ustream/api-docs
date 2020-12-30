@@ -5,4 +5,4 @@ require 'open-uri'
 versions = JSON.parse(open('https://pages.github.com/versions.json').read)
 
 gem 'github-pages', group: :jekyll_plugins
-gem 'nokogiri', '~>1.8.1'
+gem 'nokogiri', '~>1.10.10'
