@@ -22,14 +22,14 @@ categoryItemLabel: Read the documentation
 
 				<section>
 					<h2>Usage</h2>
-					<p>First, a valid IBM Cloud Video embed iframe will be needed to use the Embed API. Log in to your managed <a href="https://video.ibm.com/" target="_blank">IBM Cloud Video</a> account as an administrator of your channel. Then navigate to the Embed Configurator page on your Dashboard by selecting the "Embed" option as seen below:</p>
+					<p>First, a valid IBM Watson Media embed iframe will be needed to use the Embed API. Log in to your managed <a href="https://video.ibm.com/" target="_blank">IBM Watson Media</a> account as an administrator of your channel. Then navigate to the Embed Configurator page on your Dashboard by selecting the "Embed" option as seen below:</p>
 					<img class="no-border" src="/images/embed-configurator-page-location.png" alt="Embed configurator page location in channel menu">
 					<p>After selecting an option with the IBM Cloud Video Player, the Embed Configurator is displayed. The Configurator enables channel administrators to set the properties of the Player embed. When it's done, the proper iframe HTML element can be copied to the clipboard with the button which is highlighted in the next picture.</p>
 					<img class="no-border" src="/images/embed-configurator-copy-to-clipboard.png" alt="Embed configurator Copy to clipboard button location">
-					<p>The next step is to include a unique ID in this iframe element. We will use "UstreamIframe".</p>
+					<p>The next step is to include a unique ID in this iframe element. We will use "PlayerIframe".</p>
 					<p>Create an instance of the Embed API by providing the ID of the iframe. The iframe code should look like this:</p>
-					<pre><code class="html">&lt;iframe id=&quot;UstreamIframe&quot; src=&quot;https://video.ibm.com/embed/1524?html5ui&quot; width=&quot;640&quot; height=&quot;480&quot; allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;</code></pre>
-					<pre><code class="javascript">var viewer = UstreamEmbed('UstreamIframe');</code></pre>
+					<pre><code class="html">&lt;iframe id=&quot;PlayerIframe&quot; src=&quot;https://video.ibm.com/embed/1524?html5ui&quot; width=&quot;640&quot; height=&quot;480&quot; allowfullscreen webkitallowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+					<pre><code class="javascript">var viewer = UstreamEmbed('PlayerIframe');</code></pre>
 					<h3>URL parameters</h3>
 					<p>The default behaviour of the player can be modified by extending the src URL with any of the following parameters:</p>
 					<table class="table responsive">
@@ -44,13 +44,13 @@ categoryItemLabel: Read the documentation
 						<tbody>
 							<tr>
 								<td>allowfullscreen</td>
-								<td>Disables fullscreen and remove the button.</td>
+								<td>Enables full-screen. False value makes the full-screen button inactive.</td>
 								<td>true/false</td>
 								<td>true</td>
 							</tr>
 							<tr>
 								<td>autoplay</td>
-								<td>Starts video playback automatically.</td>
+								<td>Starts video playback automatically. Browser settings are stronger and may override the value of this parameter.</td>
 								<td>true/false</td>
 								<td>false</td>
 							</tr>
@@ -67,34 +67,28 @@ categoryItemLabel: Read the documentation
 								<td>false</td>
 							</tr>
 							<tr>
-								<td>offaircontent</td>
-								<td>Disables displaying offair content.</td>
-								<td>true/false</td>
-								<td>true</td>
-							</tr>
-							<tr>
 								<td>forced-quality</td>
-								<td>Overrides the automatic quality selection.</td>
+								<td>Turns off the automatic quality selection and selects the appropriate quality. Low is the smallest available quality, high is the largest and med is the middlemost choice.</td>
 								<td>low, med, high</td>
-								<td>auto</td>
+								<td>N/A</td>
 							</tr>
 							<tr>
 								<td>initial-quality</td>
-								<td>Sets the initial quality for the automatic quality selection.</td>
+								<td>Sets the initial quality for the automatic quality selection. The quality selection logic is still turned on and can switch to another quality after playback is started.</td>
 								<td>low, med, high</td>
-								<td>auto</td>
+								<td>N/A</td>
 							</tr>
 							<tr>
 								<td>showtitle</td>
-								<td>Hides title and viewer count.</td>
+								<td>Shows title and viewer count information inside the player area.</td>
 								<td>true/false</td>
 								<td>true</td>
 							</tr>
 							<tr>
 								<td>volume</td>
-								<td>Overrides the default volume. 0 is mute, 1 is max volume.</td>
-								<td>0.0-1.0</td>
-								<td>user setting</td>
+								<td>Set volume for playback as a percentage of the max volume. Overrides the default volume (100).</td>
+								<td>0-100</td>
+								<td>100</td>
 							</tr>
 						</tbody>
 					</table>
@@ -118,7 +112,7 @@ categoryItemLabel: Read the documentation
 
 
 					<h4>stop</h4>
-					<p>Pauses the live stream, or stops the video and jumps back to the start.</p>
+					<p>Pauses the live stream. In case of videos it stops the video and jumps back to the start.</p>
 
 					<h6>Example</h6>
 					<pre><code class="javascript">viewer.callMethod('stop');</code></pre>
@@ -127,8 +121,8 @@ categoryItemLabel: Read the documentation
 					<h4>load</h4>
 					<p>Loads a channel or a video in the player. Requires two additional arguments:</p>
 					<ul>
-						<li><code>type</code> - the loaded content type (channel | video)</li>
-						<li><code>id</code> - the loaded content id</li>
+						<li><code>type</code> - content type ('channel' or 'video')</li>
+						<li><code>id</code> - media id</li>
 					</ul>
 
 					<h6>Example</h6>
@@ -139,7 +133,7 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
 					<h4>seek</h4>
 					<p>Jumps to given position in played recorded video. Requires one argument:</p>
 					<ul>
-						<li>position in seconds</li>
+						<li><code>position</code> - target time in seconds</li>
 					</ul>
 
 					<h6>Example</h6>
@@ -149,7 +143,7 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
 					<h4>volume</h4>
 					<p>Sets the playback sound volume. Requires one argument:</p>
 					<ul>
-						<li>volume percent between 0-100</li>
+						<li><code>volume</code> percent between 0-100</li>
 					</ul>
 
 					<h6>Example</h6>
@@ -159,20 +153,20 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
 					<h4>quality</h4>
 					<p>Sets the stream quality, if available. Requires one argument:</p>
 					<ul>
-						<li>a <code>qualityID</code> key from received quality options in <code>quality</code> event</li>
+						<li>an <code>id</code> key from received quality options in <code>quality</code> event</li>
 					</ul>
 
 					<h6>Example</h6>
-					<pre><code class="javascript">viewer.callMethod('quality', 16); //set to high</code></pre>
+					<pre><code class="javascript">viewer.callMethod('quality', 0); //set to highest quality</code></pre>
 
 			<h4>cc (closed caption)</h4>
-					<p>Enables the selected closed caption if available. Requires one argument:</p>
+					<p>Displays the selected closed caption if available. You can use the 'None' option by using -1 as the argumnet. Otherwise it requires this argument:</p>
 					<ul>
-						<li>a <code>ccIndex</code> key from the received closed caption array in <code>cc</code> event</li>
+						<li>an <code>index</code> key from the received closed caption object in <code>cc</code> event</li>
 					</ul>
 
 					<h6>Example</h6>
-<pre><code class="javascript">viewer.callMethod('cc', 1); //enable the closed caption with index 1</code>
+<pre><code class="javascript">viewer.callMethod('cc', 1); //enables the closed caption with index 1</code>
 <code class="javascript">viewer.callMethod('cc', -1); //disables the closed caption</code></pre>
 
 					<h3>getProperty</h3>
@@ -180,20 +174,28 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
 					<p>Accessible properties by <code>getProperty</code>:</p>
 
 					<h4>duration</h4>
-					<p>Get the video duration in seconds.</p>
+					<p>Get the video duration in <code>seconds.milliseconds</code> precision.</p>
 
 					<h6>Example</h6>
 					<pre><code class="javascript">viewer.getProperty('duration', function (duration) {
     ...
-});</code></pre>
+}); //returns e.g. 123.654</code></pre>
 
 
 					<h4>viewers</h4>
-					<p>Get the current viewer count for the loaded live stream.</p>
+					<p>Get the current viewer count for the loaded live stream. Doesn't return anything in case of videos.</p>
 
 					<h6>Example</h6>
 					<pre><code class="javascript">viewer.getProperty('viewers', function (viewerNumber) {
     ...
+});</code></pre>
+
+					<h4>allTimeTotalviewers</h4>
+					<p>Get the accumulated total viewer number for the loaded channel. Doesn't return anything in case of videos.</p>
+
+					<h6>Example</h6>
+					<pre><code class="javascript">viewer.getProperty('allTimeTotalViewers', function (allTimeViewerNumber) {
+					...
 });</code></pre>
 
 
@@ -222,7 +224,6 @@ viewer.callMethod('load', 'channel', 1524);</code></pre>
 
 					<h6>Example</h6>
 					<pre><code class="javascript">viewer.callMethod('load', 'channel', 1524);
-
 // ...
 
 viewer.getProperty('playingContent', function (content) {
@@ -234,7 +235,13 @@ viewer.getProperty('playingContent', function (content) {
     //  - if it's offair and doesn't have offair video content
 });</code></pre>
 
+				<h4>volume</h4>
+				<p>Get the player volume. This will return the actual value of volume in percents.</p>
 
+				<h6>Example</h6>
+				<pre><code class="javascript">viewer.getProperty('volume', function (volume) {
+				// volume == 0 for muted playback 
+				});</code></pre>
 
 					<h3>addListener &amp; removeListener</h3>
 					<p>The embed player dispatches several events during playback. This method adds or removes event handlers to these events.</p>
